@@ -26,6 +26,12 @@ jobs:
             set -euxo pipefail
             export XDG_RUNTIME_DIR=/run/user/$(id -u)
             export DOCKER_HOST=unix://$XDG_RUNTIME_DIR/docker.sock
+            export PATH="$HOME/bin:$HOME/.local/bin:/usr/local/bin:/usr/bin:/bin"
+
+            if [ -x "$HOME/.docker/cli-plugins/docker-compose" ]; then
+              chmod +x "$HOME/.docker/cli-plugins/docker-compose"
+            fi
+
             cd ${{ secrets.DEPLOY_PATH }}
 
             git pull
