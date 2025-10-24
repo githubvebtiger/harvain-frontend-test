@@ -22,25 +22,29 @@ jobs:
 
       - name: Deploy over SSH
         run: |
-          ssh ${{ secrets.DEPLOY_USER }}@${{ secrets.DEPLOY_HOST }} '
-            set -euxo pipefail
-            export XDG_RUNTIME_DIR=/run/user/$(id -u)
-            export DOCKER_HOST=unix://$XDG_RUNTIME_DIR/docker.sock
-            export PATH="$HOME/bin:$HOME/.local/bin:/usr/local/bin:/usr/bin:/bin"
+          ssh \
+            -o ServerAliveInterval=30 \
+            -o ServerAliveCountMax=10 \
+            -o TCPKeepAlive=yes \
+            ${{ secrets.DEPLOY_USER }}@${{ secrets.DEPLOY_HOST }} '
+              set -euxo pipefail
+              export XDG_RUNTIME_DIR=/run/user/$(id -u)
+              export DOCKER_HOST=unix://$XDG_RUNTIME_DIR/docker.sock
+              export PATH="$HOME/bin:$HOME/.local/bin:/usr/local/bin:/usr/bin:/bin"
 
-            if [ -x "$HOME/.docker/cli-plugins/docker-compose" ]; then
-              chmod +x "$HOME/.docker/cli-plugins/docker-compose"
-            fi
+              if [ -x "$HOME/.docker/cli-plugins/docker-compose" ]; then
+                chmod +x "$HOME/.docker/cli-plugins/docker-compose"
+              fi
 
-            cd ${{ secrets.DEPLOY_PATH }}
+              cd ${{ secrets.DEPLOY_PATH }}
 
-            git pull
+              git pull
 
-            docker compose -f docker-compose.yml down
+              docker compose -f docker-compose.yml down
 
-            docker compose -f docker-compose.yml build
+              docker compose -f docker-compose.yml build
 
-            docker compose -f docker-compose.yml up -d
+              docker compose -f docker-compose.yml up -d
 
-            docker compose -f docker-compose.yml ps
-          '
+              docker compose -f docker-compose.yml ps
+            '
