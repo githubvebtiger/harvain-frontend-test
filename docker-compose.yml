@@ -2,7 +2,10 @@ version: '3.8'
 
 services:
   web:
-    build: .
+    build:
+      context: .
+      args:
+        REACT_APP_API_BASE_URL: ${REACT_APP_API_BASE_URL:-https://admin.bttrades.com}
     ports:
       - "3000:80"
     environment:

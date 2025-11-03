@@ -67,7 +67,6 @@ export default function LoginModal(props: Props) {
           password: password,
           uuid: props.uuid,
         }).then((data) => {
-          console.log(data,"kkkkkk")
           if (
             data?.data?.status === 200 &&
             typeof data?.data?.data !== "string"
