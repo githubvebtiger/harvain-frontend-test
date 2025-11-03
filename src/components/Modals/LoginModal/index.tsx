@@ -95,11 +95,14 @@ export default function LoginModal(props: Props) {
           props.navigate("/satellites");
           props.onClose();
         } else {
-          setError(response.error.response.data.detail);
+          // Безопасно извлекаем сообщение об ошибке с fallback
+          const errorMessage = response.error?.response?.data?.detail ||
+                              'Invalid username or password. Please check your credentials and try again.';
+          setPasswordError(errorMessage);
         }
       } catch (e) {
         console.log(e);
-        setError("Failed to login. Please try again later.");
+        setPasswordError("Failed to login. Please try again later.");
       }
     }
   }
