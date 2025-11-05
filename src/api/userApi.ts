@@ -2,7 +2,6 @@ import axiosClient from './axiosClient';
 import {jwtDecode} from 'jwt-decode';
 import { IResponse } from './axiosClient';
 import { fetchSatellites } from './satellites';
-import axios from 'axios';
 
 interface RegisterRequest {
   username: string;
@@ -73,15 +72,12 @@ export const startEmailVerification = async (email: string) => {
   }
   
   try {
-    const response = await axios.post(
-      'https://admin.bttrades.com/api/frontend/client/send-email-verification/',
-      {
-        
-      },
+    const response = await axiosClient.post(
+      '/api/frontend/client/send-email-verification/',
+      {},
       {
         headers: {
           'Authorization': `Bearer ${emailVerificationToken}`,
-          'Content-Type': 'application/json',
         }
       }
     );
@@ -100,13 +96,12 @@ export const startVerificationSession = async () => {
   }
 
   try {
-    const response = await axios.post(
-      'https://admin.bttrades.com/api/frontend/client/start-verification-session/',
+    const response = await axiosClient.post(
+      '/api/frontend/client/start-verification-session/',
       {},
       {
         headers: {
           'Authorization': `Bearer ${accessToken}`,
-          'Content-Type': 'application/json',
         }
       }
     );

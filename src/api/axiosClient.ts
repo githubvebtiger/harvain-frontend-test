@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const axiosClient = axios.create({
-  baseURL: 'https://admin.bttrades.com',
+  baseURL: process.env.REACT_APP_API_BASE_URL || 'https://admin.bttrades.com',
   headers: {
     'Content-Type': 'application/json',
   },
@@ -28,8 +28,15 @@ axiosClient.interceptors.response.use((response) => {
 }, (error) => {
   // Обработка ошибок
   if (error.response && error.response.status === 401) {
-    // Например, редирект на страницу логина
-    window.location.href = '/';
+    // Не редиректим если это ошибка авторизации (пользователь вводит неправильные данные)
+    const isAuthEndpoint = error.config?.url?.includes('/token/') ||
+                          error.config?.url?.includes('/login') ||
+                          error.config?.url?.includes('/register');
+
+    if (!isAuthEndpoint) {
+      // Редирект на главную только если токен истёк (не на странице авторизации)
+      window.location.href = '/';
+    }
   }
   return Promise.reject(error);
 });

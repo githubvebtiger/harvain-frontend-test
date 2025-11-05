@@ -10,6 +10,7 @@ import Netteller from '../assets/icons/payments/netteller-color.svg';
 import Swift from '../assets/icons/payments/swift-color.svg';
 import Mir from '../assets/icons/payments/mir.svg';
 import TetherUsdtTrc20 from '../assets/icons/payments/tether-usdt-trc20.svg';
+import TetherUsdtBep20 from '../assets/icons/payments/tether-usdt-bep20.svg';
 
 export enum TransactionStatus {
     'In progress' = 1,
@@ -29,5 +30,6 @@ export const PaymentSystems = [
     Netteller,
     Swift,
     Mir,
-    TetherUsdtTrc20
+    TetherUsdtTrc20,
+    TetherUsdtBep20
 ];
