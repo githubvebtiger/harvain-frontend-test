@@ -4,6 +4,7 @@ import { LogoDarkIcon, LogoIcon } from '../../assets';
 import { NavConfig } from './const'
 import { useNavigate } from 'react-router-dom';
 import { useTheme } from '../../provider/ThemeProvider';
+import { BRAND_NAME } from '../../constants';
 
 type Props = {
   path: string;
@@ -28,13 +29,12 @@ export default function Footer() {
       </div>
       <div className="footer-content container">
         <p>
-          All content published and distributed by Bttrades, and its affiliates(collectively, the Company) is to be
+          All content published and distributed by {BRAND_NAME}, and its affiliates(collectively, the Company) is to be
           treated as general information only.
           None of the information provided by the Company or contained herein is intended as investment advice, an offer
           or solicitation of an offer to buy or sell,
-          or a recommendation, endorsement, or sponsorship of any security, company, or fund, Bttrades does not act as
-          or conduct services as a broker. Bttrades
-          does not act as or conduct services as a custodian. People who register for our programs do so at their own
+          or a recommendation, endorsement, or sponsorship of any security, company, or fund. {BRAND_NAME} does not act as
+          or conduct services as a broker. {BRAND_NAME} does not act as or conduct services as a custodian. People who register for our programs do so at their own
           volition, Purchases of programs should not be
           considered deposits. All fees are used for operation costs including, but not limited to, staff, technology
           and other business related expenses and must bee
@@ -50,7 +50,7 @@ export default function Footer() {
         </ul>
       </div>
       <div className="footer-copyright">
-        <p> &copy; 2025 Bttrades. All Rights Reserved.</p>
+        <p> &copy; 2025 {BRAND_NAME}. All Rights Reserved.</p>
       </div>
     </footer>
   )

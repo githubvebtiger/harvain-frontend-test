@@ -1,5 +1,6 @@
 import React from 'react';
 import './styles.scss'
+import { BRAND_NAME } from '../../../../constants';
 
 type Props = {
 
@@ -8,7 +9,7 @@ export default function Overview(props:Props){
   return (
       <section className='terms-text'>
       <h3>Overview</h3>
-        <p>This website, Bttrades (also referred to as “The Company”), offers this website, including all information,
+        <p>This website, {BRAND_NAME} (also referred to as "The Company"), offers this website, including all information,
           tools and services available from this site to you, the user, conditional to your acceptance of all terms, conditions,
             policies and notices stated here.
         </p>

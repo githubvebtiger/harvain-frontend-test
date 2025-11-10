@@ -1,5 +1,6 @@
 import React from 'react';
 import './styles.scss'
+import { BRAND_NAME, SUPPORT_EMAIL } from '../../../../constants';
 
 
 
@@ -8,9 +9,8 @@ export default function MainTermsConditions(){
     <div>
     <section className='main-terms-conditions'>
       <h3>ALL PAYMENTS ARE FINAL AND FOR EVALUATION PURPOSES ONLY</h3>
-      <p>The registration fees are paid for allowing you to access the Bttrades platform, models and services. The Customer is not entitled
-         to a refund of the registration fees as the service is directly delivered after purchase. No refund applies to the service that
-         Bttrades offers.
+      <p>The registration fees are paid for allowing you to access the {BRAND_NAME} platform, models and services. The Customer is not entitled
+         to a refund of the registration fees as the service is directly delivered after purchase. No refund applies to the service that {BRAND_NAME} offers.
       </p>
       <ul>
        <li>
@@ -95,7 +95,7 @@ export default function MainTermsConditions(){
          </p>
       </li>
       <li>
-        <h3>(7). Bttrades Evaluation Stage and Master Stage</h3>
+        <h3>(7). {BRAND_NAME} Evaluation Stage and Master Stage</h3>
         <p className='ti-24'>(a). During the Evaluation Stage and Master Stage, you should not exceed the maximum loss limit which is based on a % of the initial account size. You must ensure that the maximum loss does not exceed the maximum loss limit at any given moment. </p>
       <ul>
         <li className='ti-42'>(i) The limits for the Evaluation and Master Stage:</li>
@@ -133,7 +133,7 @@ export default function MainTermsConditions(){
             <li className='ti-91'>(1.) 3-Step Model: 5% of the initial account size.</li>
           </ul>
         </ul>
-        <p className='ti-24'>  (d). Customer shall not perform simulated FOREX Trading in violation of: (i) the operation of real financial market, (ii) the current General Terms and Conditions of FundingPip, (iii) the current trading rules of FundingPips which are available on https://www.fundingpips.com/trading-rules and the Responsible Trading Policy, see <br />Appendix A. </p>
+        <p className='ti-24'>  (d). Customer shall not perform simulated FOREX Trading in violation of: (i) the operation of real financial market, (ii) the current General Terms and Conditions of {BRAND_NAME}, (iii) the current trading rules of {BRAND_NAME} and the Responsible Trading Policy, see <br />Appendix A. </p>
         <p className='ti-24'> (e). If the customer fails to comply with the conditions specified in sections 7.a, 7.b, 7.c and 7.d during the Evaluation Stage, the Evaluation will be marked as "not passed." In such instances, the Customer’s account and Services will be terminated and canceled without any refund of the fees paid. </p>
         <p className='ti-24'> (f). If the customer does not adhere to the conditions outlined in sections 7.a, 7.b and 7.d during the Master Stage, the Master account will be marked as "not passed." In such scenarios, the Customer’s account and Services will be terminated and canceled without any refund of the fees paid.</p>
       </ul>
@@ -161,7 +161,7 @@ export default function MainTermsConditions(){
            day. If you exceed this limit, any open trades will be closed, and you won't be able to trade until the next day. This limit resets at midnight CE(S)T. If you have trades
            open at midnight, they count towards the next day's limit.
         </p>
-        <p className='ti-24'> (e). Consistency Score: in Bttrades X Model there is a 45% consistency score during both the evaluation and Master stage. This means that the biggest winning day can not exceed 45% of your profits.</p>
+        <p className='ti-24'> (e). Consistency Score: in {BRAND_NAME} X Model there is a 45% consistency score during both the evaluation and Master stage. This means that the biggest winning day can not exceed 45% of your profits.</p>
         <p className='ti-42'> (i). 45% Consistency score during the evaluation stage: If you hit the profit target during the evaluation phase but have not yet met the 45% consistency score, you can continue trading until you meet the consistency score. </p>
         <p className='ti-24 bold'> (f). FORBIDDEN TRADING PRACTICES AND TOXIC TRADING BEHAVIOR </p>
         <p>The following trading practices and toxic trading behaviors are prohibited during simulated trading:</p>
@@ -250,7 +250,7 @@ export default function MainTermsConditions(){
         <p>advantage of Trading Platform inefficiencies (Gap trading, high frequency trading, toxic
           trading flow, server spamming, latency arbitrage, hedging, long short arbitrage, reverse arbitrage, tick scalping,
           server execution, opposite account trading) are all prohibited trading methods plus copy trading or account management
-          by a third-party vendor will result in account termination, such activities with Bttrades will result in account termination.
+          by a third-party vendor will result in account termination, such activities with {BRAND_NAME} will result in account termination.
           Keep in mind that using a third-party Expert Advisor is allowed as long as it is a trade or risk manager. Using any other third-party
           Expert Advisor is not allowed. This will lead to violating the account and declining your payout request. Furthermore, Customer shall
           trade responsibly and not exploit the Services by performing trades without applying market standard risk management rules for trading
@@ -283,7 +283,7 @@ export default function MainTermsConditions(){
           collect or track the personal information of others; (i) to spam, phish, pharm, pretext, spider, crawl, or scrape; (j) for any obscene
           or immoral purpose; or (k) to interfere with or circumvent the security features of the Service or any related website, other websites,
           or the Internet.</p>
-        <p className='ti-24'>(b). Traders associated with proprietary trading firms, including their owners and employees, are strictly prohibited from engaging in trading activities with Bttrades.</p>
+        <p className='ti-24'>(b). Traders associated with proprietary trading firms, including their owners and employees, are strictly prohibited from engaging in trading activities with {BRAND_NAME}.</p>
         <p className='ti-24'>(c). Registering with multiple e-mail addresses. We reserve the right to terminate your use of the Service or any related website for violating any of the prohibited uses.</p>
       </li>
       <li>
@@ -331,7 +331,7 @@ export default function MainTermsConditions(){
       </li>
       <li>
         <h3>(18). Disputes</h3>
-        <p>All communications between Bttrades ("The Company") and you, the user of our services, are strictly confidential. This includes, but is not limited to, emails,
+        <p>All communications between {BRAND_NAME} ("The Company") and you, the user of our services, are strictly confidential. This includes, but is not limited to, emails,
           messages through our website, phone calls, and any other form of communication. </p>
         <p className='mt-26'>By using our site and engaging in our Service, you agree that you will not disclose, share, publish, or otherwise make public any part of these communications
           without the prior written consent of The Company. This confidentiality agreement is essential to maintain the trust and integrity of our services. Any breach
@@ -355,7 +355,7 @@ export default function MainTermsConditions(){
       </li>
       <li>
         <h3>(21). Confidentiality of Communications</h3>
-        <p>All communications between Bttrades ("The Company") and you, the user of our services, are strictly confidential. This includes, but is not
+        <p>All communications between {BRAND_NAME} ("The Company") and you, the user of our services, are strictly confidential. This includes, but is not
           limited to, emails, messages through our website, phone calls, and any other form of communication. </p>
         <p className='mt-26'>By using our site and engaging in our Service, you agree that you will not disclose, share, publish, or otherwise make public any part of these
           communications without the prior written consent of The Company. This confidentiality agreement is essential to maintain the trust and integrity
@@ -364,7 +364,7 @@ export default function MainTermsConditions(){
       </li>
       <li>
         <h3>(22). Contact Information</h3>
-        <p>Questions about the Terms of Service should be sent to us at <a href="mailto:support@fundingpips.com" className='mail-link'>support@fundingpips.com</a></p>
+        <p>Questions about the Terms of Service should be sent to us at <a href={`mailto:${SUPPORT_EMAIL}`} className='mail-link'>{SUPPORT_EMAIL}</a></p>
       </li>
       <li>
         <h3>(23). Applicable Law</h3>
@@ -374,17 +374,17 @@ export default function MainTermsConditions(){
       </li>
       <li>
         <h4 className='mt-26'>Review and Revision </h4>
-        <p className='conclusion'>Bttrades retains the right to review and revise this terms and conditions at any time. The is subject to modification without prior notice. </p>
+        <p className='conclusion'>{BRAND_NAME} retains the right to review and revise this terms and conditions at any time. The is subject to modification without prior notice. </p>
       </li>
       <li>
         <h4 className='mt-26'>Acknowledgment </h4>
-        <p className='conclusion'>When you engage in trading with Bttrades, you acknowledge that you have thoroughly read, understood, and agreed to comply with the Terms and conditions..</p>
+        <p className='conclusion'>When you engage in trading with {BRAND_NAME}, you acknowledge that you have thoroughly read, understood, and agreed to comply with the Terms and conditions..</p>
       </li>
       </ul>
     </section>
     <section className='main-terms-conditions second'>
       <h2>Appendix A: Responsible Trading Policy</h2>
-      <p>At Bttrades, we are committed to providing a secure and reliable environment that fosters responsible trading practices. To achieve this, we have
+      <p>At {BRAND_NAME}, we are committed to providing a secure and reliable environment that fosters responsible trading practices. To achieve this, we have
         established an even better payout system than we already had, as well as a Responsible Trading Policy that outlines our expectations for trading
         activities on your accounts. All trading activities conducted on your simulated accounts must be legitimate and accompanied by common sense – as
         if they were copied on accounts trading in a natural environment.</p>
@@ -395,22 +395,22 @@ export default function MainTermsConditions(){
           trading, you will trade with confidence and peace of mind, automatically putting yourself in an excellent position to achieve your financial
           goals and enjoy the many benefits that come with it.</p>
         <p className='mt-22'>This policy aims to educate and guide you on how to trade responsibly. It ensures that you have the necessary information to manage your accounts effectively
-          and avoid reckless and unprofessional trading behaviour. We expect all Bttrades traders to approach their activities with a sense of duty,
+          and avoid reckless and unprofessional trading behaviour. We expect all {BRAND_NAME} traders to approach their activities with a sense of duty,
           professionalism, and respect.</p>
         <h4 className='mt-22'>Responsibilities </h4>
         <p>When trading with our accounts, you must adhere to legitimate trading practices and refrain from any type of toxic trading flow, news trading, and unprofessional trading behaviors
-          that are unsustainable in the long term and contradictory to a responsible trading approach. All Bttrades traders utilizing our firm's resources and accounts will adhere to the
+          that are unsustainable in the long term and contradictory to a responsible trading approach. All {BRAND_NAME} traders utilizing our firm's resources and accounts will adhere to the
           highest standards of ethical conduct. Specifically, we expect you to refrain from engaging in any activities that seek to exploit or misappropriate our resources or the accounts
-          we provide in good faith. Additionally, we emphasize the importance of avoiding trading practices designed to manipulate the Bttrades evaluation process, which is intended to provide
+          we provide in good faith. Additionally, we emphasize the importance of avoiding trading practices designed to manipulate the {BRAND_NAME} evaluation process, which is intended to provide
           a fair and objective assessment of trading performance.</p>
         <p className='mt-22'>
-        As a Bttrades trader, you are responsible for:
+        As a {BRAND_NAME} trader, you are responsible for:
         </p>
         <ul>
           <li className='mt-22'>
             <p className='ti-49'><span>Trading with caution:</span> A responsible trader knows that for long-term success, it’s essential to trade with caution and avoid impulsive decisions, avoid trading the news
               and trying to purposely trading the news, News ttradign is forbidden and intentionally trading the news will lead to a termination since its an abuse
-               to our FundingPips accounts which were given in good faith. Make informed decisions based on a sound analysis and be aware of the bigger picture,
+               to our {BRAND_NAME} accounts which were given in good faith. Make informed decisions based on a sound analysis and be aware of the bigger picture,
                even outside the market itself.</p>
           </li>
           <li className='mt-22'>
@@ -420,7 +420,7 @@ export default function MainTermsConditions(){
             strategy for traders, particularly when experiencing a string of unfavorable trades. To recover losses, traders may be tempted to take on more prominent positions, hoping for a
             significant winning trade. However, this approach is often driven by emotional factors rather than sound trading principles. When a trader is distressed, their decision-making is
             compromised, and they are more likely to abandon their strategy and risk management practices. In reality, prominent positions or the accumulation of multiple positions simultaneously
-            is a high-risk approach that Bttrades do not recommend. A more conservative and risk-controlled approach is essential for achieving long-term success and avoiding financial losses.
+            is a high-risk approach that {BRAND_NAME} do not recommend. A more conservative and risk-controlled approach is essential for achieving long-term success and avoiding financial losses.
             It is crucial to recognize that even experienced professionals typically adopt a small-risk strategy, which enables them to generate substantial profits in a stable and secure environment.
             It is essential to prioritize prudent risk management and avoid reckless trading practices that can lead to premature exits from the market. Amateur traders must avoid falling prey to impulsive
             decisions and focus on developing a disciplined approach to trading. By adopting a conservative mindset and employing effective risk management techniques, traders can mitigate potential losses
@@ -430,7 +430,7 @@ export default function MainTermsConditions(){
             <p className='ti-49'><span>Capital management and profits preservation:</span> Take care of your accounts and use them as if trading your capital on your account. You must prioritize
             capital preservation when the market environment seems or tends to be much riskier than usual – uncertain market conditions should be avoided, and you should implement profits preservation
             measures - have an innovative and safe approach by not risking excessive profits, it is crucial to not risk more than 3% per trader, trader idea or position, your biggest losing trade shouldnt
-            be more than 3% of the account size for your trading flow not to be considered as a toxic trading flow. Bttrades offers payouts every Tuesday, meaning a payout every week, 4 - 5 monthly payouts.
+            be more than 3% of the account size for your trading flow not to be considered as a toxic trading flow. {BRAND_NAME} offers payouts every Tuesday, meaning a payout every week, 4 - 5 monthly payouts.
             There is no reason to engage in reckless and unprofessional trading behavior, our favourite and top traders generate roughly around 5% a month, we emphasis this approach.</p>
           </li>
           <li className='mt-22'>
@@ -450,8 +450,8 @@ export default function MainTermsConditions(){
           <li className='mt-22'>
             <p className='ti-49'><span>Compliance with the firm's rules:</span>  Traders should comply with these guidelines, and ensure that their trading activities align with responsible trading behavior. Failure
             to comply with these requirements may result in actions against the trader, including suspension or termination of trading privileges. All traders are responsible for being aware of and respectingect
-            our Responsible Trading Pol and as any other relevant Bttrades policies and procedures. By doing so, traders can maintain a high level of accountability, thereby ensuring our genuine traders of
-            a reliable long-term collaboration with Bttrades term.</p>
+            our Responsible Trading Pol and as any other relevant {BRAND_NAME} policies and procedures. By doing so, traders can maintain a high level of accountability, thereby ensuring our genuine traders of
+            a reliable long-term collaboration with {BRAND_NAME} term.</p>
           </li>
         </ul>
         <h4 className='mt-22'>Best Practices</h4>
@@ -472,11 +472,11 @@ export default function MainTermsConditions(){
         <li className='mt-22'>
             <p className='ti-49'><span>Avoid gambling: </span>
             When trading, adopting a responsible and professional approach is crucial. Treat your simulated accounts as if you're selling your account with your your funds - you wouldn't recklessly gamble
-            with your funds, and you shouldn't engage in such behavior on your Bttrades account either. Trading is science, and gambling belongs to the casino. Trading requires a thoughtful and
+            with your funds, and you shouldn't engage in such behavior on your {BRAND_NAME} account either. Trading is science, and gambling belongs to the casino. Trading requires a thoughtful and
             strategic approach. Don't get caught up in the hype of trying to get lucky in the market. Instead, make informed trades based on thorough analysis and a well-thought-out strategy.
             A Real trader don't rely on luck or emotions; they have a solid foundation in their approach that allows them to make profitable trades consistently. Serious traders have a deep
             understanding of their strategy, which gives them an edge over the market. This edge isn't just a one-time deal but a consistent advantage that
-            allows them to generate profits over time. When trading with the Bttrades account, it's essential to be responsible and avoid reckless behavior. Avoid all-or-nothing
+            allows them to generate profits over time. When trading with the {BRAND_NAME} account, it's essential to be responsible and avoid reckless behavior. Avoid all-or-nothing
             strategies. Pay attention to your position size, and keep your confidence high, as this can quickly spiral out of control. It's also important to acknowledge that
             losses are a natural part of trading. When you experience losses, it's crucial not to let emotions get the best of you. Don't engage in revenge trading, thinking you'll
             recover your losses by making impulsive decisions. Instead, take a step back, reassess your strategy, and consider whether you're allowing emotions to cloud your judgment.
@@ -529,13 +529,13 @@ export default function MainTermsConditions(){
         <ol>
           <li><p>1. Account suspension or closure: Your account may be suspended or closed if it is determined that you are not trading responsibly</p></li>
           <li><p>2. Restrictions and limitations: We reserve the right to restrict and limit your account if your trading behaviour does not comply with our policies. </p></li>
-          <li><p>3. Denied performance fees: Performance fees may be denied to discourage toxic trading practices and unsustainable trading behaviours, still FundingPips retains the title of ZERO PAYOUT DENIALS.</p></li>
+          <li><p>3. Denied performance fees: Performance fees may be denied to discourage toxic trading practices and unsustainable trading behaviours, still {BRAND_NAME} retains the title of ZERO PAYOUT DENIALS.</p></li>
         </ol>
         <h4 className='mt-22'>Review and Revision </h4>
-        <p >Bttrades retains the right to review and revise this Responsible Trading Policy anytime. The policy is subject to modification without prior notice.</p>
+        <p >{BRAND_NAME} retains the right to review and revise this Responsible Trading Policy anytime. The policy is subject to modification without prior notice.</p>
 
         <h4 className='mt-22'>Acknowledgment </h4>
-        <p >When you trade with Bttrades, you acknowledge that you have thoroughly read, understood, and agreed to comply with the Responsible Trading Policy</p>
+        <p >When you trade with {BRAND_NAME}, you acknowledge that you have thoroughly read, understood, and agreed to comply with the Responsible Trading Policy</p>
     </section>
     </div>
   )
