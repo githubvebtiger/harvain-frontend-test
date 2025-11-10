@@ -2,6 +2,7 @@ import React from 'react';
 import './styles.scss'
 import { AddressIcon, MailIcon, WhiteAddressIcon, WhiteMailIcon} from '../../../../assets';
 import { useTheme } from '../../../../provider/ThemeProvider';
+import { SUPPORT_EMAIL } from '../../../../constants';
 
 type Props = {}
 export default function HeaderPart(props: Props) {
@@ -25,7 +26,7 @@ export default function HeaderPart(props: Props) {
         </div>
         <div className="item">
           <h3><img className='img-mob' src={theme === 'dark' ? WhiteMailIcon: MailIcon}/>Email<img className='img-mob-block'  src={theme === 'dark' ? WhiteMailIcon: MailIcon}/></h3>
-          <a>support@bttrades.com</a>
+          <a>{SUPPORT_EMAIL}</a>
         </div>
       </div>
     </div>

@@ -1,10 +1,11 @@
 import React from 'react';
 import './styles.scss'
 import Header from '../../components/Header';
-import { PolicyConfig } from "./const";
+import { getPolicyConfig } from "./const";
 import Join from "../../components/Join";
 import Footer from "../../components/Footer"
 import { useTheme } from '../../provider/ThemeProvider';
+import { BRAND_NAME, SUPPORT_EMAIL } from '../../constants';
 
 
 type Props = {
@@ -22,6 +23,7 @@ function PrivacyPolicyItem(props:Props){
   )
 }
 export default function PrivacyPolicyPage(){
+  const policyConfig = getPolicyConfig();
   return (
     <div className='privacy-page-wrapper'>
     <div>
@@ -34,16 +36,16 @@ export default function PrivacyPolicyPage(){
             Overview
           </h3>
           <p className='mt-10 '>
-          Protecting your private information is our priority. This Statement of Privacy applies to fundingpips.com, and governs data collection and usage.
+          Protecting your private information is our priority. This Statement of Privacy applies to {BRAND_NAME}, and governs data collection and usage.
           </p>
          <p className='mt-10'>
-          Bttrades website is an eCommerce site. By using Bttrades website, you consent to the data practices described in this Statement and all extensions and addendums to this Statement.
+          {BRAND_NAME} website is an eCommerce site. By using {BRAND_NAME} website, you consent to the data practices described in this Statement and all extensions and addendums to this Statement.
           </p>
           <h4>
           Collection of your Personal Information
           </h4>
           <p>
-          In order to better provide you with products and services offered, Bttrades may collect personally identifiable information, such as your:
+          In order to better provide you with products and services offered, {BRAND_NAME} may collect personally identifiable information, such as your:
           </p>
             <ul className='pl-10'>
               <li> <p>First and Last Name</p> </li>
@@ -54,7 +56,7 @@ export default function PrivacyPolicyPage(){
               <li> <p>Financial Information</p></li>
             </ul>
           <p className='mt-10'>
-            If you purchase Bttrades products and services, we collect billing and credit card information. This information is used to complete the purchase transaction
+            If you purchase {BRAND_NAME} products and services, we collect billing and credit card information. This information is used to complete the purchase transaction
             or issue payments to you. We do not collect any personal information about you unless you voluntarily provide it to us. However, you may be required to provide
             certain personal information to us when you elect to use certain products or services. These may include: (a) registering for an account; (b) entering a sweepstake
             or contest sponsored by us or one of our partners; (c) signing up for special offers from selected third parties; (d) sending us an email message; (e) submitting your
@@ -63,14 +65,14 @@ export default function PrivacyPolicyPage(){
             purpose.
           </p>
           <ul>
-             <PrivacyPolicyItem {...PolicyConfig[0]}/>
-             <PrivacyPolicyItem {...PolicyConfig[1]}/>
-             <PrivacyPolicyItem {...PolicyConfig[2]}/>
-             <PrivacyPolicyItem {...PolicyConfig[3]}/>
-             <PrivacyPolicyItem {...PolicyConfig[4]}/>
-             <PrivacyPolicyItem {...PolicyConfig[5]}/>
-             <PrivacyPolicyItem {...PolicyConfig[6]}/>
-             <PrivacyPolicyItem {...PolicyConfig[7]}/>
+             <PrivacyPolicyItem {...policyConfig[0]}/>
+             <PrivacyPolicyItem {...policyConfig[1]}/>
+             <PrivacyPolicyItem {...policyConfig[2]}/>
+             <PrivacyPolicyItem {...policyConfig[3]}/>
+             <PrivacyPolicyItem {...policyConfig[4]}/>
+             <PrivacyPolicyItem {...policyConfig[5]}/>
+             <PrivacyPolicyItem {...policyConfig[6]}/>
+             <PrivacyPolicyItem {...policyConfig[7]}/>
              <li>
               <h4>Right to Deletion</h4>
               <p>Subject to certain exceptions and for those individuals who meet jurisdictional and legal requirements, on receipt of a verifiable request from you, we will:
@@ -80,26 +82,26 @@ export default function PrivacyPolicyPage(){
                 </ul>
               </p>
              </li>
-             <PrivacyPolicyItem {...PolicyConfig[8]}/>
+             <PrivacyPolicyItem {...policyConfig[8]}/>
              <li>
               <h4>Opt-Out & Unsubscribe from Third Party Communications</h4>
               <p>We respect your privacy and give you an opportunity to opt out of receiving announcements of certain information.
-                Users may opt-out of receiving any or all communications from third-party partners of Bttrades by contacting us here:
-                Email: support@fundingpips.com
+                Users may opt-out of receiving any or all communications from third-party partners of {BRAND_NAME} by contacting us here:
+                Email: {SUPPORT_EMAIL}
               </p>
              </li>
              <li>
              <h4>E-mail Communications</h4>
-              <p>From time to time, Bttrades may contact you via email for the purpose of providing announcements, promotional offers, alerts, confirmations,
-                 surveys, and/or other general communication. In order to improve our Services, we may receive a notification when you open an email from Bttrades or click on a link therein.
+              <p>From time to time, {BRAND_NAME} may contact you via email for the purpose of providing announcements, promotional offers, alerts, confirmations,
+                 surveys, and/or other general communication. In order to improve our Services, we may receive a notification when you open an email from {BRAND_NAME} or click on a link therein.
               </p>
               <p>
-              If you would like to stop receiving marketing or promotional communications via email from Bttrades, you may opt out of such communications Customers may unsubscribe from emails by clicking on the unsubscribe button found at the bottom of each email.
+              If you would like to stop receiving marketing or promotional communications via email from {BRAND_NAME}, you may opt out of such communications Customers may unsubscribe from emails by clicking on the unsubscribe button found at the bottom of each email.
               </p>
              </li>
-             <PrivacyPolicyItem {...PolicyConfig[9]}/>
-             <PrivacyPolicyItem {...PolicyConfig[10]}/>
-             <PrivacyPolicyItem {...PolicyConfig[11]}/>
+             <PrivacyPolicyItem {...policyConfig[9]}/>
+             <PrivacyPolicyItem {...policyConfig[10]}/>
+             <PrivacyPolicyItem {...policyConfig[11]}/>
 
           </ul>
 
