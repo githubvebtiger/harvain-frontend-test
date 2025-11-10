@@ -8,9 +8,15 @@ RUN npm install --force
 
 COPY . .
 
-# Accept build argument for API base URL
+# Accept build arguments
 ARG REACT_APP_API_BASE_URL
+ARG REACT_APP_BRAND_NAME
+ARG REACT_APP_SUPPORT_EMAIL
+
+# Set environment variables
 ENV REACT_APP_API_BASE_URL=$REACT_APP_API_BASE_URL
+ENV REACT_APP_BRAND_NAME=$REACT_APP_BRAND_NAME
+ENV REACT_APP_SUPPORT_EMAIL=$REACT_APP_SUPPORT_EMAIL
 
 RUN npm run build
 
