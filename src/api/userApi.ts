@@ -60,26 +60,15 @@ export async function authenticateUser(username: string, password: string): Prom
 }
 
 export const startEmailVerification = async (email: string) => {
-  const satelliteData = JSON.parse(localStorage.getItem('satellite') || '{}');
-  const emailVerificationToken = satelliteData?.tokens?.access;
-  
-  if (!emailVerificationToken) {
-    throw new Error('No access token found');
-  }
-  
   if (!email) {
     throw new Error('Email is required');
   }
-  
+
   try {
+    // axiosClient interceptor автоматически добавит токен из localStorage
     const response = await axiosClient.post(
       '/api/frontend/client/send-email-verification/',
-      {},
-      {
-        headers: {
-          'Authorization': `Bearer ${emailVerificationToken}`,
-        }
-      }
+      {}
     );
     return response;
   } catch (error) {

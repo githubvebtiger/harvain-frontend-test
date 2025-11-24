@@ -14,8 +14,14 @@ type Props = {
 function FooterList(props: Props) {
   const navigate = useNavigate()
 
+  const handleClick = () => {
+    navigate(props.path)
+    // Scroll to top after navigation
+    window.scrollTo({ top: 0, behavior: 'smooth' })
+  }
+
   return (
-    <li><a onClick={()=>navigate(props.path)}>{props.name}</a></li>
+    <li><a onClick={handleClick}>{props.name}</a></li>
   )
 }
 

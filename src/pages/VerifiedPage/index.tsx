@@ -8,7 +8,15 @@ const VerifiedPage = () => {
   const navigate = useNavigate();
 
   const handleProceed = () => {
-    navigate(ROUTES.SATELLITES);
+    // Check if logged in as satellite or client
+    const satelliteData = localStorage.getItem('satellite');
+    if (satelliteData) {
+      // Logged in as satellite - go to profile
+      navigate(ROUTES.PROFILE);
+    } else {
+      // Logged in as client - go to satellites list
+      navigate(ROUTES.SATELLITES);
+    }
   };
 
   return (
