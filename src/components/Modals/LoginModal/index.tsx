@@ -71,6 +71,16 @@ export default function LoginModal(props: Props) {
             data?.data?.status === 200 &&
             typeof data?.data?.data !== "string"
           ) {
+            // Save tokens to localStorage for axiosClient interceptor
+            const satelliteData = data?.data?.data;
+            const tokens = satelliteData?.tokens;
+            if (tokens?.access) {
+              localStorage.setItem('accessToken', tokens.access);
+            }
+            if (tokens?.refresh) {
+              localStorage.setItem('refreshToken', tokens.refresh);
+            }
+
             props.navigate(ROUTES.PROFILE);
             props.onClose();
           } else if (

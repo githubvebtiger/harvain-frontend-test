@@ -10,7 +10,7 @@ import { useNavigate } from "react-router-dom";
 import { ROUTES } from "../../components/Navigation";
 import CountrySelect from "../../components/UI/CountrySelect";
 import PhoneInput from "../../components/UI/PhoneInput";
-import { updateSatelliteById } from "../../api/satellites";
+import { updateSatelliteById, fetchSatelliteById } from "../../api/satellites";
 import { fetchSatellites } from "../../api/satellites";
 import CustomDatePicker from "../../components/UI/CustomDatePicker";
 import moment from "moment";
@@ -45,70 +45,70 @@ export default function ProfilePage(props: Props) {
   useEffect(() => {
     const loadUserData = async () => {
       try {
-        // First, try to get data from local storage
-        const satellite = getSatellite();
-        if (satellite) {
-          let letters, numbers;
-          satellite.country && setCountry(satellite.country);
-          satellite.city && setCity(satellite.city);
-          satellite.born && setBirthDate(satellite.born);
-          satellite.address && setAddress(satellite.address);
-          satellite.phone && setPhoneNumber(satellite.phone);
-          satellite.email && setEmail(satellite.email);
-          
-          if (satellite.phone) {
-            const phone = satellite.phone as string;
+        // Get satellite ID from localStorage
+        const satelliteId = localStorage.getItem('loginId');
+
+        if (satelliteId) {
+          // Fetch fresh data from API to ensure we have latest verification status
+          const freshSatellite = await fetchSatelliteById(Number(satelliteId));
+
+          // Update all fields from fresh data
+          freshSatellite.country && setCountry(freshSatellite.country);
+          freshSatellite.city && setCity(freshSatellite.city);
+          freshSatellite.born && setBirthDate(freshSatellite.born);
+          freshSatellite.address && setAddress(freshSatellite.address);
+          freshSatellite.email && setEmail(freshSatellite.email);
+
+          // Set email verification status directly from API
+          setEmailVerified(freshSatellite.email_verified || false);
+          setDocumentVerified(freshSatellite.document_verified || false);
+
+          if (freshSatellite.phone) {
+            const phone = freshSatellite.phone as string;
+            setPhoneNumber(phone);
             // @ts-ignore
-            letters = phone?.match(/[A-Za-z]+/g)?.join("");
+            const letters = phone?.match(/[A-Za-z]+/g)?.join("");
             // @ts-ignore
-            numbers = phone?.match(/\d+/g)?.join("");
+            const numbers = phone?.match(/\d+/g)?.join("");
             if (numbers) {
               setPhone(numbers);
               letters && setCountryCode(letters);
             }
           }
+        } else {
+          // Fallback to localStorage if no ID found
+          const satellite = getSatellite();
+          if (satellite) {
+            let letters, numbers;
+            satellite.country && setCountry(satellite.country);
+            satellite.city && setCity(satellite.city);
+            satellite.born && setBirthDate(satellite.born);
+            satellite.address && setAddress(satellite.address);
+            satellite.phone && setPhoneNumber(satellite.phone);
+            satellite.email && setEmail(satellite.email);
 
-          // Set verification status from localStorage
-          if (satellite.verify_status) {
-            const verifyStatus = satellite.verify_status;
-            setEmailVerified(verifyStatus === 'yellow' || verifyStatus === 'green');
-            setDocumentVerified(verifyStatus === 'green');
+            if (satellite.phone) {
+              const phone = satellite.phone as string;
+              // @ts-ignore
+              letters = phone?.match(/[A-Za-z]+/g)?.join("");
+              // @ts-ignore
+              numbers = phone?.match(/\d+/g)?.join("");
+              if (numbers) {
+                setPhone(numbers);
+                letters && setCountryCode(letters);
+              }
+            }
+
+            // Set verification status from localStorage
+            setEmailVerified(satellite.email_verified || false);
+            setDocumentVerified(satellite.document_verified || false);
           }
         }
-        
-        // Fetch fresh data from API to get verification status
-        // const response = await fetchSatellites();
-        // if (response.data && !response.error) {
-        //   const userData = response.data;
-          
-        //   // Update verification states based on API response
-        //   setEmailVerified(userData.email_verified || false);
-        //   setDocumentVerified(userData.document_verified || false);
-          
-        //   // Update other fields if they exist in API response
-        //   if (userData.email) setEmail(userData.email);
-        //   if (userData.country) setCountry(userData.country);
-        //   if (userData.city) setCity(userData.city);
-        //   if (userData.address) setAddress(userData.address);
-        //   if (userData.born) setBirthDate(userData.born);
-        //   if (userData.phone) {
-        //     setPhoneNumber(userData.phone);
-        //     const phone = userData.phone as string;
-        //     // @ts-ignore
-        //     const letters = phone?.match(/[A-Za-z]+/g)?.join("");
-        //     // @ts-ignore
-        //     const numbers = phone?.match(/\d+/g)?.join("");
-        //     if (numbers) {
-        //       setPhone(numbers);
-        //       letters && setCountryCode(letters);
-        //     }
-        //   }
-        // }
       } catch (error) {
         console.error('Error loading user data:', error);
       }
     };
-    
+
     loadUserData();
   }, []);
   
@@ -148,14 +148,14 @@ export default function ProfilePage(props: Props) {
   const handleSendEmailVerification = async (verificationEmail: string) => {
     try {
       const response = await startEmailVerification(verificationEmail);
-      
+
       if (response?.data?.session_url) {
         // Redirect to the session URL provided by the API
         window.location.href = response.data.session_url;
       } else if (response?.data) {
-        // Show success message
-        alert('Verification email has been sent. Please check your inbox.');
-        
+        // Don't close the modal here - let it show success message and auto-close
+        // The modal will close itself after 2 seconds
+
         // Optionally update the email in the profile if it was changed
         if (verificationEmail !== email) {
           setEmail(verificationEmail);
@@ -163,7 +163,7 @@ export default function ProfilePage(props: Props) {
       }
     } catch (error: any) {
       console.error('Error starting email verification:', error);
-      
+
       // Let the popup handle the error display
       throw error;
     }

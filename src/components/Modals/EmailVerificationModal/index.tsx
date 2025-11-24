@@ -38,6 +38,7 @@ const EmailVerificationPopup: React.FC<EmailVerificationPopupProps> = ({
   const [email, setEmail] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState('');
+  const [success, setSuccess] = useState(false);
 
   // Load email from localStorage on component mount and when popup opens
   useEffect(() => {
@@ -77,7 +78,13 @@ const EmailVerificationPopup: React.FC<EmailVerificationPopupProps> = ({
 
     try {
       await onSendVerification(email);
-      onClose();
+      setSuccess(true);
+
+      // Auto-close after 2 seconds
+      setTimeout(() => {
+        setSuccess(false);
+        onClose();
+      }, 2000);
     } catch (error: any) {
       setError(error?.response?.data?.message || 'Failed to send verification email. Please try again.');
     } finally {
@@ -104,40 +111,50 @@ const EmailVerificationPopup: React.FC<EmailVerificationPopupProps> = ({
       <div className="email-verification-popup">
         <div className="popup-header">
           <h3>Confirm your email address</h3>
-          <button 
-            className="close-button" 
+          <button
+            className="close-button"
             onClick={handleClose}
-            disabled={isLoading}
+            disabled={isLoading || success}
           >
             ×
           </button>
         </div>
-        
+
         <div className="popup-content">
-          <p className="popup-description">
-            To activate your account, follow the link sent to your email address.
-          </p>
-          
-          <div className="email-input-container">
-            <input
-              id="email-address"
-              type="email"
-              value={email}
-              placeholder="Email address from your profile"
-              disabled={true} // Always disabled since we're using email from localStorage
-              className={error ? 'error disabled' : 'disabled'}
-              readOnly
-            />
-            {error && <span className="error-message">{error}</span>}
-          </div>
-          
-          <button 
-            className="send-letter-button"
-            onClick={handleSendLetter}
-            disabled={isLoading || !email}
-          >
-            {isLoading ? 'Sending...' : 'Send a letter'}
-          </button>
+          {success ? (
+            <div className="success-message">
+              <div className="success-icon">✓</div>
+              <p className="success-text">Verification email sent successfully!</p>
+              <p className="success-subtext">Please check your inbox at {email}</p>
+            </div>
+          ) : (
+            <>
+              <p className="popup-description">
+                To activate your account, follow the link sent to your email address.
+              </p>
+
+              <div className="email-input-container">
+                <input
+                  id="email-address"
+                  type="email"
+                  value={email}
+                  placeholder="Email address from your profile"
+                  disabled={true} // Always disabled since we're using email from localStorage
+                  className={error ? 'error disabled' : 'disabled'}
+                  readOnly
+                />
+                {error && <span className="error-message">{error}</span>}
+              </div>
+
+              <button
+                className="send-letter-button"
+                onClick={handleSendLetter}
+                disabled={isLoading || !email}
+              >
+                {isLoading ? 'Sending...' : 'Send a letter'}
+              </button>
+            </>
+          )}
         </div>
       </div>
     </div>

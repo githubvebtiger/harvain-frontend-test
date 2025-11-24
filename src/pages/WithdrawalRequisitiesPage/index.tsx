@@ -49,7 +49,7 @@ export default function WithdrawalRequisitiesPage(props: Props) {
     <div
       className={`withdrawal-page withdrawal-requisities-page-wrapper ${
         isDarkTheme ? "dark-theme" : ""
-      } ${selectedRequisite?.show ? "show" : ""}`}
+      } ${selectedRequisite?.show ? "" : "show"}`}
     >
       <div className="hide-on-mobile">
         <Header disableContainer isAuth />
@@ -72,7 +72,7 @@ export default function WithdrawalRequisitiesPage(props: Props) {
                   value={requisite.title}
                   readOnly
                   disabled
-                  className={requisite.show ? "active-requisite" : ""}
+                  className={requisite.show ? "" : "active-requisite"}
                 />
               </div>
             ))}

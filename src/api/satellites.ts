@@ -38,7 +38,9 @@ export interface Satellite {
   active_balance: number;
   withdrawal: number;
   tokens: Tokens;
-  verify_status:string
+  verify_status: string;
+  email_verified: boolean;
+  document_verified: boolean;
 }
 
 
