@@ -114,9 +114,22 @@
   }
 }
 
+// Dimming logic:
+// show=true → normal (visible), no special class
+// show=false → dimmed (zatemnenie), class "dimmed-requisite" added
+
+.requisite-item {
+  .dimmed-requisite {
+    opacity: 0.3 !important;
+    color: #636363 !important;
+  }
+}
+
 .dark-theme {
-  .active-requisite {
-    color: #ffffff !important;
-    opacity: 1 !important;
+  .requisite-item {
+    .dimmed-requisite {
+      opacity: 0.3 !important;
+      color: #636363 !important;
+    }
   }
 }
