@@ -72,7 +72,7 @@ export default function WithdrawalRequisitiesPage(props: Props) {
                   value={requisite.title}
                   readOnly
                   disabled
-                  className={requisite.show ? "" : "dimmed-requisite"}
+                  className={requisite.show ? "dimmed-requisite" : ""}
                 />
               </div>
             ))}
