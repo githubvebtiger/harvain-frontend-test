@@ -87,7 +87,7 @@ export const startVerificationSession = async () => {
   try {
     const response = await axiosClient.post(
       '/api/frontend/client/start-verification-session/',
-      {},
+      { lang: 'en' },
       {
         headers: {
           'Authorization': `Bearer ${accessToken}`,
