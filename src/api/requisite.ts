@@ -1,4 +1,5 @@
 import axiosClient from "./axiosClient";
+import { toast } from '../components/Toast';
 
 export interface Requisite {
   id?: number;
@@ -41,7 +42,7 @@ export const saveRequisite = async (data: Requisite) => {
       data,
     });
 
-    alert('Data has been successfully updated!');
+    toast.success('Data has been successfully updated!');
     return response.data;
   } catch (error) {
     console.error(

@@ -18,6 +18,7 @@ import { startEmailVerification } from '../../api/userApi';
 import EmailVerificationPopup from "../../components/Modals/EmailVerificationModal";
 import { startVerificationSession } from '../../api/userApi';
 import { IceCreamBowlIcon } from "lucide-react";
+import { toast } from "../../components/Toast";
 import { AttentionIcon, CheckIcon, HourglassIcon, successIdentityIcon } from '../../assets';
 import warningIcon from '../../assets/icons/warning.svg'
 import successIcon from '../../assets/icons/success.svg'
@@ -156,11 +157,11 @@ export default function ProfilePage(props: Props) {
         window.location.href = response.data.session_url;
       } else {
         console.error('No session URL received for KYC verification.');
-        alert('Failed to start document verification. Please try again.');
+        toast.error('Failed to start document verification. Please try again.');
       }
     } catch (error) {
       console.error('Error starting KYC verification:', error);
-      alert('Error starting document verification. Please try again.');
+      toast.error('Error starting document verification. Please try again.');
     }
   };
 
@@ -178,21 +179,25 @@ export default function ProfilePage(props: Props) {
               placeholder="Country"
               value={country}
               onCountrySelect={setCountry}
+              disabled
             />
             <Input
               placeholder="City"
               value={city}
               onChange={(e) => setCity(e.target.value)}
+              disabled
             />
             <CustomDatePicker
               placeholder="Date of birth"
               onChange={setBirthDate}
               value={birthDate}
+              disabled
             />
             <Input
               placeholder="Address"
               value={address}
               onChange={(e) => setAddress(e.target.value)}
+              disabled
             />
             <PhoneInput
               onChange={(e) => {
@@ -203,11 +208,13 @@ export default function ProfilePage(props: Props) {
               onChangeCode={(value) => setCountryCode(value)}
               placeholder=" 00 000 000 00"
               value={phone}
+              disabled
             />
             <Input
               placeholder="Email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
+              disabled
             />
 
             {/* Verification banners with proper logic */}

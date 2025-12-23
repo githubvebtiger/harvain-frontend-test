@@ -1,4 +1,5 @@
 import axiosClient, { IResponse } from './axiosClient';
+import { toast } from '../components/Toast';
 
 export const fetchSatellites = async (): Promise<IResponse> => {
   try {
@@ -74,7 +75,7 @@ interface ProfileData {
 export const updateSatelliteById = async (id: number, data: Partial<ProfileData>) => {
   try {
     const response = await axiosClient.patch(`/api/frontend/satellite/${id}/`, data);
-    alert('Data has been successfully updated!');
+    toast.success('Data has been successfully updated!');
     return response.data;
   } catch (error) {
     console.error('Error updating profile:', error);
@@ -93,7 +94,7 @@ export const updateSatellitePasswordById = async (
 ) => {
   try {
     const response = await axiosClient.patch(`/api/frontend/satellite/password/${id}/`, data);
-    alert('Password has been successfully updated!');
+    toast.success('Password has been successfully updated!');
     return response.data;
   } catch (error) {
     console.error('Error updating password:', error);
