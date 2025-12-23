@@ -91,7 +91,7 @@ export default function SatellitesPage() {
 
     <>
       <div className="satellities-page-wrapper">
-        <Header isAuth/>
+        <Header isAuth showLogout/>
         <div className="satellites-page container">
           <div className="balance">
             <p>Total balance:</p>

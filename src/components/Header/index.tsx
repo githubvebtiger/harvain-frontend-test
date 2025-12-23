@@ -13,6 +13,7 @@ import { useTheme } from '../../provider/ThemeProvider';
 type Props = {
   showNav?: boolean;
   isAuth?: boolean;
+  showLogout?: boolean;
   absolute?: boolean;
   disableContainer?: boolean; //add props
 }
@@ -33,7 +34,7 @@ export default function Header(props: Props) {
     <div className={`${props.disableContainer ? 'no-container' : 'container'} header ${props.absolute && 'absolute'}`}>
       <img src={theme==='dark'? LogoDarkIcon:LogoIcon} alt="logoIcon"/>
       {props.showNav && !isMobile && <HeaderNav/>}
-      {props.isAuth && !isMobile && <AuthNav/>}
+      {props.showLogout && !isMobile && <AuthNav/>}
       {!isMobile && <ChangeThemeButton/>}
       {isMobile && (
         <BurgerMenu>
