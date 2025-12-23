@@ -1,46 +1,42 @@
 .personal-info {
   margin-top: 32px;
-  display: flex;
-  max-width: 1264px;
-  flex-wrap: wrap;
-  flex-direction: row;
-  column-gap: 32px;
-  row-gap: 24px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  width: 100%;
+  gap: 32px;
 
   .control-input {
-    max-width: 416px;
+    width: 100%;
   }
 
   .input-wrapper-custom {
-    max-width: 416px;
+    width: 100%;
   }
 
   .control-input-phone {
-    max-width: 416px;
+    width: 100%;
   }
 
   button {
     max-width: 304px;
   }
-
 }
 
 @media (max-width: 880px) {
   .personal-info {
+    display: flex;
     flex-direction: column;
-    max-width: 100%;
 
     .control-input {
-      max-width: 100%;
+      width: 100%;
     }
 
     .input-wrapper-custom {
       width: 100% !important;
-      max-width: 100%;
     }
 
     .control-input-phone {
-      max-width: 100%;
+      width: 100%;
     }
 
     button {

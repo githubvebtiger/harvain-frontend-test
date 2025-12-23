@@ -2,13 +2,13 @@
 @import "../../styles/mixin";
 
 .trade-history-page {
-  max-width: 864px;
+  width: 100%;
 
   h2 {
     @include fluid-font(24px, 32px, 32px, 32px);
     font-weight: 700;
     text-align: left;
-    margin-bottom: 22px;
+    margin-bottom: 24px;
   }
 
   .history-item {
@@ -60,12 +60,13 @@
 
 }
 
-.dark{
-  .trade-history-page-wrapper{
+.dark {
+  .trade-history-page-wrapper {
     background: $dark-bg;
-    .trade-history-page{
-      h2{
-        color: rgba(157, 157, 161, 1);
+
+    .trade-history-page {
+      h2 {
+        color: white;
       }
       .history-item{
         border:1px rgba(32, 37, 54, 1) solid;
