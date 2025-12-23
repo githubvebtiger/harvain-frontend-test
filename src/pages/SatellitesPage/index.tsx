@@ -76,9 +76,26 @@ export default function SatellitesPage() {
   // }, []);
 
   useEffect(() => {
+    // Restore client tokens if coming back from satellite
+    const clientAccessToken = localStorage.getItem('clientAccessToken');
+    const clientRefreshToken = localStorage.getItem('clientRefreshToken');
+    if (clientAccessToken) {
+      localStorage.setItem('accessToken', clientAccessToken);
+      localStorage.removeItem('clientAccessToken');
+    }
+    if (clientRefreshToken) {
+      localStorage.setItem('refreshToken', clientRefreshToken);
+      localStorage.removeItem('clientRefreshToken');
+    }
+    // Clear satellite data
+    localStorage.removeItem('satellite');
+    localStorage.removeItem('loginId');
+
     fetchSatellites().then(data => {
-      setSatellites(data.data.satellites || []);
-      setTotalPrice(data.data.total_balance || 0);
+      if (data?.data) {
+        setSatellites(data.data.satellites || []);
+        setTotalPrice(data.data.total_balance || 0);
+      }
     });
   }, []);
 
@@ -89,7 +106,7 @@ export default function SatellitesPage() {
 
     <>
       <div className="satellities-page-wrapper">
-        <Header isAuth/>
+        <Header isAuth showLogout/>
         <div className="satellites-page container">
           <div className="balance">
             <p>Total balance:</p>

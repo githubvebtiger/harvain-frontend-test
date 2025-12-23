@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import './styles.scss'
+import { Link } from 'react-router-dom';
 
 import { LogoIcon ,LogoDarkIcon  } from '../../assets';
 import ChangeThemeButton from './components/ChangeThemeButton';
@@ -8,11 +9,13 @@ import AuthNav from './components/AuthNav';
 import useWindowWidth from '../../hooks/useWindowWidth';
 import BurgerMenu from '../BurgerMenu';
 import { useTheme } from '../../provider/ThemeProvider';
+import { ROUTES } from '../Navigation';
 
 
 type Props = {
   showNav?: boolean;
   isAuth?: boolean;
+  showLogout?: boolean;
   absolute?: boolean;
   disableContainer?: boolean; //add props
 }
@@ -31,9 +34,11 @@ export default function Header(props: Props) {
   return (
     //add props
     <div className={`${props.disableContainer ? 'no-container' : 'container'} header ${props.absolute && 'absolute'}`}>
-      <img src={theme==='dark'? LogoDarkIcon:LogoIcon} alt="logoIcon"/>
+      <Link to={ROUTES.HOME} className="logo-link">
+        <img src={theme==='dark'? LogoDarkIcon:LogoIcon} alt="logoIcon"/>
+      </Link>
       {props.showNav && !isMobile && <HeaderNav/>}
-      {props.isAuth && !isMobile && <AuthNav/>}
+      {props.showLogout && !isMobile && <AuthNav/>}
       {!isMobile && <ChangeThemeButton/>}
       {isMobile && (
         <BurgerMenu>

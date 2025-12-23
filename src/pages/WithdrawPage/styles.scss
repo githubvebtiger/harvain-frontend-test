@@ -1,8 +1,11 @@
 @import "../../styles/variables";
+
 .withdraw-page {
   display: flex;
   flex-direction: column;
-  gap: 40px;
+  gap: 32px;
+  width: 100%;
+
   .table {
     .raw-data {
       display: none;
@@ -14,7 +17,7 @@
     font-weight: 700;
     line-height: 32px;
     text-align: left;
-    margin-bottom: 22px;
+    margin-bottom: 24px;
   }
   .payment-system {
     display: flex;

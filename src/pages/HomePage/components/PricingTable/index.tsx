@@ -3,6 +3,7 @@ import './styles.scss'
 import { firstTableData, secondTableData } from './const';
 import Button, { EButtonType } from '../../../../components/UI/Button';
 import { AttentionIcon } from '../../../../assets';
+import { toast } from '../../../../components/Toast';
 
 type Props = {
   title: string;
@@ -44,7 +45,7 @@ function Table(props: Props) {
 
 export default function PricingTable() {
   const onHandleClick = () => {
-    alert('Refund + Profit Splits')
+    toast.info('Refund + Profit Splits')
   }
   return (
     <div className="pricing-table__wrapper">

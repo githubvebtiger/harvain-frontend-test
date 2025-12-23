@@ -115,9 +115,13 @@ export default function PersonalInfo(props: Props) {
 
     const satelliteId = localStorage.getItem("loginId");
     if (satelliteId) {
-      updateSatelliteById(+satelliteId, satelliteData).then((data) => {
-        data && saveSatellite(data);
-      });
+      updateSatelliteById(+satelliteId, satelliteData)
+        .then((data) => {
+          data && saveSatellite(data);
+        })
+        .catch(() => {
+          // Error already shown via toast in interceptor
+        });
     }
   };
 

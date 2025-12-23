@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { toast } from '../components/Toast';
 
 const axiosClient = axios.create({
   baseURL: process.env.REACT_APP_API_BASE_URL || 'https://admin.harvain.com',
@@ -27,17 +28,63 @@ axiosClient.interceptors.response.use((response) => {
   return response;
 }, (error) => {
   // Обработка ошибок
-  if (error.response && error.response.status === 401) {
-    // Не редиректим если это ошибка авторизации (пользователь вводит неправильные данные)
-    const isAuthEndpoint = error.config?.url?.includes('/token/') ||
-                          error.config?.url?.includes('/login') ||
-                          error.config?.url?.includes('/register');
+  if (error.response) {
+    const { status, data } = error.response;
 
-    if (!isAuthEndpoint) {
-      // Редирект на главную только если токен истёк (не на странице авторизации)
-      window.location.href = '/';
+    // Handle 400 validation errors
+    if (status === 400) {
+      let errorMessage = 'Validation error';
+
+      if (data) {
+        if (typeof data === 'string') {
+          errorMessage = data;
+        } else if (data.detail) {
+          errorMessage = data.detail;
+        } else if (data.message) {
+          errorMessage = data.message;
+        } else if (data.error) {
+          errorMessage = data.error;
+        } else if (typeof data === 'object') {
+          // Handle field-specific errors like { "email": ["This field is required."] }
+          const errors = Object.entries(data)
+            .map(([field, messages]) => {
+              if (Array.isArray(messages)) {
+                return `${field}: ${messages.join(', ')}`;
+              }
+              return `${field}: ${messages}`;
+            })
+            .join('; ');
+          if (errors) {
+            errorMessage = errors;
+          }
+        }
+      }
+
+      toast.error(errorMessage);
     }
+
+    // Handle 401 unauthorized
+    if (status === 401) {
+      // Не редиректим если это ошибка авторизации (пользователь вводит неправильные данные)
+      const isAuthEndpoint = error.config?.url?.includes('/token/') ||
+                            error.config?.url?.includes('/login') ||
+                            error.config?.url?.includes('/register');
+
+      if (!isAuthEndpoint) {
+        // Редирект на главную только если токен истёк (не на странице авторизации)
+        window.location.href = '/';
+      }
+    }
+
+    // Handle 500 server errors
+    if (status >= 500) {
+      toast.error('Server error. Please try again later.');
+    }
+  } else if (error.request) {
+    // Network error
+    toast.error('Network error. Please check your connection.');
   }
+
   return Promise.reject(error);
 });
 

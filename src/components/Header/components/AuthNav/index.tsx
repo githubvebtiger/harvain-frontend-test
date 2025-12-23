@@ -10,12 +10,18 @@ import { ROUTES } from '../../../Navigation';
 export default function AuthNav() {
   const navigate = useNavigate()
   const onHandleLogOut = () => {
-    localStorage.clear()
-    navigate(ROUTES.HOME)
+    localStorage.removeItem("refreshToken");
+    localStorage.removeItem("accessToken");
+    localStorage.removeItem("clientRefreshToken");
+    localStorage.removeItem("clientAccessToken");
+    localStorage.removeItem("userId");
+    localStorage.removeItem("satellite");
+    localStorage.removeItem("loginId");
+    navigate(ROUTES.HOME, { replace: true });
   }
   return (
     <div className='auth-nav'>
-      {/*<Button onClick={onHandleLogOut} label="Log out"/>*/}
+      <Button onClick={onHandleLogOut} label="Log out"/>
     </div>
   )
 }

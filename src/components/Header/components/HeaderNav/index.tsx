@@ -20,6 +20,19 @@ export default function HeaderNav(props: Props) {
   }
 
   function openLoginModal() {
+    // If already authenticated
+    const accessToken = localStorage.getItem('accessToken');
+    if (accessToken) {
+      // If was logged into satellite - go back to satellite profile
+      const loginId = localStorage.getItem('loginId');
+      if (loginId) {
+        navigate(ROUTES.PROFILE);
+      } else {
+        // Otherwise go to satellites list
+        navigate(ROUTES.SATELLITES);
+      }
+      return;
+    }
     openModal(LoginModal, {navigate})
   }
 

@@ -1,17 +1,16 @@
-.change-password{
+.change-password {
   margin-top: 32px;
-  display: flex;
-  max-width: 416px;
-
-  flex-direction: column;
-  gap: 24px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  width: 100%;
+  gap: 32px;
 
   .control-input {
-    max-width: 416px;
+    width: 100%;
   }
 
   .control-input-phone {
-    max-width: 416px;
+    width: 100%;
   }
 
   button {
@@ -21,15 +20,15 @@
 
 @media (max-width: 880px) {
   .change-password {
+    display: flex;
     flex-direction: column;
-    max-width: 100%;
 
     .control-input {
-      max-width: 100%;
+      width: 100%;
     }
 
     .control-input-phone {
-      max-width: 100%;
+      width: 100%;
     }
 
     button {

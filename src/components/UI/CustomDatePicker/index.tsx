@@ -37,7 +37,7 @@ export default function CustomDatePicker({
                               }: Props) {
   return (
     <div className='custom-date-picker input-wrapper-custom'>
-      <DatePicker value={value} shadow={false} inputMode={''} format={'YYYY-MM-DD'} onChange={onChange}/>
+      <DatePicker value={value} shadow={false} inputMode={''} format={'YYYY-MM-DD'} onChange={onChange} disabled={disabled}/>
       {errorMessage && <p className='error-message'>{errorMessage}</p>}
     </div>
   );

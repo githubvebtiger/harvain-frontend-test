@@ -1,50 +1,56 @@
 @import "../../styles/variables";
-.personal-info{
-  max-width: 1000px;
+
+.personal-info {
+  width: 100%;
 }
+
 .profile-page {
   display: flex;
   flex-direction: column;
+
   h2 {
     font-size: 32px;
     font-weight: 700;
     line-height: 32px;
     text-align: left;
-    margin-bottom: 22px;
-
+    margin-bottom: 24px;
   }
-  .profile-form{
-    display: flex;
-    max-width: 864px;
-    flex-wrap: wrap;
-    flex-direction: row;
+
+  .profile-form {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    width: 100%;
     gap: 32px;
-    .control-input{
-      width: 416px;
+
+    .control-input {
+      width: 100%;
     }
 
     button {
       max-width: 304px;
     }
   }
-
 }
-.dark{
-    .settings-wrapper{
+.dark {
+  .settings-wrapper {
+    background: $dark-bg;
+
+    .page {
       background: $dark-bg;
-      .page{
-        background: $dark-bg;
-        .settings-tabs{
-          border-bottom: 2px solid rgba(32, 37, 54, 1);
-          h2{
-            color: rgba(180, 184, 190, 1);
-          }
-          .active {
-            h2 {
-              color: white;
-            }
+
+      .settings-tabs {
+        border-bottom: 2px solid rgba(32, 37, 54, 1);
+
+        h2 {
+          color: rgba(180, 184, 190, 1);
+        }
+
+        .active {
+          h2 {
+            color: white;
           }
         }
+      }
         .personal-info{
           input{
             background: linear-gradient(90deg, #0F101D 0%, #1B2133 100.03%);
@@ -83,9 +89,3 @@
     }
 }
 
-@media (min-width: 1086px) and (max-width: 1230px) {
-  .personal-info{
-    max-width: 550px;
-  }
-}
-  

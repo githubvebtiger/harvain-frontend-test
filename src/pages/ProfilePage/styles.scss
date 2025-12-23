@@ -9,39 +9,14 @@
     @include fluid-font(24px, 32px, 32px, 32px);
     font-weight: 700;
     text-align: left;
-    margin-bottom: 22px;
-
+    margin-bottom: 24px;
   }
 
   .profile-form {
     display: grid !important;
     grid-template-columns: repeat(2, 1fr);
     gap: 32px;
-    max-width: 864px;
-
-    .control-input {
-      width: 100%;
-    }
-
-    button {
-      max-width: 100%;
-      grid-column: span 2;
-    }
-
-    .verification-banners {
-      grid-column: span 2;
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-      margin-top: 16px;
-    }
-  }
-
-  .profile-form {
-    display: grid !important;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 32px;
-    max-width: 864px;
+    width: 100%;
 
     .control-input {
       width: 100%;
@@ -103,25 +78,14 @@
   width: 100%;
 }
 
-@media (max-width: 1200px) {
-  .profile-page {
-    .profile-form {
-      .input-wrapper-custom {
-        width: 100% !important;
-        max-width: 416px !important;
-      }
-      display: flex !important;
-      flex-direction: column;
-    }
-  }
-}
-
 @media (max-width: 880px) {
   .profile-page {
     .profile-form {
+      display: flex !important;
+      flex-direction: column;
+
       .input-wrapper-custom {
         width: 100% !important;
-        max-width: 100% !important;
       }
 
       .control-input {
