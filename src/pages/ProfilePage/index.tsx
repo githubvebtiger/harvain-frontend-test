@@ -167,7 +167,7 @@ export default function ProfilePage(props: Props) {
   return (
     <div className="profile-page-wrapper">
       <div className="hide-on-mobile">
-        <Header isAuth />
+        <Header disableContainer isAuth />
       </div>
       <WrapperPage>
         <div className="profile-page">
