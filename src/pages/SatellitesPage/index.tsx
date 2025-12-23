@@ -76,6 +76,21 @@ export default function SatellitesPage() {
   // }, []);
 
   useEffect(() => {
+    // Restore client tokens if coming back from satellite
+    const clientAccessToken = localStorage.getItem('clientAccessToken');
+    const clientRefreshToken = localStorage.getItem('clientRefreshToken');
+    if (clientAccessToken) {
+      localStorage.setItem('accessToken', clientAccessToken);
+      localStorage.removeItem('clientAccessToken');
+    }
+    if (clientRefreshToken) {
+      localStorage.setItem('refreshToken', clientRefreshToken);
+      localStorage.removeItem('clientRefreshToken');
+    }
+    // Clear satellite data
+    localStorage.removeItem('satellite');
+    localStorage.removeItem('loginId');
+
     fetchSatellites().then(data => {
       if (data?.data) {
         setSatellites(data.data.satellites || []);
