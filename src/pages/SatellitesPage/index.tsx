@@ -77,8 +77,10 @@ export default function SatellitesPage() {
 
   useEffect(() => {
     fetchSatellites().then(data => {
-      setSatellites(data.data.satellites || []);
-      setTotalPrice(data.data.total_balance || 0);
+      if (data?.data) {
+        setSatellites(data.data.satellites || []);
+        setTotalPrice(data.data.total_balance || 0);
+      }
     });
   }, []);
 

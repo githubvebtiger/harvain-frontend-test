@@ -147,12 +147,33 @@ const Sidebar: React.FC<Props> = (props: Props) => {
   }
 
   const handleLogout = () => {
-    localStorage.removeItem("refreshToken");
-    localStorage.removeItem("accessToken");
-    localStorage.removeItem("userId");
-    localStorage.removeItem("satellite");
-    localStorage.removeItem("loginId");
-    navigate(ROUTES.HOME, { replace: true });
+    // If on satellites page (main account) - full logout
+    if (location.pathname === ROUTES.SATELLITES) {
+      localStorage.removeItem("refreshToken");
+      localStorage.removeItem("accessToken");
+      localStorage.removeItem("clientRefreshToken");
+      localStorage.removeItem("clientAccessToken");
+      localStorage.removeItem("userId");
+      localStorage.removeItem("satellite");
+      localStorage.removeItem("loginId");
+      navigate(ROUTES.HOME, { replace: true });
+    } else {
+      // If on satellite pages - logout from satellite only, go back to satellites list
+      // Restore client tokens
+      const clientAccessToken = localStorage.getItem("clientAccessToken");
+      const clientRefreshToken = localStorage.getItem("clientRefreshToken");
+      if (clientAccessToken) {
+        localStorage.setItem("accessToken", clientAccessToken);
+      }
+      if (clientRefreshToken) {
+        localStorage.setItem("refreshToken", clientRefreshToken);
+      }
+      localStorage.removeItem("clientAccessToken");
+      localStorage.removeItem("clientRefreshToken");
+      localStorage.removeItem("satellite");
+      localStorage.removeItem("loginId");
+      navigate(ROUTES.SATELLITES, { replace: true });
+    }
   }
   
   const isAuthenticated = !!localStorage.getItem('refreshToken');
