@@ -3,14 +3,13 @@ import "./styles.scss";
 import WrapperPage from "../../components/WrapperPage";
 import Input from "../../components/UI/Input";
 import Button from "../../components/UI/Button";
-import { getSatellite, saveSatellite } from "../../utils/getDataFromLocalStore/satellite";
+
+import { getSatellite } from "../../utils/getDataFromLocalStore/satellite";
 import { useTheme } from "../../provider/ThemeProvider";
 import Header from "../../components/Header";
-import { useNavigate } from "react-router-dom";
-import { ROUTES } from "../../components/Navigation";
 import CountrySelect from "../../components/UI/CountrySelect";
 import PhoneInput from "../../components/UI/PhoneInput";
-import { updateSatelliteById, fetchSatelliteById } from "../../api/satellites";
+import { fetchSatelliteById } from "../../api/satellites";
 import { fetchSatellites } from "../../api/satellites";
 import CustomDatePicker from "../../components/UI/CustomDatePicker";
 import moment from "moment";
@@ -28,7 +27,6 @@ import warningIdentityIcon from '../../assets/icons/warningIdentity.svg'
 type Props = {};
 
 export default function ProfilePage(props: Props) {
-  const navigate = useNavigate();
   const [country, setCountry] = useState("");
   const [city, setCity] = useState("");
   const [birthDate, setBirthDate] = useState("");
@@ -111,24 +109,6 @@ export default function ProfilePage(props: Props) {
 
     loadUserData();
   }, []);
-  
-  const onHandleEditProfile = () => {
-    const satelliteData = {
-      country,
-      city,
-      born: moment(birthDate).format("YYYY-MM-DD"),
-      address,
-      phone: countryCode + phone,
-      email
-    }
-    const satelliteId = localStorage.getItem('loginId')
-    if (satelliteId) {
-      updateSatelliteById(+satelliteId, satelliteData).then(data => {
-        data && saveSatellite(data)
-      })
-    }
-    navigate(ROUTES.SETTINGS_PERSONAL_INFO);
-  };
 
   const { toggleTheme, theme } = useTheme();
 
@@ -229,12 +209,7 @@ export default function ProfilePage(props: Props) {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
             />
-            <Button
-              label="Edit profile"
-              onClick={onHandleEditProfile}
-              fullWidth
-            />
-            
+
             {/* Verification banners with proper logic */}
             <div className="verification-banners">
               {/* Email Verification Banner */}
