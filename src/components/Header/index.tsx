@@ -34,9 +34,9 @@ export default function Header(props: Props) {
   return (
     //add props
     <div className={`${props.disableContainer ? 'no-container' : 'container'} header ${props.absolute && 'absolute'}`}>
-      <Link to={ROUTES.HOME} className="logo-link">
+      <a href={ROUTES.HOME} className="logo-link" onClick={() => window.location.href = ROUTES.HOME}>
         <img src={theme==='dark'? LogoDarkIcon:LogoIcon} alt="logoIcon"/>
-      </Link>
+      </a>
       {props.showNav && !isMobile && <HeaderNav/>}
       {props.showLogout && !isMobile && <AuthNav/>}
       {!isMobile && <ChangeThemeButton/>}
