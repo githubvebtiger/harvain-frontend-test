@@ -56,7 +56,7 @@ export default function Footer() {
         </ul>
       </div>
       <div className="footer-copyright">
-        <p> &copy; 2025 {BRAND_NAME}. All Rights Reserved.</p>
+        <p> &copy; {new Date().getFullYear()} {BRAND_NAME}. All Rights Reserved.</p>
       </div>
     </footer>
   )
