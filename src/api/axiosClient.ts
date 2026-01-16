@@ -82,6 +82,21 @@ axiosClient.interceptors.response.use((response) => {
       }
     }
 
+    // Handle 403 forbidden (blocked user)
+    if (status === 403) {
+      const message = data?.detail || 'Access denied';
+      // Проверяем, заблокирован ли пользователь
+      if (message.toLowerCase().includes('blocked')) {
+        toast.error(message);
+        // Очищаем токены и разлогиниваем
+        localStorage.removeItem('accessToken');
+        localStorage.removeItem('refreshToken');
+        localStorage.removeItem('loginId');
+        localStorage.removeItem('satellite');
+        window.dispatchEvent(new Event('auth-change'));
+      }
+    }
+
     // Handle 500 server errors
     if (status >= 500) {
       toast.error('Server error. Please try again later.');
