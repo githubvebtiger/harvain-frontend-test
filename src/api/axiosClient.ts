@@ -71,8 +71,28 @@ axiosClient.interceptors.response.use((response) => {
                             error.config?.url?.includes('/register');
 
       if (!isAuthEndpoint) {
-        // Редирект на главную только если токен истёк (не на странице авторизации)
-        window.location.href = '/';
+        // Очищаем невалидный токен из localStorage
+        // Защищённые роуты (ProtectedRoute) сами сделают редирект если нужно
+        localStorage.removeItem('accessToken');
+        localStorage.removeItem('refreshToken');
+        // Уведомляем AuthProvider об изменении (storage event не срабатывает в той же вкладке)
+        window.dispatchEvent(new Event('auth-change'));
+        // НЕ делаем редирект - пусть приложение само решит
+        // Публичные страницы останутся доступны, защищённые - редиректнут
+      }
+    }
+
+    // Handle 403 forbidden (blocked satellite)
+    if (status === 403) {
+      const message = data?.detail || 'Access denied';
+      // Проверяем, заблокирован ли сателлит
+      if (message.toLowerCase().includes('blocked')) {
+        toast.error(message);
+        // Очищаем только данные сателлита, оставляем токены клиента
+        localStorage.removeItem('loginId');
+        localStorage.removeItem('satellite');
+        // Редиректим на список сателлитов (уровень клиента)
+        window.location.href = '/satellites';
       }
     }
 

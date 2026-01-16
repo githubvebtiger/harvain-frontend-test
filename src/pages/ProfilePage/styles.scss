@@ -70,6 +70,54 @@
           border: 1px solid rgba(32, 37, 54, 1);
         }
       }
+
+      // Status banners dark theme
+      .status-banner {
+        background: #040E24;
+        border: 1px solid #091635;
+
+        .content {
+          .message {
+            color: #aeb9e1;
+          }
+        }
+
+        &.success {
+          border-color: #27BE13;
+
+          .heading {
+            color: #ffffff;
+          }
+        }
+
+        &.warning {
+          border-color: #091635;
+
+          .heading {
+            color: #f99f1a;
+          }
+        }
+
+        &.danger {
+          border-color: #ef4444;
+        }
+
+        &.disabled {
+          background: #040E24;
+          border: 1px solid #091635;
+
+          .heading {
+            color: #ffffff;
+          }
+        }
+      }
+
+      // Identity banner - white heading
+      .identity-banner-wrapper {
+        .status-banner.warning .heading {
+          color: #ffffff;
+        }
+      }
     }
   }
 }

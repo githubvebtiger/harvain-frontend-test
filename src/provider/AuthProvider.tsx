@@ -25,10 +25,17 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
       setIsAuthenticated(!!localStorage.getItem('accessToken'));
     };
 
+    // Слушаем кастомный event для изменений в той же вкладке (localStorage event не срабатывает)
+    const handleAuthChange = () => {
+      setIsAuthenticated(!!localStorage.getItem('accessToken'));
+    };
+
     window.addEventListener('storage', handleStorageChange);
+    window.addEventListener('auth-change', handleAuthChange);
 
     return () => {
       window.removeEventListener('storage', handleStorageChange);
+      window.removeEventListener('auth-change', handleAuthChange);
     };
   }, []);
 

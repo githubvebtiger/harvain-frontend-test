@@ -44,11 +44,24 @@
     right: 0;
     top: 0;
     height: 80px;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 120px;
+      background: linear-gradient(180deg, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0.3) 50%, transparent 100%);
+      z-index: -1;
+      pointer-events: none;
+    }
   }
   a {
     text-decoration: none;
-    color: $slate-gray;
+    color: $bright-blue;
     cursor: pointer;
+    transition: all 0.2s ease;
   }
   .link {
     text-decoration: none;
@@ -56,12 +69,32 @@
     cursor: pointer;
   }
   a:active, .link:active {
-    color: $bright-blue;
+    color: $royal-blue;
   }
-
 
   a:hover, .link:hover {
-    color: $bright-blue;
+    color: $royal-blue;
   }
 
+  // White links only when header is over video (absolute position)
+  &.absolute {
+    a {
+      color: $white;
+    }
+    a:hover, a:active {
+      color: $bright-blue;
+    }
+  }
+}
+
+// Dark theme - white links
+.dark {
+  .header {
+    a {
+      color: $white;
+    }
+    a:hover, a:active {
+      color: $bright-blue;
+    }
+  }
 }

@@ -239,33 +239,35 @@ export default function ProfilePage(props: Props) {
               )}
 
               {/* Document/KYC Verification Banner */}
-              {emailVerified ? (
-                !documentVerified ? (
+              <div className="identity-banner-wrapper">
+                {emailVerified ? (
+                  !documentVerified ? (
+                    <StatusBanner
+                      type="warning"
+                      heading="Verify your identity"
+                      message="Complete document verification (KYC) to access all platform features, including withdrawals and increased limits."
+                      ctaLabel="Verify"
+                      onCtaClick={handleKYCVerification}
+                      icon={<img src={warningIdentityIcon} alt="Warning Icon" style={{ width: 20, height: 20 }} />}
+                    />
+                  ) : (
+                    <StatusBanner
+                      type="success"
+                      heading="Identity verified"
+                      message="Congratulations! You have successfully completed full verification and have unrestricted access to all platform services."
+                      icon={<img src={successIdentityIcon} alt="Check Icon" style={{ width: 20, height: 20 }} />}
+                    />
+                  )
+                ) : (
                   <StatusBanner
                     type="warning"
                     heading="Verify your identity"
                     message="Complete document verification (KYC) to access all platform features, including withdrawals and increased limits."
-                    ctaLabel="Verify"
-                    onCtaClick={handleKYCVerification}
-                    icon={<img src={warningIdentityIcon} alt="Warning Icon" style={{ width: 20, height: 20 }} />}
+                    disabled={true}
+                    icon={<img src={warningIcon} alt="Warning Icon" style={{ width: 20, height: 20 }} />}
                   />
-                ) : (
-                  <StatusBanner
-                    type="success"
-                    heading="Identity verified"
-                    message="Congratulations! You have successfully completed full verification and have unrestricted access to all platform services."
-                    icon={<img src={successIdentityIcon} alt="Check Icon" style={{ width: 20, height: 20 }} />}
-                  />
-                )
-              ) : (
-                <StatusBanner
-                  type="warning"
-                  heading="Verify your identity"
-                  message="Complete document verification (KYC) to access all platform features, including withdrawals and increased limits."
-                  disabled={true}
-                  icon={<img src={warningIcon} alt="Warning Icon" style={{ width: 20, height: 20 }} />}
-                />
-              )}
+                )}
+              </div>
             </div>
           </div>
         </div>

@@ -1,4 +1,9 @@
 @import "../../styles/variables";
+
+.blog-page-wrapper {
+    overflow-x: hidden;
+}
+
 .dark{
     .blog-page-wrapper{
         background-color: $dark-bg;
