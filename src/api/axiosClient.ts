@@ -82,18 +82,17 @@ axiosClient.interceptors.response.use((response) => {
       }
     }
 
-    // Handle 403 forbidden (blocked user)
+    // Handle 403 forbidden (blocked satellite)
     if (status === 403) {
       const message = data?.detail || 'Access denied';
-      // Проверяем, заблокирован ли пользователь
+      // Проверяем, заблокирован ли сателлит
       if (message.toLowerCase().includes('blocked')) {
         toast.error(message);
-        // Очищаем токены и разлогиниваем
-        localStorage.removeItem('accessToken');
-        localStorage.removeItem('refreshToken');
+        // Очищаем только данные сателлита, оставляем токены клиента
         localStorage.removeItem('loginId');
         localStorage.removeItem('satellite');
-        window.dispatchEvent(new Event('auth-change'));
+        // Редиректим на список сателлитов (уровень клиента)
+        window.location.href = '/satellites';
       }
     }
 
