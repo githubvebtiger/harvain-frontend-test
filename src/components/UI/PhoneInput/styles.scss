@@ -1,0 +1,115 @@
+@import "../../../styles/variables";
+
+.input-wrapper-custom {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+}
+
+.control-input-phone {
+  position: relative;
+  border: 1px solid $soft-gray;
+  border-radius: 8px;
+  height: 49px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  background: $light-fog;
+  padding: 0 16px;
+
+  img {
+    height: 20px;
+    width: 20px;
+  }
+
+  input {
+    all: unset;
+    padding-left: 16px;
+    border-left: 1px solid $soft-gray;
+    box-sizing: border-box;
+    height: 100%;
+    background: transparent;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 22.5px;
+    text-align: left;
+    flex: 1 !important;
+  }
+
+  .country-select {
+    width: 84px;
+
+    padding-right: 16px;
+
+    .country-code {
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      p {
+        margin-left: 8px;
+      }
+    }
+
+    .country-list {
+      max-height: 300px;
+      overflow: auto;
+      position: absolute;
+      background: $light-fog;
+      border: 1px solid $soft-gray;
+      border-radius: 8px;
+      top: 48px;
+      z-index: 10;
+      left: 0;
+
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+
+      & > * {
+        padding: 8px;
+      }
+
+      .country-code-item {
+        display: flex;
+        gap: 8px;
+      }
+    }
+  }
+}
+
+.dark {
+  .control-input-phone {
+    background: var(--input-bg);
+    border-color: var(--input-border);
+
+    input {
+      background: transparent !important;
+      color: var(--text-values) !important;
+    }
+
+    .country-select {
+      .country-code p {
+        color: var(--text-values);
+      }
+    }
+
+    .country-list {
+      background: var(--input-bg) !important;
+      border-color: var(--input-border);
+
+      .country-code-item {
+        color: var(--text-values);
+
+        span {
+          color: var(--text-values);
+        }
+
+        &:hover {
+          background: rgba(26, 86, 219, 0.15);
+        }
+      }
+    }
+  }
+}

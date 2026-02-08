@@ -1,0 +1,130 @@
+@import "../../styles/variables";
+@import "../../styles/mixin";
+.terms_conditions-title{
+    font-size: 40px;
+    font-weight: 700;
+    line-height: 48.41px;
+    text-align: center;
+
+    color: $almost-black;
+
+    margin-top: 64px;
+}
+.terms_conditions{
+    width: 1274px;
+    margin: 0 auto;
+    h1{
+        @include fluid-font(32px,40px,40px,48.41px);
+    }
+    h3{
+        @include fluid-font(16px,20px,24px,24.2px);
+        font-weight: 500;
+        text-align: left;
+        margin-bottom: 16px;
+    }
+    p{
+        @include fluid-font(14px,16px,18px,19.36px);
+        font-weight: 300;
+        text-align: left;
+
+    }
+
+    .p-warning{
+        color: $royal-blue ;
+        font-weight: 500;
+    }
+    .p-grant{
+        font-weight: 400;
+    }
+}
+.mt-10{
+    margin-top: 10px;
+}
+
+.dark{
+    .terms-page-wrapper{
+        background: var(--page-bg);
+
+        .terms_conditions{
+            .terms_conditions-title{
+                    color: var(--text-primary);
+            }
+        }
+        .terms-text{
+            h3{
+                color: var(--text-primary);
+            }
+            p{
+                color:rgba(157, 157, 161, 1);
+            }
+            .p-warning{
+                color:rgba(26, 86, 219, 1);
+            }
+        }
+        .main-terms-conditions{
+            h3{
+                color: var(--text-primary);
+            }
+            h2{
+                color: var(--text-primary);
+            }
+            h4{
+                color:rgba(165, 165, 165, 1);
+            }
+            p{
+                color:rgba(165, 165, 165, 1);
+            }
+            li{
+                color:rgba(165, 165, 165, 1);
+            }
+        }
+    }
+}
+
+
+
+@media (max-width:1290px){
+    .terms_conditions{
+        width: 100%;
+        padding: 0 15px;
+    }
+}
+@media (max-width:880px){
+    .terms_conditions-title{
+        margin-top: 0;
+       padding-bottom: 15px;
+    }
+    .terms_conditions{
+        margin-top: 15px;
+    }
+}
+
+@media (max-width:390px){
+    .terms_conditions{
+        text-align: left;
+        padding: 10px 0;
+    }
+}
+
+
+
+
+// @media (max-width:1600px){
+//     .terms_conditions{
+//         text-align: center;
+//         padding: 0 0 20px 15px;
+//     }
+// }
+
+// @media (max-width:1100px){
+//     .terms_conditions-title{
+//         text-align: center;
+//         padding: 0 0 20px 15px;
+//     }
+// }
+// @media (max-width:880px){
+//     .terms_conditions-title{
+//         margin-top: 15px;
+//         padding: 0 15px 20px 15px;
+//     }
+// }

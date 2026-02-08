@@ -1,0 +1,15 @@
+version: '3.8'
+
+services:
+  web:
+    build:
+      context: .
+      args:
+        REACT_APP_API_BASE_URL: ${REACT_APP_API_BASE_URL:-https://admin.harvain.com}
+        REACT_APP_BRAND_NAME: ${REACT_APP_BRAND_NAME:-Harvain}
+        REACT_APP_SUPPORT_EMAIL: ${REACT_APP_SUPPORT_EMAIL:-support@harvain.com}
+    ports:
+      - "3000:80"
+    environment:
+      - NODE_ENV=production
+    restart: always

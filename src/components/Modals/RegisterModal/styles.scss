@@ -1,0 +1,82 @@
+@import "../../../styles/variables";
+
+.register-modal {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 370px;
+  gap: 56px;
+
+  h2 {
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 22.5px;
+    text-align: center;
+
+    span {
+      color: $royal-blue;
+    }
+  }
+
+  .form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+}
+
+.dark {
+  .register-modal {
+    input {
+      background: var(--card-bg);
+
+
+    }
+
+    .control-input {
+      background: var(--card-bg);
+      border: 1px solid rgba(32, 37, 54, 1);
+      color: rgba(157, 157, 161, 1);
+
+      input {
+        background: var(--card-bg);
+
+      }
+
+    }
+
+    .control-input-phone {
+      background: var(--card-bg);
+      border-left: 1px solid rgba(32, 37, 54, 1);
+      border: 0.1px solid rgba(32, 37, 54, 1);
+      color: rgba(157, 157, 161, 1);
+
+      input {
+        background: var(--card-bg);
+
+      }
+    }
+
+    #phone-border {
+      border-left: 1px solid rgba(32, 37, 54, 1);
+    }
+
+    .control-input {
+      background: var(--card-bg);
+      border: 1px solid rgba(32, 37, 54, 1);
+      color: rgba(157, 157, 161, 1);
+    }
+
+    input {
+      background: var(--card-bg);
+
+    }
+  }
+}
+
+
+
+

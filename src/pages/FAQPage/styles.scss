@@ -1,0 +1,67 @@
+@import "../../styles/variables";
+.container {
+    max-width: 1506px;
+    padding: 0 16px;
+
+}
+
+.faq-page{
+    display: flex;
+    gap: 32px;
+    margin-top: 62px;
+    position: relative;
+}
+
+.dark{
+    .faq-page-wrapper{
+        background: var(--page-bg);
+       
+        .faq-sidebar{
+            border: 1px rgba(32, 37, 54, 1) solid;
+            background: rgba(19, 23, 40, 1);
+            .faq-sidebar-wrapper{
+                .faq-sidebar-container{
+                    h4{
+                        color: var(--text-primary);
+                    }
+                    a{
+                        color: rgba(157, 157, 161, 1);
+                    }
+                }
+            }
+        }
+        .answers{
+            h2{
+                color: var(--text-primary);
+            }
+            .answers-list{
+                h3{
+                    color: var(--text-primary);
+                }
+                p,a{
+                    color: rgba(157, 157, 161, 1);
+                }
+                a{
+                    border-bottom: 1px solid rgba(157, 157, 161, 1);
+                }
+                
+            }
+            ul{
+                li{
+                    h3{
+                        color: var(--text-primary);
+                    }
+                    p{
+                        color: rgba(157, 157, 161, 1);
+                    }
+                }
+            }
+        }
+    }
+    .faq-sidebar-wrapper::-webkit-scrollbar-track {
+        background: none; 
+        border-radius: 5px;
+      
+      }
+
+}

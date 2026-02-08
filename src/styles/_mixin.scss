@@ -1,0 +1,29 @@
+
+
+$min-screen: 390px;
+$max-screen: 1440px;
+
+
+@function calculate-coefficient($min-size, $max-size, $min-screen, $max-screen) {
+  $size-difference: $max-size - $min-size;
+  $screen-difference: $max-screen - $min-screen;
+  @return $size-difference / $screen-difference;
+}
+
+
+@mixin fluid-font($min-font-size,$max-font-size,$min-line-height,$max-line-height) {
+
+  $growth-coefficient-font-size: calculate-coefficient($min-font-size, $max-font-size, $min-screen, $max-screen);
+  $growth-coefficient-line-height: calculate-coefficient($min-line-height, $max-line-height, $min-screen, $max-screen);
+
+  font-size: clamp(
+          #{$min-font-size},
+          calc(#{$growth-coefficient-font-size} * (100vw - #{$min-screen}) + #{$min-font-size}),
+          #{$max-font-size}
+  );
+ line-height: clamp(
+          #{$min-line-height},
+          calc(#{$growth-coefficient-line-height} * (100vw - #{$min-screen}) + #{$min-line-height}),
+          #{$max-font-size}
+  );
+}

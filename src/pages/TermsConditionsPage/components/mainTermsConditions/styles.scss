@@ -1,0 +1,144 @@
+@import "../../../../styles/variables";
+@import "../../../../styles/mixin";
+.main-terms-conditions{
+    padding: 0 15px;
+    h3{
+        @include fluid-font(16px,20px,24px,24.2px);
+        font-weight: 500;
+        text-align: left;
+
+        color: $almost-black;
+        padding-left: 49px;
+        margin-top: 16px;
+        padding-bottom: 8px;
+    }
+    p{
+        @include fluid-font(14px,16px,18px,19.36px);
+        font-weight: 300;
+        text-align: left;
+        
+    }
+    li{
+        font-size: 16px;
+        font-weight: 300;
+        line-height: 19.36px;
+        text-align: left;
+    }
+    .bold{
+        
+        font-size: 16px;
+        font-weight: 500;
+        line-height: 19.36px;
+        text-align: left;
+
+    }
+    .mail-link{
+        color: $royal-blue;
+       text-decoration: none;
+       border-bottom: 1px solid $royal-blue;
+
+    }
+    h4{
+        
+        font-size: 12px;
+        font-weight: 500;
+        line-height: 14.52px;
+        text-align: left;
+        
+    }
+    .conclusion{
+        
+        font-size: 12px;
+        font-weight: 300;
+        line-height: 14.52px;
+        text-align: left;
+
+    }
+    h2{
+        @include fluid-font(16px,20px,24px,24.2px);
+        font-size: 20px;
+        font-weight: 600;
+        line-height: 24.2px;
+        text-align: left;
+        margin-top: 21px;
+        margin-bottom: 12px;
+
+        color: $almost-black;
+    }
+    span{
+        font-size: 12px;
+        font-weight: 500;
+        line-height: 14.52px;
+        text-align: left;
+    }
+    & + .second{
+       p{
+       
+        font-size: 12px;
+        font-weight: 300;
+        line-height: 14.52px;
+        text-align: left;
+
+       };
+    }
+}
+.mt-19{
+    margin-top: 19px;
+}
+.ti-24{
+    text-indent: 24px;
+}
+.ti-42{
+    text-indent: 42px;
+}
+.ti-91{
+    text-indent: 91px;
+}
+.mt-26{
+    margin-top: 26px;
+}
+.mt-22{
+    margin-top: 22px;
+}
+.ti-49{
+    text-indent: 49px;
+}
+
+// @media (max-width:1200px){
+//     .main-terms-conditions{
+//     padding: 0 15px;
+//     text-align: start;
+//     padding-left: 0;
+
+//     h3{
+//         padding-left: 15px;
+//     }
+//     p{
+//         padding-left: 15px;
+//     }
+//     li{
+//         padding-left: 15px;
+//     }
+//     .bold{
+//         padding-left: 15px;
+
+//     }
+
+//     h4{
+//         padding-left: 15px;
+        
+//     }
+//     .conclusion{
+//         padding-left: 15px;
+//     }
+//     h2{
+//         padding-left: 15px;
+//     }
+//     span{
+//         padding-left: 15px;
+//     }
+ 
+
+//     }
+
+// }

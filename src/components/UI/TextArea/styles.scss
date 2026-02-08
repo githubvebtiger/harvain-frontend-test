@@ -1,0 +1,31 @@
+@import "../../../styles/variables";
+
+.control-textarea {
+  border: 1px solid $soft-gray;
+  border-radius: 8px;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  background: $light-fog;
+  padding: 0 16px;
+
+
+
+  textarea {
+    all: unset;
+    padding-top: 16px;
+    box-sizing: border-box;
+    border-radius: 8px;
+    height: 100%;
+    background: $light-fog;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 22.5px;
+    text-align: left;
+    flex: 1 !important;
+  }
+}
+.error-message{
+
+}

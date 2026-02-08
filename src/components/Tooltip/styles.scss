@@ -1,0 +1,121 @@
+.tooltip-container {
+  position: relative;
+  display: inline-block;
+}
+
+.tooltip-icon {
+  width: 2.1rem;
+  height: 2.1rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+
+  .icon {
+    width: 2.1rem;
+    height: 2.1rem;
+  }
+
+  &.success {
+    .icon {
+      color: #22c55e;
+    }
+  }
+
+  &.danger {
+    .icon {
+      color: #ef4444;
+    }
+  }
+
+  &.warning {
+    .icon {
+      color: #f97316;
+    }
+  }
+}
+
+.tooltip-content {
+  position: fixed;
+  z-index: 9999;
+  pointer-events: none;
+}
+
+.tooltip-box {
+  width: max-content;
+  max-width: 400px;
+  padding: 0.75rem 1rem;
+  border-radius: 24px;
+  border: 2.8px solid;
+  background-color: #fff;
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+
+  .tooltip-message {
+    font-size: 8px;
+    font-weight: 400;
+    color: #0f1011;
+    line-height: 100%;
+    white-space: pre-wrap;
+  }
+
+  &.success {
+    border-color: #22c55e;
+  }
+
+  &.danger {
+    border-color: #ef4444;
+  }
+
+  &.warning {
+    border-color: #f97316;
+  }
+}
+
+@media (max-width: 768px) {
+  .tooltip-content {
+    right: 40px;
+    left: auto;
+    top: -20px;
+    transform: translateY(-50%);
+    margin-right: 0;
+    margin-left: 1rem;
+  }
+
+  .tooltip-box {
+    max-width: 250px;
+    padding: 0.5rem 0.75rem;
+    
+    .tooltip-message {
+      font-size: 0.8rem;
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .tooltip-content {
+    right: 35px;
+    left: auto;
+  }
+
+  .tooltip-box {
+    max-width: 200px;
+    padding: 0.5rem;
+    
+    .tooltip-message {
+      font-size: 0.75rem;
+    }
+  }
+}
+
+// Ensure tooltip message stays dark in dark theme
+.dark {
+  .tooltip-message {
+    color: black !important;
+  }
+
+  // .tooltip-box {
+  //   background-color: #374151;
+  //   border-color: #4b5563;
+  // }
+}

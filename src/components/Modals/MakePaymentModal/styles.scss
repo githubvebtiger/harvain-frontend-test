@@ -1,0 +1,94 @@
+@import "../../../styles/variables";
+
+.make-payment-modal {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 434px;
+
+  h2 {
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 22.5px;
+    text-align: center;
+    margin-bottom: 56px;
+
+    span {
+      color: $royal-blue;
+    }
+  }
+
+  .total-price-wrapper {
+    margin-bottom: 40px;
+  }
+
+  .df-column {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .totalPrice {
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 22.5px;
+    text-align: left;
+  }
+
+  .df-row-jsb {
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 22.5px;
+    text-align: center;
+
+  }
+
+  .subtitle {
+    color: $gray-fog;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 22.5px;
+    text-align: left;
+
+  }
+
+  .btns {
+    margin-top: 32px;
+    display: flex;
+    width: 100%;
+    gap: 16px;
+
+    .button-secondary {
+      color: $black;
+      background: $very-light-gray;
+      border-radius: 8px;
+
+    }
+  }
+
+  .timer {
+
+
+    display: flex;
+    margin-top: 16px;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 22.5px;
+    text-align: center;
+    gap: 8px;
+
+    .timer-text {
+      color: $gray-fog;
+    }
+
+    .timer-count {
+      font-weight: 500;
+
+    }
+  }
+}

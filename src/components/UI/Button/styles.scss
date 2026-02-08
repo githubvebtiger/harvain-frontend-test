@@ -1,0 +1,141 @@
+@import "../../../styles/variables";
+
+button {
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20px;
+  text-align: center;
+  display: flex;
+  gap: 4px;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.25s ease;
+  position: relative;
+}
+
+.button-primary {
+  background: linear-gradient(135deg, $royal-blue 0%, darken($royal-blue, 10%) 100%);
+  color: $white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 10px;
+  cursor: pointer;
+  overflow: hidden;
+  
+  // Shine effect on hover
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.2),
+      transparent
+    );
+    transition: left 0.5s ease;
+  }
+
+  &:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(26, 86, 219, 0.35);
+    
+    &::before {
+      left: 100%;
+    }
+  }
+
+  &:active:not(:disabled) {
+    transform: translateY(0);
+    box-shadow: 0 4px 15px rgba(26, 86, 219, 0.25);
+  }
+}
+
+.button-secondary {
+  background-color: transparent;
+  color: $bright-blue;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+
+  &:hover:not(:disabled) {
+    color: darken($bright-blue, 10%);
+  }
+}
+
+.button-gray {
+  background-color: $light-gray;
+  color: $black;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 10px;
+  cursor: pointer;
+
+  &:hover:not(:disabled) {
+    background-color: darken($light-gray, 5%);
+    transform: translateY(-1px);
+  }
+}
+
+.button-gray:hover:not(:disabled),
+.button-primary:hover:not(:disabled),
+.button-secondary:hover:not(:disabled) {
+  opacity: 1;
+}
+
+button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+// Loading state
+.button-loading {
+  pointer-events: none;
+  
+  .button-text {
+    opacity: 0;
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    width: 18px;
+    height: 18px;
+    border: 2px solid transparent;
+    border-top-color: currentColor;
+    border-radius: 50%;
+    animation: buttonSpin 0.8s linear infinite;
+  }
+}
+
+@keyframes buttonSpin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+// Dark theme
+.dark {
+  .button-primary {
+    &:hover:not(:disabled) {
+      box-shadow: 0 8px 30px rgba(26, 86, 219, 0.5);
+    }
+  }
+
+  .button-gray {
+    background-color: var(--table-header-bg);
+    color: var(--text-primary);
+
+    &:hover:not(:disabled) {
+      background-color: var(--hover-bg);
+    }
+  }
+}

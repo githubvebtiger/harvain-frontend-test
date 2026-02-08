@@ -1,0 +1,56 @@
+@import "../../../../styles/variables";
+@import "../../../../styles/mixin";
+
+.settings-tabs {
+  display: flex;
+  gap: 0;
+  border-bottom: 1px solid var(--divider);
+  width: 100%;
+  margin-bottom: 24px;
+
+  .tab {
+    padding: 0 24px 14px 0;
+    cursor: pointer;
+    position: relative;
+    transition: all 0.2s ease;
+
+    h2 {
+      cursor: pointer;
+      color: var(--text-labels);
+      font-size: 14px;
+      font-weight: 600;
+      text-align: left;
+      margin: 0;
+      transition: color 0.2s ease;
+    }
+
+    &:hover h2 { color: var(--text-secondary); }
+
+    &.active {
+      h2 { color: var(--text-primary); }
+      &::after {
+        content: '';
+        position: absolute;
+        bottom: -1px;
+        left: 0;
+        right: 24px;
+        height: 2px;
+        background: #1A56DB;
+        border-radius: 2px 2px 0 0;
+      }
+    }
+  }
+}
+
+@media (max-width: 880px) {
+  .settings-tabs {
+    width: 100%;
+    .tab {
+      flex: 1;
+      text-align: center;
+      padding: 0 0 14px 0;
+      h2 { text-align: center; font-size: 14px; }
+      &.active::after { right: 0; }
+    }
+  }
+}

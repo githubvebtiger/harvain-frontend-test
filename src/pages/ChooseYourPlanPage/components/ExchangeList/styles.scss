@@ -1,0 +1,27 @@
+@import "../../../../styles/variables";
+.exchange-list{
+  margin-top: 24px;
+  h2 {
+    margin-bottom: 40px;
+  }
+  .exchange-list-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+  .exchange-item{
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    border: 1px solid $soft-gray;
+    border-radius: 32px;
+    padding: 14px 12px;
+  }
+}
+.dark{
+  .exchange-list{
+    .exchange-item{
+      color: $white;
+    }
+  }
+}

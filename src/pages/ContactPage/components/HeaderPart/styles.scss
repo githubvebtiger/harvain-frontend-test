@@ -1,0 +1,143 @@
+@import "../../../../styles/variables";
+@import "../../../../styles/mixin";
+.header-part{
+  margin-top: 64px;
+  display: flex;
+  justify-content: space-between;
+  gap: 48px;
+
+  .left{
+    flex-basis: 50%;
+    h2 {
+      color: $almost-black;
+      @include fluid-font(32px,48px,40px,72px);
+      font-weight: 700;
+      text-align: left;
+      margin-bottom: 16px;
+    }
+    p {
+      color: $gray-fog;
+      @include fluid-font(14px,18px,18px,28px);
+      font-weight: 300;
+      text-align: left;
+
+    }
+
+  }
+  .right {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 20px;
+    h3 {
+      color: $almost-black;
+      @include fluid-font(25px,32px,37.5px,40px);
+      font-size: 25px;
+      font-weight: 700;
+      line-height: 37.5px;
+      text-align: right;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      img {
+        margin-left: 16px;
+      }
+
+    }
+   
+    p {
+      color: #6B7280;
+      font-size: 16px;
+      font-weight: 400;
+      line-height: 24px;
+      text-align: right;
+
+    }
+    a{
+      color: $royal-blue;
+      text-decoration: none;
+      border-bottom: 1px solid $royal-blue;
+
+    }
+    .item{
+       .img-mob{
+      display: none ;
+    }
+    }
+  }
+}
+@media (max-width:1100px) {
+  .header-part{
+    margin: 0 15px;
+    display: block;
+  
+    .right {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 20px;
+
+      
+   
+
+      h3{
+        padding-top: 15px;
+        text-align: left;
+        justify-content: flex-start;
+        img{
+          margin-left: 0;
+        }
+      }
+      p{
+        text-align: left;
+      }
+      .item{
+        .img-mob{
+       display: block ;
+     }
+     }
+      
+      .img-mob-block{
+        display: none ;
+      }
+    }
+  }
+}
+@media (max-width: 500px) {
+  .header-part{
+    .right, .item {
+  
+      a{
+
+        margin-bottom: 25px;
+      }
+  }
+}
+}
+
+@media (max-width: 390px) {
+  .header-part{
+    
+    margin: 0 15px;
+    display: block;
+    
+    .right, .item {
+      display: flex;
+      flex-direction: column;
+      align-items: start;
+      a{
+        margin-top: 10px;
+        margin-bottom: 25px;
+      }
+
+      p{
+        text-align: left;
+      }
+      h3{
+        padding-top: 10px;
+      }
+    
+    }
+  }
+ 
+}

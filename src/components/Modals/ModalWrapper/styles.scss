@@ -1,0 +1,71 @@
+@import "../../../styles/variables";
+
+.modal-wrapper {
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background: $modal-wrapper-overlay;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  z-index: 999999999999;
+
+  & > .content {
+    position: relative;
+    padding: 32px;
+    border-radius: 24px;
+    background: $white;
+    height: auto;
+    width: auto;
+    & *::-webkit-scrollbar {
+      width: 0;
+      height: 0;
+    }
+    & > .close-btn {
+      cursor: pointer;
+      position: absolute;
+      top: 0;
+      right: -38px;
+    }
+  }
+}
+
+@media (max-width: 880px) {
+  .modal-wrapper {
+    background: $white;
+
+    & > .content {
+      border: 1px solid $dusty-gray;
+
+      & > .close-btn {
+        display: flex;
+        justify-content: flex-end;
+        cursor: pointer;
+        position: relative;
+        right: -16px;
+        top: -16px;
+      }
+    }
+  }
+  .dark {
+    .modal-wrapper {
+      background: var(--card-bg);
+    }
+  }
+}
+
+.dark {
+  .modal-wrapper {
+
+
+    & > .content {
+      color: var(--text-primary);
+      border: 1px solid #202536;
+      background: var(--card-bg);
+    }
+  }
+}

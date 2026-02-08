@@ -1,0 +1,91 @@
+@import "../../../styles/variables";
+
+.input-wrapper-custom {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+}
+
+.custom-date-picker {
+  border: 1px solid $soft-gray;
+  border-radius: 8px;
+  height: 49px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  background: $light-fog;
+  padding: 0 16px;
+
+  .rmdp-input {
+    all: unset !important;
+
+    height: 100% !important;
+    width: 100% !important;
+  }
+
+  .rmdp-container {
+    height: 100% !important;
+    width: 100% !important;
+  }
+
+  input {
+    padding: 0 !important;
+    all: unset;
+    box-sizing: border-box;
+    border-radius: 8px;
+    height: 100%;
+    background: $light-fog;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 22.5px;
+    text-align: left;
+    flex: 1 !important;
+  }
+
+  .rmdp-ep-arrow {
+    display: none;
+  }
+
+  .rmdp-calendar {
+    * {
+      color: #444444;
+    }
+  }
+}
+
+.error-message {
+  color: $crimson-red !important;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 22.5px;
+  //margin-left: 16px;
+
+}
+
+.dark {
+  .rmdp-calendar {
+    * {
+      color: #C7C7C7;
+    }
+
+    background: var(--card-bg);
+    border: 1px solid rgba(32, 37, 54, 1);
+  }
+
+  .rmdp-border {
+    border: none;
+  }
+
+  .rmdp-ep-arrow[direction=bottom] {
+    border-top: 1px solid rgba(32, 37, 54, 1);
+  }
+
+  .custom-date-picker {
+    background: var(--card-bg);
+    border: 1px solid rgba(32, 37, 54, 1);
+    color: rgba(157, 157, 161, 1);
+
+  }
+
+
+}

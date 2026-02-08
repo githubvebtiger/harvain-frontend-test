@@ -1,0 +1,78 @@
+@import "../../../../styles/variables";
+@import "../../../../styles/mixin";
+
+.our-interest {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 64px;
+
+  .left {
+    padding-top: 120px;
+    flex-basis: 40%;
+
+    & > * {
+      max-width: 500px;
+    }
+
+    h1 {
+      @include fluid-font(32px, 32px, 48px, 40px);
+      font-weight: 700;
+      text-align: left;
+      margin-bottom: 32px;
+    }
+
+    span {
+      color: $royal-blue;
+    }
+
+    p {
+      @include fluid-font(15px, 14px, 24px, 18px);
+      font-weight: 300;
+      line-height: 24px;
+      text-align: left;
+      margin-bottom: 24px;
+
+    }
+  }
+
+  .right {
+    flex-basis: 60%;
+    display: flex;
+    justify-content: end;
+
+    img {
+      height: 600px;
+    }
+  }
+
+}
+
+@media (max-width: 1200px) {
+  .our-interest {
+    display: flex;
+    flex-direction: column;
+    padding-top: 115px;
+
+    .left {
+      display: flex;
+      margin-top: 0;
+      flex-basis: 100%;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .right {
+      margin-top: 24px;
+      max-width: 100%;
+      flex-basis: 100%;
+      justify-content: center;
+
+      img {
+        object-fit: cover;
+        height: auto;
+        width: 100%;
+      }
+    }
+
+  }
+}

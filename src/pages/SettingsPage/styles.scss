@@ -1,0 +1,200 @@
+@import "../../styles/variables";
+@import "../../styles/mixin";
+
+.settings-wrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+  background: var(--page-bg);
+}
+
+.settings-page {
+  display: flex;
+  flex-direction: column;
+  animation: pageEnter 0.4s ease-out;
+
+  .page-header {
+    margin-bottom: 24px;
+
+    h2 {
+      @include fluid-font(24px, 28px, 28px, 28px);
+      font-weight: 700;
+      text-align: left;
+      margin-bottom: 6px;
+      color: var(--text-primary);
+    }
+
+    .subtitle {
+      font-size: 14px;
+      color: var(--text-subtitle);
+      margin: 0;
+    }
+  }
+
+  .settings-content {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 14px;
+    padding: 28px;
+    box-shadow: var(--card-shadow);
+  }
+}
+
+@keyframes pageEnter {
+  from { opacity: 0; transform: translateY(15px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+// PersonalInfo
+.personal-info {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  width: 100%;
+  gap: 20px;
+
+  .control-input { width: 100%; }
+  .input-wrapper-custom { width: 100%; }
+  .control-input-phone { width: 100%; }
+
+  .field-with-label {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+
+    .field-label {
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--text-labels);
+      letter-spacing: 0.2px;
+      margin-bottom: 7px;
+    }
+  }
+
+  .input-label {
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--text-labels);
+    letter-spacing: 0.2px;
+  }
+
+  .control-input {
+    background: var(--input-bg);
+    border: 1px solid var(--input-border);
+    border-radius: 10px;
+    transition: all 0.2s ease;
+
+    &:hover { border-color: var(--card-hover-border); }
+    &:focus-within {
+      border-color: #1A56DB;
+      box-shadow: 0 0 0 3px var(--focus-ring);
+    }
+
+    input { color: var(--text-values); }
+  }
+
+  .control-input-phone {
+    background: var(--input-bg);
+    border: 1px solid var(--input-border);
+    border-radius: 10px;
+    transition: all 0.2s ease;
+
+    &:hover { border-color: var(--card-hover-border); }
+    &:focus-within {
+      border-color: #1A56DB;
+      box-shadow: 0 0 0 3px var(--focus-ring);
+    }
+
+    input { color: var(--text-values); }
+  }
+
+  #phone-border {
+    border-left: 1px solid var(--input-border);
+  }
+
+  button {
+    max-width: 100%;
+    grid-column: span 2;
+    border-radius: 10px !important;
+    padding: 14px 24px !important;
+    margin-top: 8px;
+  }
+}
+
+// ChangePassword
+.change-password {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 20px;
+
+  .control-input { width: 100%; }
+  .control-input-phone { width: 100%; }
+
+  .input-label {
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--text-labels);
+    letter-spacing: 0.2px;
+  }
+
+  .control-input {
+    background: var(--input-bg);
+    border: 1px solid var(--input-border);
+    border-radius: 10px;
+    transition: all 0.2s ease;
+
+    &:hover { border-color: var(--card-hover-border); }
+    &:focus-within {
+      border-color: #1A56DB;
+      box-shadow: 0 0 0 3px var(--focus-ring);
+    }
+
+    input { color: var(--text-values); }
+  }
+
+  button {
+    max-width: 100%;
+    margin-top: 8px;
+    border-radius: 10px !important;
+    padding: 14px 24px !important;
+  }
+}
+
+// Tabs
+.settings-tabs {
+  border-bottom: 1px solid var(--divider);
+
+  .tab {
+    h2 {
+      color: var(--text-labels);
+      transition: color 0.2s ease;
+    }
+
+    &:hover h2 { color: var(--text-secondary); }
+
+    &.active {
+      h2 { color: var(--text-primary); }
+      &::after { background: #1A56DB; }
+    }
+  }
+}
+
+// Mobile
+@media (max-width: 880px) {
+  .settings-page {
+    .settings-content { padding: 20px; }
+  }
+
+  .personal-info {
+    display: flex !important;
+    flex-direction: column;
+    .control-input, .input-wrapper-custom, .control-input-phone, .field-with-label { width: 100% !important; }
+    button { max-width: 100% !important; }
+  }
+
+  .change-password {
+    .control-input, .control-input-phone { width: 100% !important; }
+    button { max-width: 100% !important; }
+  }
+}
