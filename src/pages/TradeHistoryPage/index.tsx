@@ -48,7 +48,7 @@ function TradeCard({
           </span>
         </div>
         <span className={`pnl-value ${isProfitable ? 'positive' : 'negative'}`}>
-          {isProfitable ? '+' : ''}{closing_pnl} USDT
+          {isProfitable && !closing_pnl.startsWith('+') && !closing_pnl.startsWith('-') ? '+' : ''}{closing_pnl}
         </span>
       </div>
 
@@ -56,7 +56,7 @@ function TradeCard({
       <div className="trade-card-details">
         <div className="detail-field">
           <span className="field-label">Deposit</span>
-          <span className="field-value white">{deposit} USDT</span>
+          <span className="field-value white">{deposit}</span>
         </div>
         <div className="detail-field">
           <span className="field-label">Opened</span>
@@ -76,15 +76,15 @@ function TradeCard({
         </div>
         <div className="detail-field">
           <span className="field-label">Commission</span>
-          <span className="field-value">{fee} USDT</span>
+          <span className="field-value">{fee}</span>
         </div>
         <div className="detail-field">
           <span className="field-label">Opening Fee</span>
-          <span className="field-value">{opening_fee} USDT</span>
+          <span className="field-value">{opening_fee}</span>
         </div>
         <div className="detail-field">
           <span className="field-label">Closing Fee</span>
-          <span className="field-value">{closing_fee} USDT</span>
+          <span className="field-value">{closing_fee}</span>
         </div>
       </div>
     </div>
