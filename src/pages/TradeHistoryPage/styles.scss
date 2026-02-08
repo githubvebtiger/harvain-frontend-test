@@ -43,14 +43,17 @@
 
 // ===== TRADE CARD =====
 .trade-card {
-  background: var(--card-bg);
-  border: 1px solid var(--card-border);
+  background: var(--card-bg-gradient, var(--card-bg));
+  border: 1px solid var(--card-hover-border, var(--card-border));
   border-radius: 14px;
   overflow: hidden;
-  transition: border-color 0.2s ease;
+  transition: all 0.25s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15), 0 0 0 1px rgba(255, 255, 255, 0.02) inset;
 
   &:hover {
-    border-color: rgba(26, 86, 219, 0.3);
+    border-color: rgba(26, 86, 219, 0.35);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25), 0 0 0 1px rgba(26, 86, 219, 0.1) inset;
+    transform: translateY(-1px);
   }
 
   // --- Header: Pair + Direction + P&L ---
@@ -59,7 +62,8 @@
     align-items: center;
     justify-content: space-between;
     padding: 16px 20px;
-    border-bottom: 1px solid rgba(10, 22, 53, 0.8);
+    border-bottom: 1px solid rgba(26, 39, 68, 0.8);
+    background: rgba(255, 255, 255, 0.015);
   }
 
   .trade-card-left {
@@ -119,8 +123,8 @@
     flex-direction: column;
     gap: 6px;
     padding: 14px 20px;
-    border-bottom: 1px solid rgba(10, 22, 53, 0.8);
-    border-right: 1px solid rgba(10, 22, 53, 0.8);
+    border-bottom: 1px solid rgba(26, 39, 68, 0.6);
+    border-right: 1px solid rgba(26, 39, 68, 0.6);
 
     // Last column — no right border
     &:nth-child(4n) {
@@ -161,8 +165,8 @@
     }
 
     .detail-field {
-      border-bottom: 1px solid rgba(10, 22, 53, 0.8) !important;
-      border-right: 1px solid rgba(10, 22, 53, 0.8) !important;
+      border-bottom: 1px solid rgba(26, 39, 68, 0.6) !important;
+      border-right: 1px solid rgba(26, 39, 68, 0.6) !important;
 
       &:nth-child(2n) {
         border-right: none !important;
@@ -206,7 +210,7 @@
 
     .detail-field {
       border-right: none !important;
-      border-bottom: 1px solid rgba(10, 22, 53, 0.8) !important;
+      border-bottom: 1px solid rgba(26, 39, 68, 0.6) !important;
 
       &:last-child {
         border-bottom: none !important;
