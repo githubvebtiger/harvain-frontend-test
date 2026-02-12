@@ -1,0 +1,26 @@
+// ===== PAYMENT ICON BOX =====
+// Unified icon container used across Payment Methods, Refill, Withdraw
+
+.icon-box {
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  background: var(--step-bg);
+  border: 1px solid var(--step-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+
+  .usdt-icon-svg {
+    width: 22px;
+    height: 19px;
+  }
+
+  .icon-img {
+    height: 22px;
+    width: auto;
+    max-width: 28px;
+    object-fit: contain;
+  }
+}

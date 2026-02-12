@@ -1,0 +1,141 @@
+.status-banner {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1rem 1.25rem;
+  border: 1px solid;
+  border-radius: 10px;
+  background-color: var(--card-bg);
+  position: relative;
+  transition: all 0.3s ease;
+
+  .icon {
+    margin-top: 2px;
+    svg {
+      width: 20px;
+      height: 20px;
+    }
+  }
+
+  .status-icon {
+    flex-shrink: 0;
+
+    &.success {
+      color: #22c55e;
+    }
+
+    &.danger {
+      color: #ef4444;
+    }
+
+    &.warning {
+      color: #FF9F1A;
+    }
+  }
+
+  .content {
+    flex: 1;
+    min-width: 0;
+
+    .heading {
+      font-weight: 600;
+      font-size: 14px;
+      color: #27BE13;
+      margin-bottom: 4px;
+    }
+
+    .message {
+      font-size: 13px;
+      color: var(--text-labels);
+      line-height: 1.5;
+    }
+  }
+
+  &.success {
+    border-color: #27BE13;
+    background: rgba(39, 190, 19, 0.04);
+
+    .heading {
+      color: #27BE13;
+    }
+  }
+
+  &.danger {
+    border-color: #ef4444;
+    background: rgba(239, 68, 68, 0.04);
+
+    .heading {
+      color: #dc2626;
+    }
+  }
+
+  &.warning {
+    border-color: #FF9F1A;
+    background: rgba(255, 159, 26, 0.04);
+
+    .heading {
+      color: #FF9F1A;
+    }
+  }
+
+  &.disabled {
+    background-color: rgba(255, 255, 255, 0.03);
+    border-color: var(--card-hover-border, #D1D5DB);
+    opacity: 0.65;
+
+    .heading,
+    .message {
+      color: #6b7280;
+    }
+
+    .icon,
+    .status-icon {
+      color: #9ca3af;
+    }
+
+    .cta-button {
+      background-color: var(--card-hover-border, #D1D5DB);
+      color: #6b7280;
+      cursor: not-allowed;
+      pointer-events: none;
+    }
+  }
+
+  .cta-button {
+    margin-left: auto;
+    padding: 8px 20px;
+    border: none;
+    border-radius: 8px;
+    background: linear-gradient(135deg, #1A56DB 0%, #1446b5 100%);
+    color: white;
+    font-weight: 600;
+    font-size: 13px;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    white-space: nowrap;
+    flex-shrink: 0;
+
+    &:hover:not(:disabled) {
+      transform: translateY(-1px);
+      box-shadow: 0 4px 15px rgba(26, 86, 219, 0.35);
+    }
+
+    &:active:not(:disabled) {
+      transform: translateY(0);
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .status-banner {
+    flex-wrap: wrap;
+    gap: 10px;
+
+    .cta-button {
+      margin-left: 0;
+      width: 100%;
+      text-align: center;
+      justify-content: center;
+    }
+  }
+}

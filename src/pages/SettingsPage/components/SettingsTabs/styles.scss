@@ -1,0 +1,26 @@
+.settings-tabs {
+  display: flex;
+  gap: 6px;
+
+  .settings-tab {
+    padding: 7px 16px;
+    border-radius: 7px;
+    border: none;
+    background: transparent;
+    color: var(--text-subtitle);
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+
+    &:hover:not(.active) {
+      color: var(--text-values);
+      background: var(--input-bg);
+    }
+
+    &.active {
+      background: var(--accent-blue);
+      color: #FFFFFF;
+    }
+  }
+}

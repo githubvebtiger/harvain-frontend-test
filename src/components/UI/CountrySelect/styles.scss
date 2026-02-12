@@ -1,0 +1,48 @@
+@import "../../../styles/variables";
+
+.countries-dropdown {
+  position: relative;
+
+
+  &__dropdown {
+    border: 1px solid $soft-gray;
+    z-index: 100;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    max-height: 250px;
+    overflow-y: auto;
+    border-radius: 4px;
+    background: $light-fog;
+    visibility: visible;
+    opacity: 1;
+    transition: opacity 0.3s, height 0.3s;
+
+    &-item {
+      display: flex;
+      align-items: center;
+      padding: 5px 14px;
+      transition: background-color 0.25s;
+      cursor: pointer;
+
+      &:hover {
+        background-color: $soft-gray;
+      }
+
+      img {
+        width: 20px;
+        height: 20px;
+        margin-right: 8px;
+      }
+    }
+  }
+}
+
+.dark {
+  .countries-dropdown {
+    &__dropdown {
+      background: var(--card-bg);
+    }
+  }
+}

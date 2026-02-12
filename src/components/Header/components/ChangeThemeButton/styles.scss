@@ -1,0 +1,25 @@
+@import "../../../../styles/variables";
+
+.theme-navbar {
+  display: flex;
+  justify-content: center;
+  gap: 34px;
+}
+
+.change_theme {
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(180deg, rgba(26, 86, 219, 0.1) 0%, rgba(26, 86, 219, 0) 100%);
+}
+
+.is-active-theme {
+  &.active-theme {
+    border: 2px solid rgba(164, 202, 254, 1);
+    background: none;
+
+  }
+}

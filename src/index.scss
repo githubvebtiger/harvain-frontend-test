@@ -1,0 +1,77 @@
+@import "./styles/reset";
+@import "./styles/variables";
+@import "./styles/global";
+
+/* В файле стилей */
+.no-scroll {
+  overflow: hidden;
+  max-height: 100vh;
+}
+
+/* ===== LIGHT THEME (default) ===== */
+:root {
+  --page-bg: #F8F9FB;
+  --card-bg: #FFFFFF;
+  --card-bg-gradient: #FFFFFF;
+  --card-border: #E5E7EB;
+  --card-hover-border: #D1D5DB;
+  --table-header-bg: #F3F4F6;
+  --input-bg: #F9FAFB;
+  --input-border: #D1D5DB;
+  --text-primary: #111827;
+  --text-values: #374151;
+  --text-subtitle: #6B7280;
+  --text-labels: #9CA3AF;
+  --text-secondary: #6B7280;
+  --divider: #E5E7EB;
+  --skeleton-base: #E5E7EB;
+  --skeleton-shine: #F3F4F6;
+  --accent-blue: #1A56DB;
+  --accent-blue-hover: #1E40AF;
+  --focus-ring: rgba(26, 86, 219, 0.15);
+  --hover-bg: rgba(26, 86, 219, 0.04);
+  --card-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+  --balance-gradient-1: #3B6FD4;
+  --balance-gradient-2: #2B5BB5;
+  --step-bg: rgba(0, 0, 0, 0.04);
+  --step-border: rgba(0, 0, 0, 0.12);
+  --step-text: rgba(0, 0, 0, 0.2);
+  --step-line: rgba(0, 0, 0, 0.1);
+  --shimmer: rgba(0, 0, 0, 0.05);
+}
+
+/* ===== DARK THEME ===== */
+.dark {
+  --page-bg: #060819;
+  --card-bg: #040D25;
+  --card-bg-gradient: linear-gradient(135deg, #0A1628 0%, #0F1D32 100%);
+  --card-border: #0A1635;
+  --card-hover-border: #1A2744;
+  --table-header-bg: #071020;
+  --input-bg: #0A1328;
+  --input-border: #111D38;
+  --text-primary: #FFFFFF;
+  --text-values: #E5E7EB;
+  --text-subtitle: #8C89B4;
+  --text-labels: #6B7280;
+  --text-secondary: #9CA3AF;
+  --divider: #0A1635;
+  --skeleton-base: #0A1330;
+  --skeleton-shine: #1a1a3e;
+  --accent-blue: #1A56DB;
+  --accent-blue-hover: #1E40AF;
+  --focus-ring: rgba(26, 86, 219, 0.12);
+  --hover-bg: rgba(26, 86, 219, 0.06);
+  --card-shadow: none;
+  --balance-gradient-1: #181873;
+  --balance-gradient-2: #2E2ED9;
+  --step-bg: rgba(255, 255, 255, 0.06);
+  --step-border: rgba(255, 255, 255, 0.15);
+  --step-text: rgba(255, 255, 255, 0.25);
+  --step-line: rgba(255, 255, 255, 0.12);
+  --shimmer: rgba(255, 255, 255, 0.1);
+}
+
+html, body {
+  background: var(--page-bg);
+}

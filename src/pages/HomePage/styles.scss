@@ -1,0 +1,20 @@
+@import "../../styles/variables";
+.home-page{
+
+}
+.dark{
+    .home-page-wrapper{
+        background: var(--page-bg);
+    
+         h1{
+          color: $white;
+         }
+         p{
+          color: $white;
+         }
+         h2{
+            color: $white;
+         }
+        }
+      
+}

@@ -1,0 +1,133 @@
+@import "../../../../styles/variables";
+@import "../../../../styles/mixin";
+.answers{
+
+    h2{
+        @include fluid-font(32px,40px,40px,48.41px);
+        font-weight: 700;
+        text-align: left;
+        color:$almost-black ;
+        margin-bottom: 24px;
+    }
+    li{
+        margin-bottom: 16px;
+    }
+    h3{
+        margin-bottom: 8px;
+        @include fluid-font(16px,20px,24px,24.2px);
+        
+        font-weight: 500;
+   
+        text-align: left;
+
+        color: $almost-black;
+    
+
+        & > p{
+            @include fluid-font(14px,16px,18px,19.36px);
+           
+                font-weight: 300;
+              
+                text-align: left;
+
+                color: $black;
+        }
+    }
+    a{
+       
+        font-weight: 500;
+       
+        text-align: left;
+        color: $black;
+        border-bottom: 1px solid $black;
+        text-decoration: none;
+    }
+
+}
+@media(max-width:1616px){
+    .answers{
+        width: 70%;
+        overflow-x: hidden;
+
+
+        img {
+            border-radius: 15px;
+            margin-bottom: 24px;
+            width: 100%;
+            height: 382px;
+            object-fit: cover;
+            justify-content: center;
+            align-items: center;
+            display: block;  
+        }
+    }
+}
+@media(max-width:840px){
+    .answers{
+        width: 100%;
+
+        width: 100%;
+        padding: 0 10px;
+        display: flex;
+        flex-direction: column;
+        align-items: center; 
+        
+      
+     
+         h2{
+            margin-bottom: 0;
+         }
+        img {
+            border-radius: 15px;
+            margin-bottom: 24px;
+            width: 100%;
+            height: 382px;
+            object-fit: cover;
+            justify-content: center;
+            align-items: center;
+            display: block;  
+        }
+        h3{
+            
+            padding-top: 20px;
+        }
+        a{
+            border-bottom:none;
+        }
+       
+ 
+   
+}
+}
+@media (max-width:390px){
+    .answers {
+        width: 100%;
+        padding: 0 10px;
+        display: flex;
+        flex-direction: column;
+        align-items: center; 
+        
+      
+     
+         h2{
+            margin-bottom: 0;
+         }
+        img {
+            border-radius: 15px;
+            margin-bottom: 24px;
+            width: 100%;
+            height: 382px;
+            object-fit: cover;
+            justify-content: center;
+            align-items: center;
+            display: block;  
+        }
+        h3{
+            
+            padding-top: 20px;
+        }
+        a{
+            border-bottom:none;
+        }
+    }
+}

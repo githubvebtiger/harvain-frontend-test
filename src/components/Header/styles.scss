@@ -1,0 +1,100 @@
+@import "../../styles/variables";
+.no-container{
+  padding: 0 32px;
+}
+.header{
+  display: flex;
+  justify-content: space-between;
+  height: 80px;
+  align-items: center;
+  width: 100%;
+
+  .logo-link {
+    display: flex;
+    cursor: pointer;
+    transition: transform 0.3s ease, filter 0.3s ease;
+
+    &:hover {
+      animation: wiggle 0.5s ease-in-out;
+      filter: brightness(1.2) drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
+    }
+
+    &:active {
+      transform: scale(1.05);
+    }
+
+    img {
+      display: block;
+    }
+  }
+
+  @keyframes wiggle {
+    0% { transform: rotate(0deg) scale(1.1); }
+    20% { transform: rotate(-5deg) scale(1.1); }
+    40% { transform: rotate(5deg) scale(1.1); }
+    60% { transform: rotate(-3deg) scale(1.1); }
+    80% { transform: rotate(3deg) scale(1.1); }
+    100% { transform: rotate(0deg) scale(1.1); }
+  }
+
+  &.absolute{
+    z-index: 100;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    height: 80px;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 120px;
+      background: linear-gradient(180deg, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0.3) 50%, transparent 100%);
+      z-index: -1;
+      pointer-events: none;
+    }
+  }
+  a {
+    text-decoration: none;
+    color: $bright-blue;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+  .link {
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
+  }
+  a:active, .link:active {
+    color: $royal-blue;
+  }
+
+  a:hover, .link:hover {
+    color: $royal-blue;
+  }
+
+  // White links only when header is over video (absolute position)
+  &.absolute {
+    a {
+      color: $white;
+    }
+    a:hover, a:active {
+      color: $bright-blue;
+    }
+  }
+}
+
+// Dark theme - white links
+.dark {
+  .header {
+    a {
+      color: $white;
+    }
+    a:hover, a:active {
+      color: $bright-blue;
+    }
+  }
+}

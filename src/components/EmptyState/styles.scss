@@ -1,0 +1,87 @@
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 48px 24px;
+  text-align: center;
+  min-height: 300px;
+
+  &__icon {
+    color: #6366f1;
+    margin-bottom: 24px;
+    animation: float 3s ease-in-out infinite;
+    
+    svg {
+      width: 80px;
+      height: 80px;
+    }
+  }
+
+  &__title {
+    font-size: 20px;
+    font-weight: 600;
+    margin: 0 0 8px 0;
+    color: var(--text-primary, #1a1a2e);
+  }
+
+  &__description {
+    font-size: 14px;
+    color: var(--text-secondary, #6b7280);
+    margin: 0 0 24px 0;
+    max-width: 300px;
+    line-height: 1.5;
+  }
+
+  &__action {
+    background: linear-gradient(135deg, #6366f1 0%, #4f46e5 100%);
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(99, 102, 241, 0.3);
+    }
+    
+    &:active {
+      transform: translateY(0);
+    }
+  }
+}
+
+// Dark theme
+.dark {
+  .empty-state {
+    &__icon {
+      color: #818cf8;
+    }
+    
+    &__title {
+      color: #f3f4f6;
+    }
+    
+    &__description {
+      color: #9ca3af;
+    }
+    
+    &__action {
+      background: linear-gradient(135deg, #6366f1 0%, #4f46e5 100%);
+    }
+  }
+}
+
+// Float animation
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}

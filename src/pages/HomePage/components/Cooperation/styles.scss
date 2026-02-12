@@ -1,0 +1,66 @@
+@import "../../../../styles/variables";
+@import "../../../../styles/mixin";
+
+.cooperation {
+  display: flex;
+  margin-top: 100px;
+  gap: 42px;
+
+  h1 {
+    text-transform: capitalize;
+    @include fluid-font(32px, 32px, 48px, 40px);
+    font-weight: 700;
+    text-align: left;
+    margin-bottom: 32px;
+  }
+
+  span {
+    color: $electric-blue;
+  }
+
+  p {
+    @include fluid-font(15px, 14px, 24px, 18px);
+    font-weight: 300;
+    text-align: left;
+
+  }
+
+  .right {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 1200px) {
+  .cooperation {
+
+    display: flex;
+    flex-direction: column-reverse;
+    margin-top: 82px;
+
+    .left {
+      display: flex;
+      margin-top: 0;
+      flex-basis: 100%;
+      flex-direction: column;
+      align-items: center;
+
+      img {
+        object-fit: cover;
+        height: auto;
+        width: 100%;
+      }
+    }
+
+    .right {
+      margin-top: 24px;
+      max-width: 100%;
+      flex-basis: 100%;
+      justify-content: center;
+
+
+    }
+
+  }
+}

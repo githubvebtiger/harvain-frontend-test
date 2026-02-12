@@ -1,0 +1,106 @@
+@import "../../../../styles/variables";
+
+.faq-sidebar {
+  //flex-basis: 50%;
+  border: 1px solid $light-gray;
+
+  max-width: 360px;
+  min-width: 360px;
+  border-radius: 24px;
+  padding-top: 25px;
+  padding-right: 2px;
+  max-height: 500px;
+  padding-bottom: 25px;
+  position: sticky;
+  top: 0; /* Когда прилипает к верху */
+}
+
+.faq-sidebar-wrapper {
+
+  max-height: 450px;
+  overflow-y: auto;
+}
+
+.faq-sidebar-container {
+  margin: 0px 42px;
+
+  h4:nth-child(n+2) {
+    margin-top: 16px;
+  }
+
+  ul {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  h4 {
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 19.36px;
+    text-align: left;
+
+    color: $almost-black;
+
+    margin-bottom: 8px;
+  }
+
+  li {
+    padding-left: 16px;
+
+    a {
+      text-decoration: none;
+      font-size: 16px;
+      font-weight: 300;
+      line-height: 24px;
+      text-align: left;
+
+      color: $slate-gray;
+    }
+  }
+}
+
+/* Весь скроллбар для .faq-sidebar */
+.faq-sidebar-wrapper::-webkit-scrollbar {
+  width: 4px; /* ширина полосы прокрутки */
+
+}
+
+/* Дорожка скроллбара */
+.faq-sidebar-wrapper::-webkit-scrollbar-track {
+  background: $white; /* цвет фона дорожки */
+  border-radius: 5px;
+
+}
+
+/* Ползунок */
+.faq-sidebar-wrapper::-webkit-scrollbar-thumb {
+  background-color: $subtle-gray; /* цвет ползунка */
+  border-radius: 5px;
+  border: 2px solid $subtle-gray; /* пространство вокруг ползунка */
+  background-clip: content-box;
+
+}
+
+/* Ползунок при наведении */
+.faq-sidebar-wrapper::-webkit-scrollbar-thumb:hover {
+  background-color: #555; /* цвет ползунка при наведении */
+}
+
+@media (max-width:1100px){
+  .faq-sidebar{
+    max-width: 310px;
+    min-width: 310px;
+  }
+}
+
+@media(max-width:840px){
+  .faq-sidebar{
+    display: none;
+}
+}
+@media (max-width:390px){
+  .faq-sidebar{
+      display: none;
+  }
+}

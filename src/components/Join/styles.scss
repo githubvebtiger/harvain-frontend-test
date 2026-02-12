@@ -1,0 +1,33 @@
+@import "../../styles/variables";
+.join{
+    background:
+  radial-gradient(91.37% 598.89% at 96.69% 9.66%, #2E3BEF 0%, rgba(128, 134, 229, 1) 0.01%, #2E3BEF 54.69%, rgba(129, 136, 228, 1) 100%);
+
+  border-radius: 32px;
+  margin-top: 100px;
+  h2{
+    color: $white;
+
+    font-size: 30px;
+    font-weight: 700;
+    line-height: 36px;
+    text-align: left;
+
+    }
+      p{
+    color: $soft-gray ;
+    margin-top: 16px;
+    margin-bottom: 32px;
+
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 24px;
+    text-align: left;
+  }
+  div{
+    padding: 32px;
+  }
+  button{
+    padding: 16px 20px;
+  }
+}

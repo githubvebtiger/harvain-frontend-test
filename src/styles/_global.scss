@@ -1,0 +1,21 @@
+@import "variables";
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+.container {
+  max-width: 1504px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+* {
+  font-family: "Inter", sans-serif!important;
+}
+html{
+  overscroll-behavior: none;
+}
+.pointer{
+  cursor: pointer;
+}
+body {
+  overscroll-behavior: none;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
