@@ -11,6 +11,7 @@ type Props = {
   required?: boolean;
   placeholder?: string;
   errorMessage?: string | null;
+  label?: string;
 };
 
 export default function PasswordInput({
@@ -20,8 +21,8 @@ export default function PasswordInput({
                                         id,
                                         required = false,
                                         placeholder,
-                                        errorMessage
-
+                                        errorMessage,
+                                        label,
                                       }: Props) {
   const [showPassword, setShowPassword] = useState(false)
 
@@ -37,6 +38,7 @@ export default function PasswordInput({
            name={name} id={id}
            required={required}
            placeholder={placeholder || 'Password'}
+           label={label}
            endIcon={
             showPassword
               ? (isDarkTheme ? DarkPasswordClose  : PasswordHideIcon)

@@ -1,45 +1,26 @@
-@import "../../../../styles/variables";
-@import "../../../../styles/mixin";
-
 .settings-tabs {
   display: flex;
-  gap: 48px;
-  border-bottom: 2px solid $soft-gray;
-  width: fit-content;
+  gap: 6px;
 
-  h2 {
+  .settings-tab {
+    padding: 7px 16px;
+    border-radius: 7px;
+    border: none;
+    background: transparent;
+    color: var(--text-subtitle);
+    font-size: 13px;
+    font-weight: 600;
     cursor: pointer;
-    color: $mint-gray;
-    @include fluid-font(16px,24px,24px,32px);
+    transition: all 0.2s ease;
 
-    font-weight: 700;
-    text-align: left;
-    padding-bottom: 8px;
-  }
-
-  .active {
-    position: relative;
-
-    h2 {
-      color: $black;
+    &:hover:not(.active) {
+      color: var(--text-values);
+      background: var(--input-bg);
     }
 
-    &::before {
-      content: ' ';
-      position: absolute;
-      bottom: -2px;
-      height: 2px;
-      width: 100%;
-      background: $royal-blue;
-      left: 0;
-      right: 0;
+    &.active {
+      background: var(--accent-blue);
+      color: #FFFFFF;
     }
-  }
-}
-
-@media (max-width: 880px) {
-  .settings-tabs {
-    width: 100%;
-    justify-content: space-between;
   }
 }

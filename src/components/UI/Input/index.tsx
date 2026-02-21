@@ -18,6 +18,7 @@ type Props = {
   onClick?: () => void;
   errorMessage?: string | null;
   className?: string;
+  label?: string;
 };
 
 export default function Input({
@@ -37,9 +38,11 @@ export default function Input({
   onClick,
   errorMessage,
   className,
+  label,
 }: Props) {
   return (
     <div className="input-wrapper-custom">
+      {label && <label className="input-label">{label}</label>}
       <div className="control-input" onClick={onClick}>
         {startIcon && (
           <img

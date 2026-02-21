@@ -32,6 +32,15 @@ export const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
     }
   }, []);
 
+  // Apply dark class to body for portaled components (tooltips, modals)
+  useEffect(() => {
+    if (theme === "dark") {
+      document.body.classList.add("dark");
+    } else {
+      document.body.classList.remove("dark");
+    }
+  }, [theme]);
+
   const toggleTheme = useCallback(() => {
     setTheme((prevTheme) => {
       const newTheme = prevTheme === "light" ? "dark" : "light";

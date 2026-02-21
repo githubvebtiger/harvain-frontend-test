@@ -4,19 +4,6 @@ import './styles.scss';
 import { ROUTES } from '../../../../components/Navigation';
 
 type Props = {};
-type TabProps = {
-  title: string;
-  isActive: boolean;
-  onClick: () => void;
-};
-
-function Tab(props: TabProps) {
-  return (
-    <div className={`tab ${props.isActive ? 'active' : ''}`} onClick={props.onClick}>
-      <h2>{props.title}</h2>
-    </div>
-  );
-}
 
 export default function SettingsTabs(props: Props) {
   const navigate = useNavigate();
@@ -33,7 +20,6 @@ export default function SettingsTabs(props: Props) {
     }
   }, [activeTab]);
 
-
   useEffect(() => {
     const path = location.pathname.split('/')[2];
     setActiveTab(path);
@@ -41,16 +27,18 @@ export default function SettingsTabs(props: Props) {
 
   return (
     <div className="settings-tabs">
-      <Tab
-        title="Personal info"
-        isActive={activeTab === 'personal-info'}
+      <button
+        className={`settings-tab ${activeTab === 'personal-info' ? 'active' : ''}`}
         onClick={() => onHandleActiveTab('personal-info')}
-      />
-      <Tab
-        title="Change password"
-        isActive={activeTab === 'change-password'}
+      >
+        Personal Info
+      </button>
+      <button
+        className={`settings-tab ${activeTab === 'change-password' ? 'active' : ''}`}
         onClick={() => onHandleActiveTab('change-password')}
-      />
+      >
+        Change Password
+      </button>
     </div>
   );
 }

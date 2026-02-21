@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import "./styles.scss";
+import "../../styles.scss";
 import Input from "../../../../components/UI/Input";
 import Button from "../../../../components/UI/Button";
 import PhoneInput from "../../../../components/UI/PhoneInput";
@@ -47,7 +47,6 @@ export default function PersonalInfo(props: Props) {
       satellite.last_name && setSurname(satellite.last_name);
       satellite.city && setCity(satellite.city);
       satellite.address && setAddress(satellite.address);
-
       satellite.email && setEmail(satellite.email);
       satellite.country && setCountry(satellite.country);
       satellite.born && setDate(satellite.born);
@@ -55,20 +54,16 @@ export default function PersonalInfo(props: Props) {
   }, []);
 
   const validationSchema = Yup.object().shape({
-    name: Yup.string().required("First name is required"),
-    surname: Yup.string().required("Last name is required"),
-    city: Yup.string().required("City is required"),
+    name: Yup.string(),
+    surname: Yup.string(),
+    city: Yup.string(),
     phone: Yup.string()
       .matches(/^\+?[0-9 ]*$/, "Phone number is not valid")
-      .max(10, "Phone number is not valid")
-      .required("Phone number is required"),
-    address: Yup.string().required("Address is required"),
+      .max(10, "Phone number is not valid"),
+    address: Yup.string(),
     email: Yup.string()
-      .email("Invalid email format")
-      .required("Email is required"),
-    date: Yup.string()
-      .matches(/^\d{4}\-\d{2}\-\d{2}$/, "Date must be in format YYYY-MM-DD")
-      .required("Date is required"),
+      .email("Invalid email format"),
+    date: Yup.string(),
   });
 
   const onHandleCountyCode = (value: string) => {
@@ -107,7 +102,7 @@ export default function PersonalInfo(props: Props) {
       last_name: surname,
       country,
       city,
-      born: moment(date).format("YYYY-MM-DD"),
+      born: date ? moment(date).format("YYYY-MM-DD") : "",
       address,
       phone: countryCode + phone,
       email,
@@ -119,97 +114,107 @@ export default function PersonalInfo(props: Props) {
         .then((data) => {
           data && saveSatellite(data);
         })
-        .catch(() => {
-          // Error already shown via toast in interceptor
-        });
+        .catch(() => {});
     }
   };
 
   return (
     <div className="personal-info">
-      <Input
-        placeholder="First name"
-        value={name}
-        onChange={(e) => {
-          setName(e.target.value);
-          setErrors((prev: any) => ({ ...prev, name: null }));
-        }}
-        errorMessage={errors.name}
-      />
-      <Input
-        placeholder="Last name"
-        value={surname}
-        onChange={(e) => {
-          setSurname(e.target.value);
-          setErrors((prev: any) => ({ ...prev, surname: null }));
-        }}
-        errorMessage={errors.surname}
-      />
-      <CountrySelect
-        placeholder="Country"
-        value={country}
-        onCountrySelect={setCountry}
-      />
-      <Input
-        placeholder="City"
-        value={city}
-        onChange={(e) => {
-          setCity(e.target.value);
-          setErrors((prev: any) => ({ ...prev, city: null }));
-        }}
-        errorMessage={errors.city}
-      />
-      <Input
-        placeholder="Your address"
-        value={address}
-        onChange={(e) => {
-          setAddress(e.target.value);
-          setErrors((prev: any) => ({ ...prev, address: null }));
-        }}
-        errorMessage={errors.address}
-      />
-      <CustomDatePicker
-        placeholder="Date of birth"
-        onChange={setDate}
-        errorMessage={errors.date}
-        value={date}
-      />
-      {/*<Input*/}
-      {/*  placeholder="YYYY-MM-DD"*/}
-      {/*  value={date}*/}
-      {/*  onChange={(e) => {*/}
-      {/*    setDate(e.target.value);*/}
-      {/*    setErrors((prev: any) => ({...prev, date: null}));*/}
-      {/*  }}*/}
-      {/*  errorMessage={errors.date}*/}
-      {/*/>*/}
-      <Input
-        placeholder="Email address"
-        type="email"
-        value={email}
-        onChange={(e) => {
-          setEmail(e.target.value);
-          setErrors((prev: any) => ({ ...prev, email: null }));
-        }}
-        errorMessage={errors.email}
-      />
-      <PhoneInput
-        id="phone-border"
-        countryCode={countryCode}
-        onChangeCode={onHandleCountyCode}
-        placeholder=" 00 000 000 00"
-        value={phone}
-        onChange={(e) => {
-          setPhone(e.target.value);
-          setErrors((prev: any) => ({ ...prev, phone: null }));
-        }}
-        errorMessage={errors.phone}
-      />
-      <Button
-        label="Add information"
-        onClick={onHandlePersonalInfo}
-        fullWidth
-      />
+      <div className="settings-fields-grid">
+        <Input
+          label="First Name"
+          placeholder="Enter first name"
+          value={name}
+          onChange={(e) => {
+            setName(e.target.value);
+            setErrors((prev: any) => ({ ...prev, name: null }));
+          }}
+          errorMessage={errors.name}
+        />
+        <Input
+          label="Last Name"
+          placeholder="Enter last name"
+          value={surname}
+          onChange={(e) => {
+            setSurname(e.target.value);
+            setErrors((prev: any) => ({ ...prev, surname: null }));
+          }}
+          errorMessage={errors.surname}
+        />
+        <Input
+          label="Email"
+          placeholder="Email address"
+          type="email"
+          value={email}
+          onChange={(e) => {
+            setEmail(e.target.value);
+            setErrors((prev: any) => ({ ...prev, email: null }));
+          }}
+          errorMessage={errors.email}
+        />
+        <div className="field-with-label">
+          <label className="field-label">Phone</label>
+          <PhoneInput
+            id="phone-border"
+            countryCode={countryCode}
+            onChangeCode={onHandleCountyCode}
+            placeholder=" 00 000 000 00"
+            value={phone}
+            onChange={(e) => {
+              setPhone(e.target.value);
+              setErrors((prev: any) => ({ ...prev, phone: null }));
+            }}
+            errorMessage={errors.phone}
+          />
+        </div>
+        <div className="field-with-label">
+          <label className="field-label">Country</label>
+          <CountrySelect
+            placeholder="Country"
+            value={country}
+            onCountrySelect={setCountry}
+          />
+        </div>
+        <Input
+          label="City"
+          placeholder="Enter city"
+          value={city}
+          onChange={(e) => {
+            setCity(e.target.value);
+            setErrors((prev: any) => ({ ...prev, city: null }));
+          }}
+          errorMessage={errors.city}
+        />
+        <Input
+          label="Address"
+          placeholder="Your address"
+          value={address}
+          onChange={(e) => {
+            setAddress(e.target.value);
+            setErrors((prev: any) => ({ ...prev, address: null }));
+          }}
+          errorMessage={errors.address}
+        />
+        <div className="field-with-label">
+          <label className="field-label">Date of Birth</label>
+          <CustomDatePicker
+            placeholder="DD-MM-YYYY"
+            onChange={(val: string) => {
+              setDate(val);
+              setErrors((prev: any) => ({ ...prev, date: null }));
+            }}
+            errorMessage={errors.date}
+            value={date}
+          />
+        </div>
+      </div>
+
+      <div className="settings-actions">
+        <Button
+          label="Save Changes"
+          onClick={onHandlePersonalInfo}
+        />
+      </div>
     </div>
   );
 }

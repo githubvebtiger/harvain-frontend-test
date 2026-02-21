@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './styles.scss';
+import '../../styles.scss';
 import PasswordInput from '../../../../components/UI/PasswordInput';
 import Button from '../../../../components/UI/Button';
 import { updateSatellitePasswordById } from '../../../../api/satellites';
@@ -62,34 +62,50 @@ export default function ChangePassword() {
 
   return (
     <div className="change-password">
-      <PasswordInput
-        placeholder="Enter your password"
-        value={oldPassword}
-        onChange={(e) => {
-          setOldPassword(e.target.value);
-          setErrors((prev) => ({ ...prev, oldPassword: null }));
-        }}
-        errorMessage={errors.oldPassword}
-      />
-      <PasswordInput
-        placeholder="Enter your new password"
-        value={newPassword}
-        onChange={(e) => {
-          setNewPassword(e.target.value);
-          setErrors((prev) => ({ ...prev, newPassword: null }));
-        }}
-        errorMessage={errors.newPassword}
-      />
-      <PasswordInput
-        placeholder="Repeat new password"
-        value={repeatNewPassword}
-        onChange={(e) => {
-          setRepeatNewPassword(e.target.value);
-          setErrors((prev) => ({ ...prev, repeatNewPassword: null }));
-        }}
-        errorMessage={errors.repeatNewPassword}
-      />
-      <Button label="Change password" onClick={onHandleChangePassword} fullWidth />
+      <div className="settings-fields-single">
+        <PasswordInput
+          label="Current Password"
+          placeholder="Enter your current password"
+          value={oldPassword}
+          onChange={(e) => {
+            setOldPassword(e.target.value);
+            setErrors((prev) => ({ ...prev, oldPassword: null }));
+          }}
+          errorMessage={errors.oldPassword}
+        />
+      </div>
+
+      <div className="settings-divider" />
+
+      <div className="settings-fields-grid">
+        <PasswordInput
+          label="New Password"
+          placeholder="Enter new password"
+          value={newPassword}
+          onChange={(e) => {
+            setNewPassword(e.target.value);
+            setErrors((prev) => ({ ...prev, newPassword: null }));
+          }}
+          errorMessage={errors.newPassword}
+        />
+        <PasswordInput
+          label="Confirm New Password"
+          placeholder="Repeat new password"
+          value={repeatNewPassword}
+          onChange={(e) => {
+            setRepeatNewPassword(e.target.value);
+            setErrors((prev) => ({ ...prev, repeatNewPassword: null }));
+          }}
+          errorMessage={errors.repeatNewPassword}
+        />
+      </div>
+      <div className="password-requirements">
+        <span>8-30 characters, at least one uppercase letter and one digit</span>
+      </div>
+
+      <div className="settings-actions">
+        <Button label="Change Password" onClick={onHandleChangePassword} />
+      </div>
     </div>
   );
 }

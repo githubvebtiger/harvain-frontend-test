@@ -122,6 +122,10 @@ export default function ProfilePage(props: Props) {
 
   // Handler function to open email verification popup
   const handleEmailVerification = () => {
+    if (!email) {
+      toast.error("Please add your email address in Settings first.");
+      return;
+    }
     setIsEmailVerificationPopupOpen(true);
   };
 

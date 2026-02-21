@@ -13,12 +13,13 @@
   }
   
   .email-verification-popup {
-    background: white;
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
     border-radius: 12px;
     width: 100%;
     max-width: 400px;
     margin: 20px;
-    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.2), 0 10px 10px -5px rgba(0, 0, 0, 0.1);
     animation: fadeInScale 0.2s ease-out;
   
     @media (max-width: 480px) {
@@ -28,27 +29,21 @@
   }
   
   @keyframes fadeInScale {
-    from {
-      opacity: 0;
-      transform: scale(0.95);
-    }
-    to {
-      opacity: 1;
-      transform: scale(1);
-    }
+    from { opacity: 0; transform: scale(0.95); }
+    to { opacity: 1; transform: scale(1); }
   }
   
   .popup-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 24px 24px 0 24px;
+    padding: 28px 28px 0 28px;
     
     h3 {
       margin: 0;
-      font-size: 18px;
+      font-size: 20px;
       font-weight: 600;
-      color: #1f2937;
+      color: var(--text-primary);
     }
   
     .close-button {
@@ -56,7 +51,7 @@
       border: none;
       font-size: 24px;
       cursor: pointer;
-      color: #6b7280;
+      color: var(--text-subtitle);
       padding: 0;
       width: 30px;
       height: 30px;
@@ -67,8 +62,8 @@
       transition: all 0.2s ease;
   
       &:hover:not(:disabled) {
-        background-color: #f3f4f6;
-        color: #374151;
+        background-color: var(--input-bg);
+        color: var(--text-primary);
       }
   
       &:disabled {
@@ -79,14 +74,14 @@
   }
   
   .popup-content {
-    padding: 16px 24px 24px 24px;
-    .popup-description {
-        color: #6b7280;
-        font-size: 14px;
-        line-height: 1.5;
-        margin: 0 0 20px 0;
-        text-align: center;
+    padding: 20px 28px 28px 28px;
 
+    .popup-description {
+        color: var(--text-subtitle);
+        font-size: 14px;
+        line-height: 1.6;
+        margin: 0 0 24px 0;
+        text-align: center;
     }
 
     .success-message {
@@ -111,53 +106,54 @@
       .success-text {
         font-size: 18px;
         font-weight: 600;
-        color: #1f2937;
+        color: var(--text-primary);
         margin: 0 0 8px 0;
       }
 
       .success-subtext {
         font-size: 14px;
-        color: #6b7280;
+        color: var(--text-subtitle);
         margin: 0;
         word-break: break-word;
       }
     }
   
     .email-input-container {
-      margin-bottom: 20px;
+      margin-bottom: 24px;
   
       label {
         display: block;
         font-size: 14px;
         font-weight: 500;
-        color: #374151;
+        color: var(--text-values);
         margin-bottom: 6px;
       }
   
       input {
         width: 100%;
-        padding: 12px 16px;
-        border: 1px solid #d1d5db;
+        padding: 14px 16px;
+        border: 1px solid var(--card-border);
         border-radius: 8px;
         font-size: 14px;
         transition: all 0.2s ease;
         box-sizing: border-box;
+        background: var(--input-bg);
+        color: var(--text-primary);
   
         &:focus {
           outline: none;
-          border-color: #3b82f6;
+          border-color: var(--accent-blue);
           box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
         }
   
         &:disabled {
-          background-color: #f9fafb;
+          background-color: var(--input-bg);
           cursor: not-allowed;
           opacity: 0.7;
         }
   
         &.error {
           border-color: #ef4444;
-          
           &:focus {
             border-color: #ef4444;
             box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1);
@@ -165,7 +161,7 @@
         }
   
         &::placeholder {
-          color: #9ca3af;
+          color: var(--text-subtitle);
         }
       }
   
@@ -173,16 +169,16 @@
         display: block;
         color: #ef4444;
         font-size: 12px;
-        margin-top: 4px;
+        margin-top: 6px;
       }
     }
   
     .send-letter-button {
       width: 100%;
-      background-color: #3b82f6;
+      background-color: var(--accent-blue);
       color: white;
       border: none;
-      padding: 12px 16px;
+      padding: 14px 16px;
       border-radius: 8px;
       font-size: 14px;
       font-weight: 500;
@@ -190,7 +186,7 @@
       transition: all 0.2s ease;
   
       &:hover:not(:disabled) {
-        background-color: #2563eb;
+        opacity: 0.9;
         transform: translateY(-1px);
         box-shadow: 0 4px 8px rgba(59, 130, 246, 0.3);
       }
@@ -207,68 +203,13 @@
       }
     }
   }
-  
-  // Dark theme support (optional)
-  .dark-theme {
-    .email-verification-popup {
-      background: #1f2937;
-      color: #f9fafb;
-  
-      .popup-header h3 {
-        color: #f9fafb;
-      }
-  
-      .popup-content {
-        .popup-description {
-          color: #d1d5db;
-        }
-  
-        .email-input-container {
-          label {
-            color: #f3f4f6;
-          }
-  
-          input {
-            background-color: #374151;
-            border-color: #4b5563;
-            color: #f9fafb;
-  
-            &:focus {
-              border-color: #3b82f6;
-              background-color: #374151;
-            }
-  
-            &::placeholder {
-              color: #9ca3af;
-            }
-          }
-        }
-      }
-  
-      .close-button {
-        color: #d1d5db;
-  
-        &:hover:not(:disabled) {
-          background-color: #374151;
-          color: #f3f4f6;
-        }
-      }
-    }
-  }
+
 @keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
 
 @keyframes scaleIn {
-  from {
-    transform: scale(0);
-  }
-  to {
-    transform: scale(1);
-  }
+  from { transform: scale(0); }
+  to { transform: scale(1); }
 }

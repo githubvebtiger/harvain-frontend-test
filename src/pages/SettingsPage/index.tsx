@@ -12,7 +12,6 @@ export const SettingsPage = () => {
   const location = useLocation();
   const [activeTab, setActiveTab] = useState('');
 
-
   useEffect(() => {
     const path = location.pathname.split('/')[2];
     setActiveTab(path);
@@ -25,15 +24,22 @@ export const SettingsPage = () => {
         <Header disableContainer isAuth/>
       </div>
       <WrapperPage>
-        <div>
-          <SettingsTabs/>
-          {activeTab === 'personal-info' && <PersonalInfo/>}
-          {activeTab !== 'personal-info' && <ChangePassword/>}
-
+        <div className="settings-page">
+          <div className="page-header">
+            <h2>Settings</h2>
+            <p className="subtitle">Manage your account preferences and security</p>
+          </div>
+          <div className="settings-card">
+            <div className="settings-card-header">
+              <SettingsTabs/>
+            </div>
+            <div className="settings-card-body">
+              {activeTab === 'personal-info' && <PersonalInfo/>}
+              {activeTab !== 'personal-info' && <ChangePassword/>}
+            </div>
+          </div>
         </div>
       </WrapperPage>
     </div>
   );
 };
-
-
