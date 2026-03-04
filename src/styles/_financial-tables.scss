@@ -101,8 +101,10 @@
   border-radius: 20px;
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 6px;
   white-space: nowrap;
+  min-width: 110px;
 
   &::before {
     content: '';

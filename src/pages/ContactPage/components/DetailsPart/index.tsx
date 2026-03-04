@@ -160,8 +160,6 @@ export default function DetailsPart(props: Props) {
           <Button
             label="Submit"
             onClick={handleSubmit}
-            variant={EButtonType.BUTTON_SECONDARY}
-            icon={BlackRightTopArrowIcon}
           />
         </div>
       </div>
