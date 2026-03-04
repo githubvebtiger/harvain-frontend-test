@@ -14,6 +14,8 @@ import TradeHistoryPage from '../../pages/TradeHistoryPage';
 import RefillPage from '../../pages/RefillPage';
 import WithdrawPage from '../../pages/WithdrawPage';
 import VerifiedPage from '../../pages/VerifiedPage';
+import VerificationDonePage from '../../pages/VerificationDonePage';
+import DashboardPage from '../../pages/DashboardPage';
 
 
 export const ROUTES = {
@@ -25,6 +27,7 @@ export const ROUTES = {
   TERMS_CONDITIONS: '/terms-conditions',
   CHOOSE_YOUR_PLAN: '/choose-your-plan',
 
+  DASHBOARD: '/dashboard',
   PROFILE: '/profile',
   SATELLITES: '/satellites',
   SETTINGS: '/settings',
@@ -35,6 +38,7 @@ export const ROUTES = {
   REFILL: '/refill',
   WITHDRAW: '/withdraw',
   VERIFIED: '/verified',
+  VERIFICATION_DONE: '/verification-done',
   EMAIL_VERIFY: '/verify-email/:token/:hash'
 
 };
@@ -74,6 +78,11 @@ export const routesConfig = [
     path: ROUTES.CHOOSE_YOUR_PLAN,
     component: ChooseYourPlanPage,
     isProtected: false,
+  },
+  {
+    path: ROUTES.DASHBOARD,
+    component: DashboardPage,
+    isProtected: true,
   },
   {
     path: ROUTES.PROFILE,
@@ -123,6 +132,11 @@ export const routesConfig = [
   {
     path: ROUTES.VERIFIED,
     component: VerifiedPage,
+    isProtected: false,
+  },
+  {
+    path: ROUTES.VERIFICATION_DONE,
+    component: VerificationDonePage,
     isProtected: false,
   },
 

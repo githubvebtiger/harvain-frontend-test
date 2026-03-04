@@ -14,7 +14,7 @@
 
 .dark{
     .faq-page-wrapper{
-        background: $dark-bg;
+        background: var(--page-bg);
        
         .faq-sidebar{
             border: 1px rgba(32, 37, 54, 1) solid;
@@ -22,7 +22,7 @@
             .faq-sidebar-wrapper{
                 .faq-sidebar-container{
                     h4{
-                        color: white;
+                        color: var(--text-primary);
                     }
                     a{
                         color: rgba(157, 157, 161, 1);
@@ -32,11 +32,11 @@
         }
         .answers{
             h2{
-                color: white;
+                color: var(--text-primary);
             }
             .answers-list{
                 h3{
-                    color: white;
+                    color: var(--text-primary);
                 }
                 p,a{
                     color: rgba(157, 157, 161, 1);
@@ -49,7 +49,7 @@
             ul{
                 li{
                     h3{
-                        color: white;
+                        color: var(--text-primary);
                     }
                     p{
                         color: rgba(157, 157, 161, 1);

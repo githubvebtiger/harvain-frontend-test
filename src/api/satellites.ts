@@ -8,8 +8,20 @@ export const fetchSatellites = async (): Promise<IResponse> => {
 
     const response = await axiosClient.get(`/api/frontend/client/${userId}/`);
     return { data: response.data, error: null };
-  } catch (error) {
+  } catch (error: any) {
     console.error('Error fetching satellites:', error);
+    // If 404 — user ID is stale after DB restore, clear and redirect to login
+    if (error?.response?.status === 404) {
+      console.warn('User not found (404), clearing stale session data');
+      localStorage.removeItem('userId');
+      localStorage.removeItem('loginId');
+      localStorage.removeItem('satellite');
+      localStorage.removeItem('accessToken');
+      localStorage.removeItem('refreshToken');
+      localStorage.removeItem('clientAccessToken');
+      localStorage.removeItem('clientRefreshToken');
+      window.location.href = '/';
+    }
     return { data: null, error };
   }
 };
@@ -42,6 +54,11 @@ export interface Satellite {
   verify_status: string;
   email_verified: boolean;
   document_verified: boolean;
+  created_at?: string;
+  deposit?: number;
+  deposit_time?: string;
+  migration_time?: string;
+  second_migration_time?: string;
 }
 
 
@@ -52,8 +69,15 @@ export const fetchSatelliteById = async (id: number): Promise<Satellite> => {
     const response = await axiosClient.get<Satellite>(`/api/frontend/satellite/${id}/`);
     localStorage.setItem('satellite', JSON.stringify(response.data));
     return response.data;
-  } catch (error) {
+  } catch (error: any) {
     console.error('Error fetching satellite data:', error);
+    // If 404 — satellite ID is stale, clear and redirect to satellites
+    if (error?.response?.status === 404) {
+      console.warn('Satellite not found (404), clearing stale data');
+      localStorage.removeItem('loginId');
+      localStorage.removeItem('satellite');
+      window.location.href = '/satellites';
+    }
     throw error;
   }
 };

@@ -220,8 +220,8 @@ const Sidebar: React.FC<Props> = (props: Props) => {
             );
           })}
         </div>
-        <div className="sidebar-footer pointer" onClick={handleLogout}>
-          <div>
+        <div className="sidebar-footer" onClick={handleLogout}>
+          <div className="logout-icon">
             <LogoutIcon/>
           </div>
           {drawerOpen && <p>Log out</p>}

@@ -4,17 +4,17 @@
 }
 
 .tooltip-icon {
-  width: 2.1rem;
-  height: 2.1rem;
-  border-radius: 50%;
+  width: 20px;
+  height: 20px;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
+  flex-shrink: 0;
 
-  .icon {
-    width: 2.1rem;
-    height: 2.1rem;
+  img {
+    width: 18px;
+    height: 18px;
   }
 
   &.success {
@@ -37,28 +37,25 @@
 }
 
 .tooltip-content {
-  position: absolute;
-  left: 40px;
-  top: -20px;
-  transform: translateY(-50%);
-  margin-right: 1rem;
-  z-index: 50;
+  position: fixed;
+  z-index: 9999;
+  pointer-events: none;
 }
 
 .tooltip-box {
   width: max-content;
   max-width: 400px;
   padding: 0.75rem 1rem;
-  border-radius: 24px;
-  border: 2.8px solid;
-  background-color: #fff;
-  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  border-radius: 12px;
+  border: 1.5px solid;
+  background-color: var(--card-bg, #FFFFFF);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
 
   .tooltip-message {
-    font-size: 8px;
+    font-size: 13px;
     font-weight: 400;
-    color: #0f1011;
-    line-height: 100%;
+    color: var(--text-values, #374151);
+    line-height: 1.4;
     white-space: pre-wrap;
   }
 
@@ -111,14 +108,4 @@
   }
 }
 
-// Ensure tooltip message stays dark in dark theme
-.dark {
-  .tooltip-message {
-    color: black !important;
-  }
-
-  // .tooltip-box {
-  //   background-color: #374151;
-  //   border-color: #4b5563;
-  // }
-}
+// Dark theme handled via CSS variables

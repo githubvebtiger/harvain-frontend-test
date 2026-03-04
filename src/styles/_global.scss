@@ -17,16 +17,5 @@ html{
 body {
   overscroll-behavior: none;
   overflow-x: hidden;
-}
-
-// Prevent double vertical scroll on dashboard pages
-.page {
-  overflow: hidden;
-}
-
-html, body {
-  // Prevent body scroll when dashboard is open
-  &:has(.page) {
-    overflow: hidden;
-  }
+  overflow-y: auto;
 }

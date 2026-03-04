@@ -1,24 +1,24 @@
 @import "../../styles/variables";
 .dark{
     .contact-page-wrapper{
-        background: $dark-bg;
+        background: var(--page-bg);
 
         .header-part{
             .left{
                  h2 {
-                    color: white;
+                    color: var(--text-primary);
                 }
                 p{
-                   color: rgba(255, 255, 255, 1);
+                   color: var(--text-primary);
                 }
             }
             .right{
                 .item{
                     h3{
-                        color: white;
+                        color: var(--text-primary);
                     }
                     p{
-                        color: white;
+                        color: var(--text-primary);
                     }
                 }
             }
@@ -26,13 +26,13 @@
         .details-part{
             .right {
                 border: 1px rgba(32, 37, 54, 1) solid;  
-                background: $dark-bg;
+                background: var(--page-bg);
                 .form{
                     
                     .form-field{
                        
                         p{
-                            color:rgba(255, 255, 255, 1);
+                            color: var(--text-primary);
                         }
                         .control-input{
                             background: linear-gradient(90deg, rgba(15, 16, 29, 1) 0%, rgba(27, 33, 51, 1) 100%);

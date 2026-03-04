@@ -29,7 +29,7 @@
 .dark {
   .thank-you-modal-wrapper {
     .content {
-      background: linear-gradient(90deg, #0F101D 0%, #1B2133 100.03%);
+      background: var(--card-bg);
 
     }
   }

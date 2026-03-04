@@ -1,7 +1,4 @@
-import { ProfileIcon, RefillIcon, SettingsIcon, TradeHistoryIcon, WithdrawalIcon, WithdrawIcon } from '../../assets';
-
-
-// import { ROUTES } from '../Navigation';
+import { ProfileIcon, RefillIcon, SettingsIcon, TradeHistoryIcon, WithdrawalIcon, WithdrawIcon, DashboardIcon } from '../../assets';
 
 export type IconItem = {
   id: string;
@@ -13,6 +10,13 @@ export type IconItem = {
 };
 
 export const sideBarParams: (IconItem | { id: string })[] = [
+  {
+    id: 'dashboard',
+    text: 'Dashboard',
+    icon: DashboardIcon,
+    isActive: false,
+    path: '/dashboard'
+  },
   {
     id: 'profile',
     text: 'Profile',
@@ -30,7 +34,7 @@ export const sideBarParams: (IconItem | { id: string })[] = [
   },
   {
     id: 'withdrawal',
-    text: 'Withdrawal requisities',
+    text: 'Payment Methods',
     icon: WithdrawalIcon,
     isActive: false,
     path: '/requisities'

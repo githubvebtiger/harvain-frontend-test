@@ -43,16 +43,16 @@
 
 .dark{
     .terms-page-wrapper{
-        background: $dark-bg;
+        background: var(--page-bg);
 
         .terms_conditions{
             .terms_conditions-title{
-                    color: white;
+                    color: var(--text-primary);
             }
         }
         .terms-text{
             h3{
-                color: white;
+                color: var(--text-primary);
             }
             p{
                 color:rgba(157, 157, 161, 1);
@@ -63,10 +63,10 @@
         }
         .main-terms-conditions{
             h3{
-                color: white;
+                color: var(--text-primary);
             }
             h2{
-                color: white;
+                color: var(--text-primary);
             }
             h4{
                 color:rgba(165, 165, 165, 1);

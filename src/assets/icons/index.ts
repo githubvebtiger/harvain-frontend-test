@@ -44,9 +44,11 @@ import mailSuccessIcon from './mailSuccess.svg'
 import warningIdentityIcon from './warningIdentity.svg'
 import successIdentityIcon from './successIdentity.svg'
 import checkIcon from './check.svg'
+import CalendarIcon from './calendar.svg'
 
 export * from './cryptoIcon'
 export * from './sidebar'
+export * from './crypto'
 export {
   LogoIcon,
   MoonIcon,
@@ -93,6 +95,7 @@ export {
   mailSuccessIcon,
   warningIdentityIcon,
   successIdentityIcon,
-  checkIcon
+  checkIcon,
+  CalendarIcon
 
 };

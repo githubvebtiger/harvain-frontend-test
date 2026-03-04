@@ -42,7 +42,7 @@
 .dark {
   .countries-dropdown {
     &__dropdown {
-      background: $dark-bg;
+      background: var(--card-bg);
     }
   }
 }

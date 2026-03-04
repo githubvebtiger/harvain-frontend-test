@@ -53,7 +53,7 @@
   }
   .dark {
     .modal-wrapper {
-      background: $dark-bg;
+      background: var(--card-bg);
     }
   }
 }
@@ -63,9 +63,9 @@
 
 
     & > .content {
-      color: white;
+      color: var(--text-primary);
       border: 1px solid #202536;
-      background: $dark-bg;
+      background: var(--card-bg);
     }
   }
 }

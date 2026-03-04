@@ -78,13 +78,13 @@
     }
   }
   .burger-menu-content{
-    background: $dark-bg;
-    color: white;
+    background: var(--page-bg);
+    color: var(--text-primary);
 
 
     .sidebar-item{
       p{
-        color: white;
+        color: var(--text-primary);
       }
     }
 

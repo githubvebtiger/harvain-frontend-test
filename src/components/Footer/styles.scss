@@ -73,7 +73,7 @@ footer {
 .dark {
 
   .footer-copyright {
-    background-color: $midnight-navy;
+    background-color: var(--page-bg);
   }
 
 }
@@ -110,6 +110,6 @@ footer {
    p{
     color: $white;
    }
-   background-color: $dark-bg;
+   background: var(--page-bg);
   }
 }

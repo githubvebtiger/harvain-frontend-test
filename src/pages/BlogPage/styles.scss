@@ -6,7 +6,7 @@
 
 .dark{
     .blog-page-wrapper{
-        background-color: $dark-bg;
+        background: var(--page-bg);
 
          h1{
           color: $white;
@@ -20,10 +20,10 @@
             border: 1px rgba(32, 37, 54, 1) solid ;
             .content{
                 h3{
-                    color: white;
+                    color: var(--text-primary);
                 }
                 p{
-                    color: white;
+                    color: var(--text-primary);
                 }
             }
 
@@ -45,7 +45,7 @@
                 border-bottom-right-radius: 4px;
               }
               p{
-                color: white;
+                color: var(--text-primary);
               }
               span{
                 color: rgba(157, 157, 161, 1);

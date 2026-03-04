@@ -7,6 +7,9 @@ import TradeHistoryIcon from './TradeHistoryIcon';
 import LogoutIcon from './LogoutIcon';
 import OpenToggleSidebarIcon from './OpenToggleSidebarIcon';
 import CloseToggleSidebarIcon from './CloseToggleSidebarIcon';
+import DashboardIcon from './DashboardIcon';
+import AssetsIcon from './AssetsIcon';
+import StrategiesIcon from './StrategiesIcon';
 
 export {
   ProfileIcon,
@@ -18,4 +21,7 @@ export {
   LogoutIcon,
   OpenToggleSidebarIcon,
   CloseToggleSidebarIcon,
+  DashboardIcon,
+  AssetsIcon,
+  StrategiesIcon,
 };

@@ -24,9 +24,7 @@ export default function Start(props: Props) {
     <div className="start">
       <div className="video">
         <video id="video-bg" autoPlay loop muted playsInline>
-          <source src={'https://cryptositebucket.s3.eu-north-1.amazonaws.com/main_video.mp4'} type="video/mp4"/>
-          <source src={'https://cryptositebucket.s3.eu-north-1.amazonaws.com/main_video.mp4'} type="video/webm"/>
-          <source src={'https://cryptositebucket.s3.eu-north-1.amazonaws.com/main_video.mp4'} type="video/ogg"/>
+          <source src={'/main_video.mp4'} type="video/mp4"/>
         </video>
       </div>
       <div className="top">

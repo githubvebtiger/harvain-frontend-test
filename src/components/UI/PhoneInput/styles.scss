@@ -28,7 +28,7 @@
     border-left: 1px solid $soft-gray;
     box-sizing: border-box;
     height: 100%;
-    background: $light-fog;
+    background: transparent;
     font-size: 16px;
     font-weight: 400;
     line-height: 22.5px;
@@ -80,8 +80,36 @@
 }
 
 .dark {
-  .country-list {
-    background: $dark-bg!important;
+  .control-input-phone {
+    background: var(--input-bg);
+    border-color: var(--input-border);
 
+    input {
+      background: transparent !important;
+      color: var(--text-values) !important;
+    }
+
+    .country-select {
+      .country-code p {
+        color: var(--text-values);
+      }
+    }
+
+    .country-list {
+      background: var(--input-bg) !important;
+      border-color: var(--input-border);
+
+      .country-code-item {
+        color: var(--text-values);
+
+        span {
+          color: var(--text-values);
+        }
+
+        &:hover {
+          background: rgba(26, 86, 219, 0.15);
+        }
+      }
+    }
   }
 }

@@ -194,11 +194,11 @@
 }
 .dark{
   .pricing-page-wrapper{
-    background:$dark-bg ;
+    background: var(--page-bg);
   }
   .pricing-page{
   .plus{
-    background: linear-gradient(90deg, #0F101D 0%, #1B2133 100.03%);
+    background: var(--card-bg);
     border: 1px solid $midnight-gray;
     p{
       color: $white;

@@ -153,11 +153,11 @@
       background: $midnight-gray;
     }
     .pricing-table .column{
-      background: linear-gradient(90deg, #0F101D 0%, #1B2133 100.03%);
+      background: var(--card-bg);
       color: $white;
     }
     .button-secondary{
-      background: linear-gradient(90deg, #0F101D 0%, #1B2133 100.03%);
+      background: var(--card-bg);
 
     }
   }
