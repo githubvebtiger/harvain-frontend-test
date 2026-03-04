@@ -6,15 +6,17 @@ import './styles.scss';
 
 const VerifiedPage = () => {
   const navigate = useNavigate();
+  const isLoggedIn = !!localStorage.getItem('accessToken');
 
   const handleProceed = () => {
-    // Check if logged in as satellite or client
+    if (!isLoggedIn) {
+      navigate('/');
+      return;
+    }
     const satelliteData = localStorage.getItem('satellite');
     if (satelliteData) {
-      // Logged in as satellite - go to profile
       navigate(ROUTES.PROFILE);
     } else {
-      // Logged in as client - go to satellites list
       navigate(ROUTES.SATELLITES);
     }
   };
@@ -27,7 +29,7 @@ const VerifiedPage = () => {
             <img src={checkIcon} alt="success" className="icon" />
           </div>
           <p className="message ">Email address successfully verified!</p>
-          <Button onClick={handleProceed} label="Proceed to dashboard" />
+          <Button onClick={handleProceed} label={isLoggedIn ? "Proceed to dashboard" : "Go to login"} />
         </div>
       </div>
     </div>
