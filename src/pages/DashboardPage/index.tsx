@@ -21,8 +21,8 @@ import { ReactComponent as CalendarIcon } from "../../assets/icons/calendar.svg"
 import { useTheme } from "../../provider/ThemeProvider";
 
 // ===== STRATEGIES WIDGET CONFIG =====
-// Переключить между вариантами: 'compact' | 'with-chart'
-const STRATEGIES_WIDGET_VARIANT: 'compact' | 'with-chart' = 'with-chart';
+// Переключить между вариантами: 'compact' | 'with-chart' | 'hidden'
+const STRATEGIES_WIDGET_VARIANT: 'compact' | 'with-chart' | 'hidden' = 'hidden';
 
 // ===== BALANCE STATUS CONFIG =====
 // Переключить между вариантами: 'stepper' | 'progress'
@@ -297,7 +297,8 @@ export default function DashboardPage() {
           </div>
 
           {/* ===== STRATEGIES WIDGET ===== */}
-          {STRATEGIES_WIDGET_VARIANT === 'compact' ? (
+          {STRATEGIES_WIDGET_VARIANT !== 'hidden' && (
+          STRATEGIES_WIDGET_VARIANT === 'compact' ? (
             // Вариант A: Компактный список
             <div className="strategies-widget compact">
               <div className="widget-header">
@@ -381,6 +382,7 @@ export default function DashboardPage() {
                 </div>
               </div>
             </div>
+          )
           )}
         </div>
       </WrapperPage>

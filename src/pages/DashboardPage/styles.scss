@@ -149,7 +149,7 @@
         color: var(--text-primary);
       }
       .step-label {
-        color: var(--text-secondary);
+        color: var(--text-primary);
       }
 
       &.step-block .step-dot {
@@ -486,7 +486,7 @@
 @media (max-width: 768px) {
   .balance-card-unified {
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
     gap: 20px;
     padding: 18px 20px;
 

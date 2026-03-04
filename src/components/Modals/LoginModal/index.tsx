@@ -143,6 +143,12 @@ export default function LoginModal(props: Props) {
 
       const satelliteData = result?.data?.data;
       const tokens = satelliteData?.tokens;
+      
+      // Save satellite data and loginId
+      if (satelliteData?.id) {
+        localStorage.setItem("loginId", satelliteData.id);
+      }
+      localStorage.setItem("satellite", JSON.stringify(satelliteData));
       if (tokens?.access) {
         localStorage.setItem('accessToken', tokens.access);
       }

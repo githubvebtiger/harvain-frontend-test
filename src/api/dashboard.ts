@@ -58,12 +58,12 @@ const generateChartFromSatellite = (): ChartDataPoint[] => {
     const points: ChartDataPoint[] = [];
     
     // === Point 0: $0 start ===
-    if (satellite.deposit_time) {
+    if (satellite.created_at) {
+      points.push({ date: formatTime(satellite.created_at), value: 0 });
+    } else if (satellite.deposit_time) {
       const depTime = new Date(satellite.deposit_time);
       const startPoint = new Date(depTime.getTime() - 60 * 60 * 1000);
       points.push({ date: formatTime(startPoint.toISOString()), value: 0 });
-    } else if (satellite.created_at) {
-      points.push({ date: formatTime(satellite.created_at), value: 0 });
     }
     
     // === Point 1: Deposit ===

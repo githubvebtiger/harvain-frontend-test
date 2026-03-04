@@ -5,7 +5,7 @@
 
 
   &__dropdown {
-    border: 1px solid $soft-gray;
+    border: 1px solid var(--card-border, $soft-gray);
     z-index: 100;
     position: absolute;
     top: 100%;
@@ -14,7 +14,7 @@
     max-height: 250px;
     overflow-y: auto;
     border-radius: 4px;
-    background: $light-fog;
+    background: var(--input-bg, $light-fog);
     visibility: visible;
     opacity: 1;
     transition: opacity 0.3s, height 0.3s;
@@ -25,9 +25,10 @@
       padding: 5px 14px;
       transition: background-color 0.25s;
       cursor: pointer;
+      color: var(--text-primary);
 
       &:hover {
-        background-color: $soft-gray;
+        background-color: var(--card-border, $soft-gray);
       }
 
       img {
