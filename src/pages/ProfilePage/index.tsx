@@ -259,7 +259,7 @@ export default function ProfilePage(props: Props) {
                       <span className="verification-action-desc">Confirm your email to continue</span>
                     </div>
                     <button className="verification-action-btn" onClick={handleEmailVerification}>
-                      Verify →
+                      Verify
                     </button>
                   </div>
                 )}
@@ -270,7 +270,7 @@ export default function ProfilePage(props: Props) {
                       <span className="verification-action-desc">Verify your identity to unlock withdrawals</span>
                     </div>
                     <button className="verification-action-btn" onClick={handleKYCVerification}>
-                      Verify →
+                      Verify
                     </button>
                   </div>
                 )}
