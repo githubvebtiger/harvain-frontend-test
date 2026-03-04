@@ -85,7 +85,7 @@ const WithdrawTable = () => {
               <th>Date</th>
               <th style={{ width: 120 }}>Sum</th>
               <th>Payment System</th>
-              <th style={{ width: 140 }}>Status</th>
+              <th style={{ width: 140, textAlign: 'center' }}>Status</th>
               <th>Comment</th>
             </tr>
           </thead>
@@ -100,7 +100,7 @@ const WithdrawTable = () => {
                     <span>{row.paymentSystem}</span>
                   </div>
                 </td>
-                <td>
+                <td style={{ textAlign: 'center' }}>
                   <span className={`status-badge ${row.status.toLowerCase().replace(/\s+/g, "-")}`}>
                     {row.status}
                   </span>
