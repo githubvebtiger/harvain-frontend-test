@@ -147,7 +147,7 @@
     min-height: 0;
     
     .divider {
-      background: $gentle-gray-blue;
+      background: var(--card-border, rgba(255,255,255,0.06));
       height: 1px;
       width: 100%;
       margin: 6px 0;
