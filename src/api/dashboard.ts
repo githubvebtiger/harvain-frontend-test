@@ -111,12 +111,17 @@ const generateChartFromSatellite = async (): Promise<ChartDataPoint[]> => {
       }
     }
     
-    // === Block → Active migration ===
-    if (satellite.migration_time && (active > 0 || withdrawal > 0)) {
-      points.push({ date: formatTime(satellite.migration_time), value: active + withdrawal });
+    // === Current block balance ===
+    if (block > 0) {
+      points.push({ date: formatTime(new Date().toISOString()), value: block });
     }
     
-    // === Active → Withdrawal migration ===
+    // === Block → Active migration ===
+    if (satellite.migration_time && active > 0) {
+      points.push({ date: formatTime(satellite.migration_time), value: active });
+    }
+    
+    // === Active → Withdrawal (goes to 0) ===
     if (satellite.second_migration_time && withdrawal > 0) {
       points.push({ date: formatTime(satellite.second_migration_time), value: 0 });
     }
