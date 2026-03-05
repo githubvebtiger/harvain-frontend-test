@@ -264,13 +264,17 @@ export default function DashboardPage() {
                   <Tooltip 
                     content={({ active, payload }) => {
                       if (active && payload && payload.length) {
+                        const dateLabel = payload[0]?.payload?.month;
+                        const fullDate = payload[0]?.payload?.fullDate;
                         return (
                           <div style={{
                             ...tooltipStyle,
                             padding: '8px 12px',
                           }}>
-                            <span style={{ color: '#94A3B8', fontSize: '12px' }}>{payload[0]?.payload?.month || payload[0]?.payload?.fullDate}</span>
-                            <div style={{ color: '#60A5FA', fontSize: '14px', fontWeight: 600, marginTop: '2px' }}>
+                            {!dateLabel && fullDate && (
+                              <span style={{ color: '#94A3B8', fontSize: '12px' }}>{fullDate}</span>
+                            )}
+                            <div style={{ color: '#60A5FA', fontSize: '14px', fontWeight: 600, marginTop: !dateLabel && fullDate ? '2px' : '0' }}>
                               {formatCurrency(payload[0]?.value as number)}
                             </div>
                           </div>
