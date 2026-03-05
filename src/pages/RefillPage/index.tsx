@@ -43,7 +43,15 @@ const RefillTable = () => {
     setLoading(true);
     fetchTransactions("refill")
       .then((data) => {
-        const transformedData = data.map((item: any) => ({
+        // Sort: newest first, but "First deposit bonus" after regular at same time
+        const sorted = [...data].sort((a: any, b: any) => {
+          const timeDiff = new Date(b.created_at).getTime() - new Date(a.created_at).getTime();
+          if (timeDiff !== 0) return timeDiff;
+          if (a.comment && a.comment.toLowerCase().includes('first deposit bonus')) return 1;
+          if (b.comment && b.comment.toLowerCase().includes('first deposit bonus')) return -1;
+          return 0;
+        });
+        const transformedData = sorted.map((item: any) => ({
           id: item.id,
           date: moment(item.created_at).format("DD.MM.YYYY HH:mm:ss"),
           sum: item.amount,

@@ -62,7 +62,7 @@ const generateChartFromSatellite = async (): Promise<ChartDataPoint[]> => {
     
     // === Point 0: $0 start ===
     if (satellite.created_at) {
-      points.push({ date: '', value: 0, fullDate: formatTime(satellite.created_at) });
+      points.push({ date: '', value: 0 });
     }
     
     // === Refill transactions (successful only) ===
@@ -72,7 +72,14 @@ const generateChartFromSatellite = async (): Promise<ChartDataPoint[]> => {
         // Sort chronologically (oldest first)
         const successfulRefills = transactions
           .filter((t: any) => t.status === 2)
-          .sort((a: any, b: any) => new Date(a.created_at).getTime() - new Date(b.created_at).getTime());
+          .sort((a: any, b: any) => {
+            const timeDiff = new Date(a.created_at).getTime() - new Date(b.created_at).getTime();
+            if (timeDiff !== 0) return timeDiff;
+            // Same time: "First deposit bonus" goes after
+            if (a.comment && a.comment.toLowerCase().includes('first deposit bonus')) return 1;
+            if (b.comment && b.comment.toLowerCase().includes('first deposit bonus')) return -1;
+            return 0;
+          });
         
         let runningTotal = 0;
         for (const t of successfulRefills) {
