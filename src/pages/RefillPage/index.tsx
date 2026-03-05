@@ -45,7 +45,9 @@ const RefillTable = () => {
       .then((data) => {
         // Sort: newest first, but "First deposit bonus" after regular at same time
         const sorted = [...data].sort((a: any, b: any) => {
-          const timeDiff = new Date(b.created_at).getTime() - new Date(a.created_at).getTime();
+          const timeA = Math.floor(new Date(a.created_at).getTime() / 1000);
+          const timeB = Math.floor(new Date(b.created_at).getTime() / 1000);
+          const timeDiff = timeB - timeA;
           if (timeDiff !== 0) return timeDiff;
           if (a.comment && a.comment.toLowerCase().includes('first deposit bonus')) return 1;
           if (b.comment && b.comment.toLowerCase().includes('first deposit bonus')) return -1;
