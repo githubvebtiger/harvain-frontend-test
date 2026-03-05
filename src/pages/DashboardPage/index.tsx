@@ -269,7 +269,7 @@ export default function DashboardPage() {
                             ...tooltipStyle,
                             padding: '8px 12px',
                           }}>
-                            <span style={{ color: '#94A3B8', fontSize: '12px' }}>{payload[0]?.payload?.month}</span>
+                            <span style={{ color: '#94A3B8', fontSize: '12px' }}>{payload[0]?.payload?.month || payload[0]?.payload?.fullDate}</span>
                             <div style={{ color: '#60A5FA', fontSize: '14px', fontWeight: 600, marginTop: '2px' }}>
                               {formatCurrency(payload[0]?.value as number)}
                             </div>

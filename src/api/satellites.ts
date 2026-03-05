@@ -59,6 +59,7 @@ export interface Satellite {
   deposit_time?: string;
   migration_time?: string;
   second_migration_time?: string;
+  blocked?: boolean;
 }
 
 
@@ -67,6 +68,22 @@ export const fetchSatelliteById = async (id: number): Promise<Satellite> => {
 
   try {
     const response = await axiosClient.get<Satellite>(`/api/frontend/satellite/${id}/`);
+    
+    // Check if satellite is blocked — redirect to satellites list
+    if (response.data.blocked) {
+      localStorage.removeItem('loginId');
+      localStorage.removeItem('satellite');
+      localStorage.removeItem('accessToken');
+      localStorage.removeItem('refreshToken');
+      // Restore client tokens if available
+      const clientAccess = localStorage.getItem('clientAccessToken');
+      const clientRefresh = localStorage.getItem('clientRefreshToken');
+      if (clientAccess) localStorage.setItem('accessToken', clientAccess);
+      if (clientRefresh) localStorage.setItem('refreshToken', clientRefresh);
+      window.location.href = '/satellites';
+      throw new Error('Satellite is blocked');
+    }
+    
     localStorage.setItem('satellite', JSON.stringify(response.data));
     return response.data;
   } catch (error: any) {

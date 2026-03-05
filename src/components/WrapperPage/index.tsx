@@ -7,6 +7,7 @@ import BurgerMenu from '../BurgerMenu';
 import useWindowWidth from '../../hooks/useWindowWidth';
 import { useTheme } from '../../provider/ThemeProvider';
 import { ROUTES } from '../Navigation';
+import { fetchSatelliteById } from '../../api/satellites';
 
 type Props = {
   children: React.ReactNode;
@@ -15,6 +16,16 @@ export default function WrapperPage(props: Props) {
   const {theme} = useTheme()
   const [isMobile, setIsMobile] = useState(false)
   const {windowWidth} = useWindowWidth();
+
+  useEffect(() => {
+    // Check if satellite is blocked on every page load
+    const loginId = localStorage.getItem('loginId');
+    if (loginId) {
+      fetchSatelliteById(Number(loginId)).catch(() => {
+        // fetchSatelliteById handles blocked redirect internally
+      });
+    }
+  }, []);
 
   useEffect(() => {
     if (windowWidth < 880) {

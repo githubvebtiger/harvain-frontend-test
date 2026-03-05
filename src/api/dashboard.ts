@@ -1,4 +1,5 @@
 import axiosClient from "./axiosClient";
+import { fetchTransactions } from "./fetchTransactions";
 
 // Типы данных для Dashboard
 export interface DashboardStats {
@@ -31,24 +32,26 @@ const getSatelliteId = (): string | null => {
   }
 };
 
-// Generate chart data based on satellite balance transitions
-const generateChartFromSatellite = (): ChartDataPoint[] => {
+const formatTime = (dateStr: string): string => {
+  const d = new Date(dateStr);
+  if (window.innerWidth < 768) {
+    return d.toLocaleString('en-US', { month: 'short', day: 'numeric' });
+  }
+  return d.toLocaleString('en-US', { 
+    month: 'short', day: 'numeric', 
+    hour: '2-digit', minute: '2-digit',
+    hour12: false 
+  });
+};
+
+// Generate chart data based on satellite transitions + refill transactions
+const generateChartFromSatellite = async (): Promise<ChartDataPoint[]> => {
   try {
     const satellite = JSON.parse(localStorage.getItem('satellite') || '{}');
     const block = parseFloat(satellite.block_balance) || 0;
     const active = parseFloat(satellite.active_balance) || 0;
     const withdrawal = parseFloat(satellite.withdrawal) || 0;
-    const depositAmount = parseFloat(satellite.deposit) || (block + active + withdrawal);
     const totalCurrent = block + active + withdrawal;
-    
-    const formatTime = (dateStr: string): string => {
-      const d = new Date(dateStr);
-      return d.toLocaleString('en-US', { 
-        month: 'short', day: 'numeric', 
-        hour: '2-digit', minute: '2-digit',
-        hour12: false 
-      });
-    };
     
     // All balances zero — flat line
     if (totalCurrent <= 0) {
@@ -57,24 +60,55 @@ const generateChartFromSatellite = (): ChartDataPoint[] => {
     
     const points: ChartDataPoint[] = [];
     
-    // === Point 0: $0 start (always uses created_at) ===
+    // === Point 0: $0 start ===
     if (satellite.created_at) {
-      points.push({ date: formatTime(satellite.created_at), value: 0 });
+      points.push({ date: '', value: 0, fullDate: formatTime(satellite.created_at) });
     }
     
-    // === Point 1: Deposit ===
-    if (satellite.deposit_time) {
-      points.push({ date: formatTime(satellite.deposit_time), value: depositAmount });
-    } else if (satellite.created_at) {
-      points.push({ date: formatTime(satellite.created_at), value: depositAmount });
+    // === Refill transactions (successful only) ===
+    try {
+      const transactions = await fetchTransactions('refill');
+      if (transactions && transactions.length > 0) {
+        // Sort chronologically (oldest first)
+        const successfulRefills = transactions
+          .filter((t: any) => t.status === 2)
+          .sort((a: any, b: any) => new Date(a.created_at).getTime() - new Date(b.created_at).getTime());
+        
+        let runningTotal = 0;
+        for (const t of successfulRefills) {
+          runningTotal += parseFloat(t.amount) || 0;
+          points.push({ 
+            date: formatTime(t.created_at), 
+            value: runningTotal 
+          });
+        }
+      }
+    } catch (e) {
+      // If transactions fail, fall back to deposit field
+      const depositAmount = parseFloat(satellite.deposit) || totalCurrent;
+      if (satellite.deposit_time) {
+        points.push({ date: formatTime(satellite.deposit_time), value: depositAmount });
+      } else if (satellite.created_at) {
+        points.push({ date: formatTime(satellite.created_at), value: depositAmount });
+      }
     }
     
-    // === Point 2: Block → Active migration ===
+    // If no transactions were added, use deposit field as fallback
+    if (points.length === 1) {
+      const depositAmount = parseFloat(satellite.deposit) || totalCurrent;
+      if (satellite.deposit_time) {
+        points.push({ date: formatTime(satellite.deposit_time), value: depositAmount });
+      } else if (satellite.created_at) {
+        points.push({ date: formatTime(satellite.created_at), value: depositAmount });
+      }
+    }
+    
+    // === Block → Active migration ===
     if (satellite.migration_time && (active > 0 || withdrawal > 0)) {
       points.push({ date: formatTime(satellite.migration_time), value: active + withdrawal });
     }
     
-    // === Point 3: Active → Withdrawal migration (money leaving) ===
+    // === Active → Withdrawal migration ===
     if (satellite.second_migration_time && withdrawal > 0) {
       points.push({ date: formatTime(satellite.second_migration_time), value: 0 });
     }
@@ -90,7 +124,7 @@ const generateChartFromSatellite = (): ChartDataPoint[] => {
   }
 };
 
-const createMockDashboardData = (): DashboardData => {
+const createMockDashboardData = async (): Promise<DashboardData> => {
   const balance = getBalanceFromSatellite();
   return {
     stats: {
@@ -101,7 +135,7 @@ const createMockDashboardData = (): DashboardData => {
       profitability_total: 0,
       risk_level: 'medium',
     },
-    chart_data: generateChartFromSatellite(),
+    chart_data: await generateChartFromSatellite(),
   };
 };
 
@@ -111,7 +145,7 @@ export const fetchDashboardData = async (): Promise<DashboardData> => {
   // Если нет satellite_id — не дёргаем API, сразу mock data
   if (!satelliteId) {
     console.warn('No satellite_id, using mock data');
-    return createMockDashboardData();
+    return await createMockDashboardData();
   }
 
   try {
@@ -122,7 +156,7 @@ export const fetchDashboardData = async (): Promise<DashboardData> => {
     return response.data;
   } catch (error) {
     console.warn('Dashboard API error, using mock data');
-    return createMockDashboardData();
+    return await createMockDashboardData();
   }
 };
 
