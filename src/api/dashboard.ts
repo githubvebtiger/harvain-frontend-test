@@ -111,9 +111,10 @@ const generateChartFromSatellite = async (): Promise<ChartDataPoint[]> => {
       }
     }
     
-    // === Current block balance ===
-    if (block > 0) {
-      points.push({ date: formatTime(new Date().toISOString()), value: block });
+    // === Deposit point (persists across all stages) ===
+    const depositAmount = parseFloat(satellite.deposit) || 0;
+    if (depositAmount > 0 && satellite.deposit_time) {
+      points.push({ date: formatTime(satellite.deposit_time), value: depositAmount });
     }
     
     // === Block → Active migration (history point) ===
@@ -124,11 +125,6 @@ const generateChartFromSatellite = async (): Promise<ChartDataPoint[]> => {
     // === Active → Withdrawal (goes to 0) ===
     if (satellite.second_migration_time && withdrawal > 0) {
       points.push({ date: formatTime(satellite.second_migration_time), value: 0 });
-    }
-    
-    // === If in Active or Withdrawal, show current balance ===
-    if (block === 0 && active > 0) {
-      points.push({ date: formatTime(new Date().toISOString()), value: active });
     }
     
     // Fallback if no timestamps available
