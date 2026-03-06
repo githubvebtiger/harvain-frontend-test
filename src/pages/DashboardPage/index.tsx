@@ -260,7 +260,7 @@ export default function DashboardPage() {
                   </defs>
                   <CartesianGrid strokeDasharray="3 3" stroke={chartColors.grid} vertical={false} />
                   <XAxis dataKey="month" stroke={chartColors.axis} fontSize={11} tickLine={false} axisLine={false} padding={{ left: 20, right: 20 }} interval={0} dy={10} />
-                  <YAxis stroke={chartColors.axis} fontSize={11} tickLine={false} axisLine={false} tickFormatter={(v) => v >= 1000 ? `${(v / 1000).toFixed(v % 1000 === 0 ? 0 : 1)}K` : `$${v}`} width={50} domain={[0, 'auto']} />
+                  <YAxis stroke={chartColors.axis} fontSize={11} tickLine={false} axisLine={false} tickFormatter={(v) => v >= 1000 ? `${(v / 1000).toFixed(v % 1000 === 0 ? 0 : 1)}K` : `$${v}`} width={50} domain={[0, 'auto']} scale="sqrt" />
                   <Tooltip 
                     content={({ active, payload }) => {
                       if (active && payload && payload.length) {
