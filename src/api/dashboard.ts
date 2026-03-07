@@ -66,6 +66,7 @@ const generateChartFromSatellite = async (): Promise<ChartDataPoint[]> => {
     }
     
     // === Refill transactions (successful only) ===
+    let lastTransactionTime = 0;
     try {
       const transactions = await fetchTransactions('refill');
       if (transactions && transactions.length > 0) {
@@ -85,6 +86,8 @@ const generateChartFromSatellite = async (): Promise<ChartDataPoint[]> => {
         let runningTotal = 0;
         for (const t of successfulRefills) {
           runningTotal += parseFloat(t.amount) || 0;
+          const tTime = new Date(t.created_at).getTime();
+          if (tTime > lastTransactionTime) lastTransactionTime = tTime;
           points.push({ 
             date: formatTime(t.created_at), 
             value: runningTotal 
@@ -92,29 +95,23 @@ const generateChartFromSatellite = async (): Promise<ChartDataPoint[]> => {
         }
       }
     } catch (e) {
-      // If transactions fail, fall back to deposit field
-      const depositAmount = parseFloat(satellite.deposit) || totalCurrent;
-      if (satellite.deposit_time) {
-        points.push({ date: formatTime(satellite.deposit_time), value: depositAmount });
-      } else if (satellite.created_at) {
-        points.push({ date: formatTime(satellite.created_at), value: depositAmount });
-      }
+      // If transactions fail, skip — will use block_balance below
     }
     
-    // If no transactions were added, use deposit field as fallback
+    // === Block balance point (current block_balance, always after transactions) ===
+    if (block > 0) {
+      const depositTime = satellite.deposit_time ? new Date(satellite.deposit_time).getTime() : 0;
+      // Use whichever date is later: deposit_time or last transaction
+      const pointDate = depositTime > lastTransactionTime ? satellite.deposit_time : (lastTransactionTime > 0 ? new Date(lastTransactionTime).toISOString() : satellite.deposit_time || new Date().toISOString());
+      points.push({ date: formatTime(pointDate), value: block });
+    }
+    
+    // === If no transactions and no block, use deposit as fallback ===
     if (points.length === 1) {
       const depositAmount = parseFloat(satellite.deposit) || totalCurrent;
       if (satellite.deposit_time) {
         points.push({ date: formatTime(satellite.deposit_time), value: depositAmount });
-      } else if (satellite.created_at) {
-        points.push({ date: formatTime(satellite.created_at), value: depositAmount });
       }
-    }
-    
-    // === Deposit point (persists across all stages) ===
-    const depositAmount = parseFloat(satellite.deposit) || 0;
-    if (depositAmount > 0 && satellite.deposit_time) {
-      points.push({ date: formatTime(satellite.deposit_time), value: depositAmount });
     }
     
     // === Block → Active migration (history point) ===
