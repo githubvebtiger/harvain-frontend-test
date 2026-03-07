@@ -18,9 +18,11 @@ export default function WrapperPage(props: Props) {
   const {windowWidth} = useWindowWidth();
 
   useEffect(() => {
-    // Check if satellite is blocked on every page load
+    // Check if satellite is blocked on every satellite-level page load
+    // clientAccessToken exists = we're logged into a satellite (client tokens backed up)
     const loginId = localStorage.getItem('loginId');
-    if (loginId) {
+    const clientAccessToken = localStorage.getItem('clientAccessToken');
+    if (loginId && clientAccessToken) {
       fetchSatelliteById(Number(loginId)).catch(() => {
         // fetchSatelliteById handles blocked redirect internally
       });
