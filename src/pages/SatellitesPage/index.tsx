@@ -7,7 +7,7 @@ import { useNavigate } from 'react-router-dom';
 
 import { useTheme } from '../../provider/ThemeProvider';
 import { ROUTES } from '../../components/Navigation';
-import { fetchSatelliteById, fetchSatellites, getSatelliteToken } from '../../api/satellites';
+import { fetchSatellites, getSatelliteToken } from '../../api/satellites';
 import { useModal } from '../../provider/ModalContext';
 import LoginModal from '../../components/Modals/LoginModal';
 import EmptyState from '../../components/EmptyState';
@@ -60,7 +60,6 @@ const SatelliteCards = ({ data, loading }: { data: SatelliteData[], loading: boo
   const navigate = useNavigate();
 
   const onHandleLogin = (id: number, uuid: string) => {
-    fetchSatelliteById(id);
     openModal(LoginModal, { uuid, navigate });
   };
 
@@ -147,7 +146,6 @@ const MobileSatelliteCards = ({ data, loading }: { data: SatelliteData[], loadin
   const navigate = useNavigate();
 
   const onHandleLogin = (id: number, uuid: string) => {
-    fetchSatelliteById(id);
     openModal(LoginModal, { uuid, navigate });
   };
 
