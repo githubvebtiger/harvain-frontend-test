@@ -11,7 +11,8 @@ export const fetchSatellites = async (): Promise<IResponse> => {
   } catch (error: any) {
     console.error('Error fetching satellites:', error);
     // If 404 — user ID is stale after DB restore, clear and redirect to login
-    if (error?.response?.status === 404) {
+    // BUT: if clientAccessToken exists, we're logged into a satellite — 404 is expected
+    if (error?.response?.status === 404 && !localStorage.getItem('clientAccessToken')) {
       console.warn('User not found (404), clearing stale session data');
       localStorage.removeItem('userId');
       localStorage.removeItem('loginId');
@@ -68,21 +69,6 @@ export const fetchSatelliteById = async (id: number): Promise<Satellite> => {
 
   try {
     const response = await axiosClient.get<Satellite>(`/api/frontend/satellite/${id}/`);
-    
-    // Check if satellite is blocked — redirect to satellites list
-    if (response.data.blocked) {
-      localStorage.removeItem('loginId');
-      localStorage.removeItem('satellite');
-      localStorage.removeItem('accessToken');
-      localStorage.removeItem('refreshToken');
-      // Restore client tokens if available
-      const clientAccess = localStorage.getItem('clientAccessToken');
-      const clientRefresh = localStorage.getItem('clientRefreshToken');
-      if (clientAccess) localStorage.setItem('accessToken', clientAccess);
-      if (clientRefresh) localStorage.setItem('refreshToken', clientRefresh);
-      window.location.href = '/satellites';
-      throw new Error('Satellite is blocked');
-    }
     
     localStorage.setItem('satellite', JSON.stringify(response.data));
     return response.data;
