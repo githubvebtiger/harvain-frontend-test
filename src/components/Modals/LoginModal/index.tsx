@@ -150,6 +150,12 @@ export default function LoginModal(props: Props) {
         localStorage.setItem('refreshToken', tokens.refresh);
       }
 
+      // Save satellite data for Dashboard/Profile
+      if (satelliteData?.id) {
+        localStorage.setItem('loginId', String(satelliteData.id));
+        localStorage.setItem('satellite', JSON.stringify(satelliteData));
+      }
+
       props.navigate(ROUTES.PROFILE);
       props.onClose();
     } else {
@@ -201,6 +207,12 @@ export default function LoginModal(props: Props) {
           }
           if (tokens?.refresh) {
             localStorage.setItem('refreshToken', tokens.refresh);
+          }
+
+          // Save satellite data for Dashboard/Profile
+          if (satelliteData?.id) {
+            localStorage.setItem('loginId', String(satelliteData.id));
+            localStorage.setItem('satellite', JSON.stringify(satelliteData));
           }
 
           props.navigate(ROUTES.PROFILE);
