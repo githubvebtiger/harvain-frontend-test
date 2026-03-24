@@ -10,27 +10,27 @@
 
 /* ===== LIGHT THEME (default) ===== */
 :root {
-  --page-bg: #F8F9FB;
+  --page-bg: #F5F6FA;
   --card-bg: #FFFFFF;
-  --card-bg-gradient: #FFFFFF;
-  --card-border: #E5E7EB;
-  --card-hover-border: #D1D5DB;
-  --table-header-bg: #F3F4F6;
-  --input-bg: #F9FAFB;
-  --input-border: #D1D5DB;
-  --text-primary: #111827;
-  --text-values: #374151;
-  --text-subtitle: #6B7280;
-  --text-labels: #9CA3AF;
-  --text-secondary: #6B7280;
-  --divider: #E5E7EB;
-  --skeleton-base: #E5E7EB;
-  --skeleton-shine: #F3F4F6;
+  --card-bg-gradient: linear-gradient(160deg, #FFFFFF 0%, #F8F9FC 100%);
+  --card-border: #E2E5EF;
+  --card-hover-border: #B0B8CC;
+  --table-header-bg: #EFF1F7;
+  --input-bg: #F0F2F8;
+  --input-border: #D4D9E6;
+  --text-primary: #0F172A;
+  --text-values: #334155;
+  --text-subtitle: #64748B;
+  --text-labels: #94A3B8;
+  --text-secondary: #64748B;
+  --divider: rgba(15, 23, 42, 0.04);
+  --skeleton-base: #E2E8F0;
+  --skeleton-shine: #F1F5F9;
   --accent-blue: #1A56DB;
   --accent-blue-hover: #1E40AF;
   --focus-ring: rgba(26, 86, 219, 0.15);
   --hover-bg: rgba(26, 86, 219, 0.04);
-  --card-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+  --card-shadow: 0 1px 3px rgba(15, 23, 42, 0.04), 0 4px 16px rgba(15, 23, 42, 0.06);
   --balance-gradient-1: #1A56DB;
   --balance-gradient-2: #3B82F6;
   --step-bg: rgba(0, 0, 0, 0.04);
@@ -38,6 +38,18 @@
   --step-text: rgba(0, 0, 0, 0.2);
   --step-line: rgba(0, 0, 0, 0.1);
   --shimmer: rgba(0, 0, 0, 0.05);
+
+  /* Trade card */
+  --trade-header-bg: #EEF1F8;
+  --trade-header-border: #DCE0EB;
+  --trade-hover-border: rgba(26, 86, 219, 0.35);
+  --trade-hover-shadow: 0 4px 12px rgba(26, 86, 219, 0.10), 0 8px 32px rgba(15, 23, 42, 0.08);
+  --trade-long-bg: rgba(22, 163, 74, 0.1);
+  --trade-long-color: #15803D;
+  --trade-short-bg: rgba(185, 28, 28, 0.1);
+  --trade-short-color: #B91C1C;
+  --trade-positive: #15803D;
+  --trade-negative: #B91C1C;
 }
 
 /* ===== DARK THEME ===== */
@@ -70,6 +82,18 @@
   --step-text: rgba(255, 255, 255, 0.25);
   --step-line: rgba(255, 255, 255, 0.12);
   --shimmer: rgba(255, 255, 255, 0.1);
+
+  /* Trade card */
+  --trade-header-bg: rgba(255, 255, 255, 0.015);
+  --trade-header-border: rgba(26, 39, 68, 0.8);
+  --trade-hover-border: rgba(26, 86, 219, 0.35);
+  --trade-hover-shadow: 0 4px 16px rgba(0, 0, 0, 0.25), 0 0 0 1px rgba(26, 86, 219, 0.1) inset;
+  --trade-long-bg: rgba(34, 197, 94, 0.12);
+  --trade-long-color: #22C55E;
+  --trade-short-bg: rgba(239, 68, 68, 0.12);
+  --trade-short-color: #EF4444;
+  --trade-positive: #22C55E;
+  --trade-negative: #EF4444;
 }
 
 html, body {
