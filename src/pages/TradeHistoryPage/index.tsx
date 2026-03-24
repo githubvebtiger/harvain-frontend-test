@@ -22,6 +22,11 @@ type TradeData = {
   closing_fee: string;
 };
 
+function formatDate(iso: string) {
+  const d = new Date(iso);
+  return d.toLocaleDateString('sv-SE') + ' ' + d.toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' });
+}
+
 function TradeCard({
   opened,
   closed,
@@ -38,8 +43,7 @@ function TradeCard({
   const isProfitable = parseFloat(closing_pnl) >= 0;
 
   return (
-    <div className="trade-card">
-      {/* Header — pair + direction + P&L */}
+    <div className={`trade-card ${isProfitable ? 'profit' : 'loss'}`}>
       <div className="trade-card-header">
         <div className="trade-card-left">
           <span className="pair-name">{traiding_pair}</span>
@@ -47,31 +51,30 @@ function TradeCard({
             {direction}
           </span>
         </div>
-        <span className={`pnl-value ${isProfitable ? 'positive' : 'negative'}`}>
+        <span className={`pnl-badge ${isProfitable ? 'positive' : 'negative'}`}>
           {isProfitable && !closing_pnl.startsWith('+') && !closing_pnl.startsWith('-') ? '+' : ''}{closing_pnl}
         </span>
       </div>
 
-      {/* Details grid 4x2 */}
       <div className="trade-card-details">
         <div className="detail-field">
           <span className="field-label">Deposit</span>
-          <span className="field-value white">{deposit}</span>
+          <span className="field-value primary">{deposit}</span>
         </div>
         <div className="detail-field">
           <span className="field-label">Opened</span>
-          <span className="field-value">{opened}</span>
+          <span className="field-value mono">{opened}</span>
         </div>
         <div className="detail-field">
           <span className="field-label">Closed</span>
-          <span className="field-value">{closed}</span>
+          <span className="field-value mono">{closed}</span>
         </div>
         <div className="detail-field">
           <span className="field-label">TP / SL</span>
           <span className="field-value">{tp_sl}</span>
         </div>
         <div className="detail-field">
-          <span className="field-label">Orders Type</span>
+          <span className="field-label">Type</span>
           <span className="field-value">{orders_type}</span>
         </div>
         <div className="detail-field">
@@ -79,11 +82,11 @@ function TradeCard({
           <span className="field-value">{fee}</span>
         </div>
         <div className="detail-field">
-          <span className="field-label">Opening Fee</span>
+          <span className="field-label">Open Fee</span>
           <span className="field-value">{opening_fee}</span>
         </div>
         <div className="detail-field">
-          <span className="field-label">Closing Fee</span>
+          <span className="field-label">Close Fee</span>
           <span className="field-value">{closing_fee}</span>
         </div>
       </div>
@@ -146,8 +149,8 @@ export default function TradeHistoryPage() {
               {trades.map((item, index) => (
                 <TradeCard
                   key={index}
-                  opened={new Date(item.opened).toLocaleString()}
-                  closed={new Date(item.closed).toLocaleString()}
+                  opened={formatDate(item.opened)}
+                  closed={formatDate(item.closed)}
                   traiding_pair={item.traiding_pair}
                   tp_sl={item.tp_sl}
                   fee={item.fee}
